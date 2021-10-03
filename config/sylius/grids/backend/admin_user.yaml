@@ -4,7 +4,7 @@ sylius_grid:
             driver:
                 name: doctrine/orm
                 options:
-                    class: App\Entity\User\AdminUser
+                    class: App\Shared\Infrastructure\Doctrine\ORM\Entity\User\AdminUser
             sorting:
                 email: desc
             fields:

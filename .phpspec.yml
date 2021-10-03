@@ -1,9 +1,0 @@
-extensions:
-    Memio\SpecGen\MemioSpecGenExtension: ~
-
-suites:
-    page:
-        namespace: Mono\Component\Page
-        psr4_prefix: Mono\Component\Page
-        src_path: src/Mono/Component/Page
-        spec_path: src/Mono/Component/Page

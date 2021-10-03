@@ -6,10 +6,10 @@ imports:
 
 fos_oauth_server:
     db_driver: orm
-    client_class:        App\Entity\OAuth\Client
-    access_token_class:  App\Entity\OAuth\AccessToken
-    refresh_token_class: App\Entity\OAuth\RefreshToken
-    auth_code_class:     App\Entity\OAuth\AuthCode
+    client_class:        App\Shared\Infrastructure\Doctrine\ORM\Entity\OAuth\Client
+    access_token_class:  App\Shared\Infrastructure\Doctrine\ORM\Entity\OAuth\AccessToken
+    refresh_token_class: App\Shared\Infrastructure\Doctrine\ORM\Entity\OAuth\RefreshToken
+    auth_code_class:     App\Shared\Infrastructure\Doctrine\ORM\Entity\OAuth\AuthCode
     service:
         user_provider: sylius.app_user_provider.email_or_name_based
         client_manager: monofony.client_manager
@@ -43,8 +43,8 @@ sylius_customer:
     resources:
         customer:
             classes:
-                model: App\Entity\Customer\Customer
-                repository: App\Repository\CustomerRepository
+                model: App\Shared\Infrastructure\Doctrine\ORM\Entity\Customer\Customer
+                repository: App\Shared\Infrastructure\Doctrine\ORM\Repository\CustomerRepository
 
 sylius_mailer:
     sender:
@@ -73,15 +73,15 @@ sylius_user:
         app:
             user:
                 classes:
-                    model: App\Entity\User\AppUser
-                    repository: App\Repository\UserRepository
-                    form: App\Form\Type\User\AppUserType
+                    model: App\Shared\Infrastructure\Doctrine\ORM\Entity\User\AppUser
+                    repository: App\Shared\Infrastructure\Doctrine\ORM\Repository\UserRepository
+                    form: App\Shared\Infrastructure\Form\Type\User\AppUserType
         admin:
             user:
                 classes:
-                    model: App\Entity\User\AdminUser
+                    model: App\Shared\Infrastructure\Doctrine\ORM\Entity\User\AdminUser
                     repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
-                    form: App\Form\Type\User\AdminUserType
+                    form: App\Shared\Infrastructure\Form\Type\User\AdminUserType
         admin_oauth:
             user:
                 classes:

@@ -2,7 +2,7 @@
 fos_oauth_server:
     db_driver: orm
 
-    client_class: App\Entity\Client
-    access_token_class: App\Entity\AccessToken
-    refresh_token_class: App\Entity\RefreshToken
-    auth_code_class: App\Entity\AuthCode
+    client_class: App\Shared\Infrastructure\Doctrine\ORM\Entity\Client
+    access_token_class: App\Shared\Infrastructure\Doctrine\ORM\Entity\AccessToken
+    refresh_token_class: App\Shared\Infrastructure\Doctrine\ORM\Entity\RefreshToken
+    auth_code_class: App\Shared\Infrastructure\Doctrine\ORM\Entity\AuthCode

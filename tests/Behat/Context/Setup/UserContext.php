@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Behat\Context\Setup;
 
-use App\Fixture\Factory\AppUserExampleFactory;
+use App\Shared\Infrastructure\Fixture\Factory\AppUserExampleFactory;
 use Behat\Behat\Context\Context;
 use Doctrine\Persistence\ObjectManager;
 use Monofony\Bridge\Behat\Service\SharedStorageInterface;

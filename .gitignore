@@ -13,6 +13,12 @@
 /rector.php
 ###< dev environment ###
 
+###> test environment ##
+/.env.test
+/.phpspec.yml.dist
+/behat.yml.dist
+###< dev environment ###
+
 ###> docker environment ##
 .dockerignore
 /docker-compose*
@@ -53,7 +59,7 @@
 
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
-/phpunit.xml
+/phpunit.xml.dist
 ###< symfony/phpunit-bridge ###
 
 ###> symfony/webpack-encore-bundle ###
