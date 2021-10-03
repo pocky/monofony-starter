@@ -1,0 +1,55 @@
+imports:
+    - config/behat/suites.yaml
+
+default:
+    formatters:
+        pretty:
+            verbose:  true
+            paths:    false
+            snippets: false
+
+    extensions:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+
+        FriendsOfBehat\MinkDebugExtension:
+            directory: etc/build
+            clean_start: false
+            screenshot: true
+
+        Behat\MinkExtension:
+            files_path: "%paths.base%/tests/Resources/"
+            base_url: "https://127.0.0.1:8080/"
+            default_session: symfony
+            javascript_session: chrome_headless
+            sessions:
+                symfony:
+                    symfony: ~
+                chrome_headless:
+                    chrome:
+                        api_url: http://127.0.0.1:9222
+                        validate_certificate: false
+                chrome:
+                    selenium2:
+                        browser: chrome
+                        capabilities:
+                            browserName: chrome
+                            browser: chrome
+                            version: ""
+                            chrome:
+                                switches:
+                                - "start-fullscreen"
+                                - "start-maximized"
+                                - "no-sandbox"
+                            extra_capabilities:
+                                acceptSslCerts: true
+                                acceptInsecureCerts: true
+                                unexpectedAlertBehaviour: accept
+
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php
+
+        FriendsOfBehat\VariadicExtension: ~
+
+    gherkin:
+        filters:
+            tags: "~@todo"

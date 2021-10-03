@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "jquery": "^3.4.0",
+    "lightbox2": "^2.9.0",
+    "semantic-ui-css": "npm:fomantic-ui-css@^2.7.0"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^1.6.1",
+    "core-js": "^3.18.1",
+    "file-loader": "^6.2.0",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.1.0",
+    "upath": "^2.0.1",
+    "yargs": "^17.2.1"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  }
+}

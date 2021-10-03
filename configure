@@ -1,0 +1,124 @@
+#!/bin/bash
+
+env=prod
+docker=false
+proxy=false
+tests=false
+clean=false
+
+for arg in "$@"; do
+    case "$arg" in
+    --env=*)
+        env=`echo $arg | sed 's/--env=//'`
+    ;;
+
+    --with-docker=*)
+        docker=`echo $arg | sed 's/--with-docker=//'`
+    ;;
+
+    --with-proxy)
+        proxy=true
+    ;;
+
+    --with-tests)
+        tests=true
+    ;;
+
+    --clean-before-tasks)
+        clean=true
+    ;;
+
+    --help)
+        echo 'usage: ./configure [options]'
+        echo ''
+        echo 'options:'
+        echo '  --env=<env>: current env (dev|labo|prod)'
+        echo '  --with-docker=<version>: enable docker (full|light)'
+        echo '  --with-proxy: add proxy to docker'
+        echo '  --with-tests: add tests tools'
+        echo '  --clean-before-tasks: remove build files'
+        echo ''
+        echo 'All invalid options are silently ignored!'
+        exit 0
+    ;;
+
+    esac
+done
+
+if [ ! -d ./infrastructure/$env ]; then
+  if [ $env != "dev" ]; then
+    echo "$env environment doesn't exist!"
+    exit 0
+  fi
+fi
+
+if [ $docker != false ] && [ ! -d ./infrastructure/docker-$docker ]; then
+  echo "This $docker formula doesn't exist!"
+  exit 0
+fi
+
+if [ $clean = true ]; then
+  echo "Clean old files"
+
+  preserve=(
+    .env
+    .env.local
+    .gitattributes
+    .gitignore
+    config-builder.js
+    composer.json
+    composer.lock
+    configure
+    docker-dev.lock
+    LICENSE
+    package.json
+    package-lock.json
+    README.md
+    symfony.lock
+    webpack.config.js
+  )
+
+  find . -maxdepth 1 -type f $(for i in ${preserve[*]}; do echo "-not -name ${i}"; done) -exec rm -f "{}" \;
+fi
+
+echo "Generating files for $env environment..."
+cp -rT ./infrastructure/$env/autoconf/ ./
+
+if [ $docker != false ] && [ $env = "dev" ]; then
+  echo "Add docker files in $docker version ..."
+
+  cp ./infrastructure/docker-$docker/autoconf/docker-compose.yaml.dist ./docker-compose.yaml
+  cp ./infrastructure/docker-$docker/autoconf/Makefile.dist ./
+
+  if [ $docker = "full" ] && [ $proxy = true ]; then
+    echo "Oh! You want a reverse proxy!"
+  elif [ $docker = "light" ] && [ $proxy = true ]; then
+    echo "You can't have proxy with light configuration!"
+  fi
+
+  if [ $docker = "full" ] && [ $proxy = true ]; then
+    cp ./infrastructure/docker-$docker/autoconf/docker-compose.override.yaml.dist ./docker-compose.override.yaml
+
+    sed -i -e 's/${APP_HTTP_PORT:-80}:80/80/g' ./docker-compose.yaml
+    sed -i -e 's/${APP_MAIL_PORT:-8025}:8025/8025/g' ./docker-compose.yaml
+
+    sed -i "$(awk '/^DATABASE_URL/{ print NR; exit }' ./.env.$env)s/localhost/database/" ./.env.$env
+    sed -i "$(awk '/^MAILER_DSN/{ print NR; exit }' ./.env.$env)s/localhost/mail/" ./.env.$env
+  fi
+else
+  echo "Docker is only compatible with dev environment..."
+fi
+
+if [ $tests = true ]; then
+  echo "Oh! You are probably a 10x developer!"
+  cp -rT ./infrastructure/tests/autoconf/ ./
+fi
+
+if [ $env = prod ]; then
+  echo "Damn! production"
+fi
+
+mv ./Makefile.dist ./Makefile
+echo "APP_ENV=$env" > .env.local
+
+echo 'Configuration complete'
