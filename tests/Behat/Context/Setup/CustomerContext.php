@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use Doctrine\Persistence\ObjectManager;
 use Monofony\Bridge\Behat\Service\SharedStorageInterface;
 use Monofony\Contracts\Core\Model\Customer\CustomerInterface;
 use Monofony\Contracts\Core\Model\User\AppUserInterface;
@@ -14,24 +13,12 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 final class CustomerContext implements Context
 {
-    private SharedStorageInterface $sharedStorage;
-    private RepositoryInterface $customerRepository;
-    private ObjectManager $customerManager;
-    private FactoryInterface $customerFactory;
-    private FactoryInterface $appUserFactory;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        RepositoryInterface $customerRepository,
-        ObjectManager $customerManager,
-        FactoryInterface $customerFactory,
-        FactoryInterface $appUserFactory
+        private readonly SharedStorageInterface $sharedStorage,
+        private readonly RepositoryInterface $customerRepository,
+        private readonly FactoryInterface $customerFactory,
+        private readonly FactoryInterface $appUserFactory,
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->customerRepository = $customerRepository;
-        $this->customerManager = $customerManager;
-        $this->customerFactory = $customerFactory;
-        $this->appUserFactory = $appUserFactory;
     }
 
     /**
@@ -39,7 +26,7 @@ final class CustomerContext implements Context
      */
     public function thereIsCustomerWithNameAndEmail($name, $email): void
     {
-        $partsOfName = explode(' ', $name);
+        $partsOfName = explode(' ', (string) $name);
         $customer = $this->createCustomer($email, $partsOfName[0], $partsOfName[1]);
         $this->customerRepository->add($customer);
     }
@@ -62,7 +49,7 @@ final class CustomerContext implements Context
         for ($i = 0; $i < $numberOfCustomers; ++$i) {
             $customer = $this->createCustomer(sprintf('john%s@doe.com', uniqid()));
             $customer->setFirstname('John');
-            $customer->setLastname('Doe'.$i);
+            $customer->setLastname('Doe' . $i);
 
             $this->customerRepository->add($customer);
         }
@@ -85,7 +72,7 @@ final class CustomerContext implements Context
         string $email,
         string $fullName,
         string $phoneNumber,
-        string $since
+        string $since,
     ): void {
         $names = explode(' ', $fullName);
         $customer = $this->createCustomer($email, $names[0], $names[1], new \DateTime($since), $phoneNumber);
@@ -98,7 +85,7 @@ final class CustomerContext implements Context
         string $firstName = null,
         string $lastName = null,
         \DateTimeInterface $createdAt = null,
-        string $phoneNumber = null
+        string $phoneNumber = null,
     ): CustomerInterface {
         /** @var CustomerInterface $customer */
         $customer = $this->customerFactory->createNew();
@@ -122,7 +109,7 @@ final class CustomerContext implements Context
         bool $enabled = true,
         string $firstName = null,
         string $lastName = null,
-        string $role = null
+        string $role = null,
     ): CustomerInterface {
         /** @var AppUserInterface $user */
         $user = $this->appUserFactory->createNew();

@@ -1,4 +1,4 @@
-ARG PHP_VERSION=8.0
+ARG PHP_VERSION=8.1
 
 FROM php:${PHP_VERSION}-fpm
 
@@ -11,7 +11,7 @@ RUN apt-get update -q && \
         git \
         libicu-dev \
         libzip-dev \
-        libmariadb-dev \
+        libpq-dev \
         libonig-dev \
         unzip
 
@@ -21,7 +21,7 @@ RUN docker-php-ext-install \
         intl \
         mbstring \
         opcache \
-        pdo_mysql \
+        pdo_pgsql \
         zip && \
     pecl install \
         apcu-${APCU_VERSION} &&\
@@ -41,6 +41,15 @@ CMD ["php-fpm"]
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN composer global require "symfony/flex" --prefer-dist --no-progress --no-suggest --classmap-authoritative; \
     composer clear-cache
+
+ENV PANTHER_NO_SANDBOX 1
+ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
+RUN apt-get update -q && \
+    export LC_ALL=en_US.UTF-8 && \
+    export LANG=en_US.UTF-8 && \
+    apt-get install --no-install-recommends -qy \
+        chromium \
+        chromium-driver
 
 ADD . .
 RUN mkdir -p var/cache var/logs var/sessions \

@@ -11,13 +11,8 @@ use Webmozart\Assert\Assert;
 
 class LoginContext implements Context
 {
-    private $dashboardPage;
-    private $loginPage;
-
-    public function __construct(DashboardPage $dashboardPage, LoginPage $loginPage)
+    public function __construct(private readonly DashboardPage $dashboardPage, private readonly LoginPage $loginPage)
     {
-        $this->dashboardPage = $dashboardPage;
-        $this->loginPage = $loginPage;
     }
 
     /**

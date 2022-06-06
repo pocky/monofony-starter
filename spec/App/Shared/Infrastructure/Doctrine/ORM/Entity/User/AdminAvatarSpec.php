@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\App\Shared\Infrastructure\Doctrine\ORM\Entity\User;
 
 use App\Shared\Infrastructure\Doctrine\ORM\Entity\Media\File;

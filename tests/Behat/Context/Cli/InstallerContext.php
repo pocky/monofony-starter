@@ -11,17 +11,14 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class InstallerContext extends DefaultContext
 {
-    private SetupCommand $setupCommand;
-    private $inputChoices = [
+    private array $inputChoices = [
         'e-mail' => 'test@email.com',
         'password' => 'pswd',
         'confirmation' => 'pswd',
     ];
 
-    public function __construct(KernelInterface $kernel, SetupCommand $setupCommand)
+    public function __construct(KernelInterface $kernel, private readonly SetupCommand $setupCommand)
     {
-        $this->setupCommand = $setupCommand;
-
         parent::__construct($kernel);
     }
 
@@ -61,7 +58,7 @@ class InstallerContext extends DefaultContext
 
         try {
             $this->getTester()->execute(['command' => $name]);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
         }
     }
 
@@ -90,7 +87,7 @@ class InstallerContext extends DefaultContext
 
         try {
             $this->getTester()->execute(['command' => $name]);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
         }
     }
 }

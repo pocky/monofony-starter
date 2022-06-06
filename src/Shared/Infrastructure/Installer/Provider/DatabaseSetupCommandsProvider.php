@@ -12,14 +12,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Webmozart\Assert\Assert;
 
 final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProviderInterface
 {
-    private ManagerRegistry $doctrineRegistry;
-
-    public function __construct(ManagerRegistry $doctrineRegistry)
-    {
-        $this->doctrineRegistry = $doctrineRegistry;
+    public function __construct(
+        private readonly ManagerRegistry $doctrineRegistry,
+    ) {
     }
 
     public function getCommands(InputInterface $input, OutputInterface $output, QuestionHelper $questionHelper): array
@@ -54,8 +53,8 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
 
-            $mysqlDatabaseError = false !== strpos($message, sprintf("Unknown database '%s'", $databaseName));
-            $postgresDatabaseError = false !== strpos($message, sprintf('database "%s" does not exist', $databaseName));
+            $mysqlDatabaseError = str_contains($message, sprintf("Unknown database '%s'", $databaseName));
+            $postgresDatabaseError = str_contains($message, sprintf('database "%s" does not exist', $databaseName));
 
             if ($mysqlDatabaseError || $postgresDatabaseError) {
                 return false;
@@ -65,8 +64,11 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
         }
     }
 
-    private function setupDatabase(InputInterface $input, OutputInterface $output, QuestionHelper $questionHelper): array
-    {
+    private function setupDatabase(
+        InputInterface $input,
+        OutputInterface $output,
+        QuestionHelper $questionHelper,
+    ): array {
         $outputStyle = new SymfonyStyle($input, $output);
         $outputStyle->writeln('It appears that your database already exists.');
         $outputStyle->writeln('<error>Warning! This action will erase your database.</error>');
@@ -99,12 +101,12 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
 
     private function isSchemaPresent(): bool
     {
-        return 0 !== count($this->getSchemaManager()->listTableNames());
+        return [] !== $this->getSchemaManager()->listTableNames();
     }
 
     private function getDatabaseName(): string
     {
-        return (string) $this->getEntityManager()->getConnection()->getDatabase();
+        return $this->getEntityManager()->getConnection()->getDatabase();
     }
 
     private function getSchemaManager(): AbstractSchemaManager
@@ -114,6 +116,10 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
 
     private function getEntityManager(): EntityManagerInterface
     {
-        return $this->doctrineRegistry->getManager();
+        /** @var EntityManagerInterface $entityManager */
+        $entityManager = $this->doctrineRegistry->getManager();
+        Assert::isInstanceOf($entityManager, EntityManagerInterface::class);
+
+        return $entityManager;
     }
 }

@@ -8,38 +8,30 @@ use App\Shared\Infrastructure\Doctrine\ORM\Entity\IdentifiableTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Monofony\Contracts\Core\Model\Media\FileInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Model\TimestampableTrait;
-use Symfony\Component\Serializer\Annotation as Serializer;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-#[ORM\MappedSuperclass]
+/**
+ * @ORM\MappedSuperclass
+ */
 abstract class File implements FileInterface, ResourceInterface
 {
     use IdentifiableTrait;
-    use TimestampableTrait;
 
     protected ?\SplFileInfo $file = null;
 
-    /**
-     * @Serializer\Groups({"Default", "Detailed"})
-     */
     #[ORM\Column(type: 'string')]
+    #[Groups(groups: ['Default', 'Detailed'])]
     protected ?string $path = null;
 
-    /**
-     * @var \DateTimeInterface|null
-     */
     #[ORM\Column(type: 'datetime')]
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
-    /**
-     * @var \DateTimeInterface|null
-     */
     #[ORM\Column(type: 'datetime', nullable: true)]
-    protected $updatedAt;
+    protected ?\DateTimeInterface $updatedAt = null;
 
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     /**
@@ -60,7 +52,7 @@ abstract class File implements FileInterface, ResourceInterface
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
         // otherwise the event listeners won't be called and the file is lost
-        if ($file) {
+        if ($file !== null) {
             // if 'updatedAt' is not defined in your entity, use another property
             $this->updatedAt = new \DateTime('now');
         }
@@ -80,5 +72,15 @@ abstract class File implements FileInterface, ResourceInterface
     public function setPath(?string $path): void
     {
         $this->path = $path;
+    }
+
+    public function getCreatedAt(): \DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
+    {
+        $this->createdAt = $createdAt;
     }
 }

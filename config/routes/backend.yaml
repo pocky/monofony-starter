@@ -1,3 +1,0 @@
-app_backend:
-    resource: "../sylius/routes/backend/_main.yaml"
-    prefix: admin

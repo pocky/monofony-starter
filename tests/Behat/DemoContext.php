@@ -17,15 +17,10 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 final class DemoContext implements Context
 {
-    /** @var KernelInterface */
-    private $kernel;
+    private ?\Symfony\Component\HttpFoundation\Response $response = null;
 
-    /** @var Response|null */
-    private $response;
-
-    public function __construct(KernelInterface $kernel)
+    public function __construct(private readonly KernelInterface $kernel)
     {
-        $this->kernel = $kernel;
     }
 
     /**

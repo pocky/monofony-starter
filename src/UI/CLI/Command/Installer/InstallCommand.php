@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace App\UI\CLI\Command\Installer;
 
-use App\UI\CLI\Command\Helper\DirectoryChecker;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Process\Exception\RuntimeException;
+use Webmozart\Assert\Assert;
 
 class InstallCommand extends Command
 {
-    private DirectoryChecker $directoryChecker;
-    private string $cacheDir;
+    protected static $defaultName = 'app:install';
     private ?CommandExecutor $commandExecutor = null;
 
     /**
@@ -37,23 +36,14 @@ class InstallCommand extends Command
         ],
     ];
 
-    public function __construct(DirectoryChecker $directoryChecker, string $cacheDir)
-    {
-        $this->directoryChecker = $directoryChecker;
-        $this->cacheDir = $cacheDir;
-
-        parent::__construct();
-    }
-
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
-        $this
-            ->setName('app:install')
-            ->setDescription('Installs AppName in your preferred environment.')
-            ->setHelp(<<<EOT
+        $this->setDescription('Installs AppName in your preferred environment.')
+            ->setHelp(
+                <<<EOT
 The <info>%command.name%</info> command installs AppName.
 EOT
             );
@@ -62,7 +52,7 @@ EOT
     /**
      * {@inheritdoc}
      */
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->commandExecutor = new CommandExecutor($input, $output, $this->getApplication());
     }
@@ -72,53 +62,49 @@ EOT
      *
      * @throws \Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $outputStyle = new SymfonyStyle($input, $output);
-        $outputStyle->writeln('<info>Installing AppName...</info>');
-        $outputStyle->writeln($this->getLogo());
+        Assert::notNull($this->commandExecutor);
 
-        $this->directoryChecker->ensureDirectoryExistsAndIsWritable($this->cacheDir, $output, $this->getName());
+        $io = new SymfonyStyle($input, $output);
+        $io->title('Installing AppName...');
+        $io->writeln($this->getLogo());
 
         $errored = false;
         foreach ($this->commands as $step => $command) {
             try {
-                $outputStyle->newLine();
-                $outputStyle->section(sprintf(
+                $io->newLine();
+                $io->section(sprintf(
                     'Step %d of %d. <info>%s</info>',
                     $step + 1,
                     count($this->commands),
-                    $command['message']
+                    $command['message'],
                 ));
-                $this->commandExecutor->runCommand('app:install:'.$command['command'], [], $output);
+
+                $this->commandExecutor->runCommand('app:install:' . $command['command'], [], $output);
                 $output->writeln('');
-            } catch (RuntimeException $exception) {
+            } catch (RuntimeException) {
                 $errored = true;
             }
         }
 
-        $output->writeln($this->getProperFinalMessage($errored));
-        $output->writeln('You can now open your website at the following path under the website root.');
+        $io->newLine(2);
+        $io->success($this->getProperFinalMessage($errored));
+        $io->info('You can now open your website at the following path under the website root: /');
 
         return 0;
     }
 
-    /**
-     * @return string
-     */
-    private function getProperFinalMessage(bool $errored)
+    private function getProperFinalMessage(bool $errored): string
     {
         if ($errored) {
-            return '<info>AppName has been installed, but some error occurred.</info>';
+            return 'AppName has been installed, but some error occurred.';
         }
 
-        return '<info>AppName has been successfully installed.</info>';
+        return 'AppName has been successfully installed.';
     }
 
-    /**
-     * @return string
-     */
-    private function getLogo()
+    private function getLogo(): string
     {
         return '
 

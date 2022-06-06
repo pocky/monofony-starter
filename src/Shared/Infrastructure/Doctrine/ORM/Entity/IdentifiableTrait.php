@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait IdentifiableTrait
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected ?int $id = null;
 
     public function getId(): ?int

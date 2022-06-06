@@ -13,6 +13,7 @@ use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -21,34 +22,25 @@ use Webmozart\Assert\Assert;
 
 final class SetupCommand extends Command
 {
-    private ObjectManager $adminUserManager;
-    private FactoryInterface $adminUserFactory;
-    private UserRepositoryInterface $adminUserRepository;
-    private ValidatorInterface $validator;
+    protected static $defaultName = 'app:install:setup';
 
     public function __construct(
-        ObjectManager $adminUserManager,
-        FactoryInterface $adminUserFactory,
-        UserRepositoryInterface $adminUserRepository,
-        ValidatorInterface $validator
+        private readonly ObjectManager $adminUserManager,
+        private readonly FactoryInterface $adminUserFactory,
+        private readonly UserRepositoryInterface $adminUserRepository,
+        private readonly ValidatorInterface $validator,
     ) {
-        $this->adminUserManager = $adminUserManager;
-        $this->adminUserFactory = $adminUserFactory;
-        $this->adminUserRepository = $adminUserRepository;
-        $this->validator = $validator;
-
         parent::__construct();
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
-        $this
-            ->setName('app:install:setup')
-            ->setDescription('AppName configuration setup.')
-            ->setHelp(<<<EOT
+        $this->setDescription('AppName configuration setup.')
+            ->setHelp(
+                <<<EOT
 The <info>%command.name%</info> command allows user to configure basic AppName data.
 EOT
             )
@@ -58,7 +50,7 @@ EOT
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->setupAdministratorUser($input, $output);
 
@@ -67,7 +59,8 @@ EOT
 
     protected function setupAdministratorUser(InputInterface $input, OutputInterface $output): void
     {
-        $output->writeln('Create your administrator account.');
+        $io = new SymfonyStyle($input, $output);
+        $io->writeln('Create your administrator account.');
 
         try {
             $user = $this->configureNewUser($this->adminUserFactory->createNew(), $input, $output);
@@ -80,13 +73,13 @@ EOT
         $this->adminUserManager->persist($user);
         $this->adminUserManager->flush();
 
-        $output->writeln('Administrator account successfully registered.');
+        $io->success('Administrator account successfully registered.');
     }
 
     private function configureNewUser(
         AdminUserInterface $user,
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
     ): AdminUserInterface {
         if ($input->getOption('no-interaction')) {
             Assert::null($this->adminUserRepository->findOneByEmail('admin@example.com'));
@@ -133,10 +126,7 @@ EOT
             ;
     }
 
-    /**
-     * @return mixed
-     */
-    private function getAdministratorPassword(InputInterface $input, OutputInterface $output)
+    private function getAdministratorPassword(InputInterface $input, OutputInterface $output): string
     {
         /** @var QuestionHelper $questionHelper */
         $questionHelper = $this->getHelper('question');

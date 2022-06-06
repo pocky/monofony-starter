@@ -1,3 +1,0 @@
-sylius_backend_partial_customer:
-    resource: partial/customer.yaml
-    prefix: /customers

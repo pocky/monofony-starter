@@ -13,11 +13,8 @@ use Sylius\Component\User\Model\UserInterface;
 
 final class CanonicalizerSubscriber implements EventSubscriber
 {
-    private CanonicalizerInterface $canonicalizer;
-
-    public function __construct(CanonicalizerInterface $canonicalizer)
+    public function __construct(private readonly CanonicalizerInterface $canonicalizer)
     {
-        $this->canonicalizer = $canonicalizer;
     }
 
     /**
@@ -25,10 +22,7 @@ final class CanonicalizerSubscriber implements EventSubscriber
      */
     public function getSubscribedEvents(): array
     {
-        return [
-            Events::prePersist,
-            Events::preUpdate,
-        ];
+        return [Events::prePersist, Events::preUpdate, ];
     }
 
     public function canonicalize(LifecycleEventArgs $event): void

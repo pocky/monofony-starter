@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\App\Shared\Infrastructure\Doctrine\ORM\Entity\Customer;
 
 use Monofony\Contracts\Core\Model\Customer\CustomerInterface;

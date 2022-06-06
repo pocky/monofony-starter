@@ -9,19 +9,14 @@ use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Iterator\RecursiveDirectoryIterator;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Webmozart\Assert\Assert;
 
 final class CommandDirectoryChecker
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private ?string $name = null;
 
-    private Filesystem $filesystem;
-
-    public function __construct(Filesystem $filesystem)
+    public function __construct(private readonly Filesystem $filesystem)
     {
-        $this->filesystem = $filesystem;
     }
 
     public function ensureDirectoryExists(string $directory, OutputInterface $output): void
@@ -38,7 +33,11 @@ final class CommandDirectoryChecker
         } catch (AccessDeniedException $exception) {
             $output->writeln($this->createBadPermissionsMessage($exception->getMessage()));
 
-            throw new \RuntimeException('Failed while trying to change directory permissions.');
+            throw new \RuntimeException(
+                'Failed while trying to change directory permissions.',
+                $exception->getCode(),
+                $exception,
+            );
         }
     }
 
@@ -51,8 +50,8 @@ final class CommandDirectoryChecker
     {
         try {
             $this->filesystem->mkdir($directory, 0755);
-        } catch (IOException $exception) {
-            $output->writeln($this->createUnexistingDirectoryMessage(getcwd().'/'.$directory));
+        } catch (IOException) {
+            $output->writeln($this->createUnexistingDirectoryMessage(getcwd() . '/' . $directory));
 
             throw new \RuntimeException('Failed while trying to create directory.');
         }
@@ -72,7 +71,10 @@ final class CommandDirectoryChecker
             return;
         }
 
-        foreach (new RecursiveDirectoryIterator($directory, \FilesystemIterator::CURRENT_AS_FILEINFO) as $subdirectory) {
+        foreach (new RecursiveDirectoryIterator(
+            $directory,
+            \FilesystemIterator::CURRENT_AS_FILEINFO,
+        ) as $subdirectory) {
             if ('.' !== $subdirectory->getFilename()[0]) {
                 $this->changePermissionsRecursively($subdirectory->getPathname(), $output);
             }
@@ -88,23 +90,27 @@ final class CommandDirectoryChecker
             $this->filesystem->chmod($directory, 0755, 0000, true);
 
             $output->writeln(sprintf('<comment>Changed "%s" permissions to 0755.</comment>', $directory));
-        } catch (IOException $exception) {
+        } catch (IOException) {
             throw new AccessDeniedException(dirname($directory));
         }
     }
 
     private function createUnexistingDirectoryMessage(string $directory): string
     {
+        Assert::notNull($this->name);
+
         return
-            '<error>Cannot run command due to unexisting directory (tried to create it automatically, failed).</error>'.PHP_EOL.
+            '<error>Cannot run command due to unexisting directory (tried to create it automatically, failed).</error>' . PHP_EOL .
             sprintf('Create directory "%s" and run command "<comment>%s</comment>"', $directory, $this->name)
         ;
     }
 
     private function createBadPermissionsMessage(string $directory): string
     {
+        Assert::notNull($this->name);
+
         return
-            '<error>Cannot run command due to bad directory permissions (tried to change permissions to 0755).</error>'.PHP_EOL.
+            '<error>Cannot run command due to bad directory permissions (tried to change permissions to 0755).</error>' . PHP_EOL .
             sprintf('Set "%s" writable recursively and run command "<comment>%s</comment>"', $directory, $this->name)
         ;
     }

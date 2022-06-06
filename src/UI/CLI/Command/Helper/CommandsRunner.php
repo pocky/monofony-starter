@@ -13,22 +13,22 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class CommandsRunner
 {
-    private EntityManagerInterface $entityManager;
-    private ProgressBarCreator $progressBarCreator;
-
     public function __construct(
-        EntityManagerInterface $entityManager,
-        ProgressBarCreator $progressBarCreator
+        private readonly EntityManagerInterface $entityManager,
+        private readonly ProgressBarCreator $progressBarCreator,
     ) {
-        $this->entityManager = $entityManager;
-        $this->progressBarCreator = $progressBarCreator;
     }
 
     /**
      * @throws \Exception
      */
-    public function run(array $commands, InputInterface $input, OutputInterface $output, Application $application, bool $displayProgress = true): void
-    {
+    public function run(
+        array $commands,
+        InputInterface $input,
+        OutputInterface $output,
+        Application $application,
+        bool $displayProgress = true,
+    ): void {
         $progress = $this->progressBarCreator->create($displayProgress ? $output : new NullOutput(), count($commands));
         $commandExecutor = new CommandExecutor($input, $output, $application);
 

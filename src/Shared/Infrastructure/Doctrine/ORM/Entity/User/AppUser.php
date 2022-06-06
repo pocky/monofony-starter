@@ -14,21 +14,15 @@ use Sylius\Component\User\Model\User as BaseUser;
 #[ORM\Table(name: 'sylius_app_user')]
 class AppUser extends BaseUser implements AppUserInterface
 {
-    #[ORM\OneToOne(targetEntity: CustomerInterface::class, inversedBy: 'user', cascade: ['persist'])]
+    #[ORM\OneToOne(inversedBy: 'user', targetEntity: CustomerInterface::class, cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?CustomerInterface $customer = null;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCustomer(): ?CustomerInterface
     {
         return $this->customer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCustomer($customer): void
     {
         $this->customer = $customer;

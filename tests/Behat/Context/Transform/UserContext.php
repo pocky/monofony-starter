@@ -9,11 +9,8 @@ use Monofony\Bridge\Behat\Service\SharedStorageInterface;
 
 class UserContext implements Context
 {
-    private SharedStorageInterface $sharedStorage;
-
-    public function __construct(SharedStorageInterface $sharedStorage)
+    public function __construct(private readonly SharedStorageInterface $sharedStorage)
     {
-        $this->sharedStorage = $sharedStorage;
     }
 
     /**

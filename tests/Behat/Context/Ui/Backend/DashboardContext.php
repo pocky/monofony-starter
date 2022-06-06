@@ -10,11 +10,8 @@ use Webmozart\Assert\Assert;
 
 class DashboardContext implements Context
 {
-    private $dashboardPage;
-
-    public function __construct(DashboardPage $dashboardPage)
+    public function __construct(private readonly DashboardPage $dashboardPage)
     {
-        $this->dashboardPage = $dashboardPage;
     }
 
     /**

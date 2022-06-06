@@ -73,3 +73,12 @@ yarn-error.log
 /public/assets
 /public/media
 ###< monofony/core-pack ###
+
+###> monofony/core-meta ###
+/public/assets
+/public/media
+###< monofony/core-meta ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###

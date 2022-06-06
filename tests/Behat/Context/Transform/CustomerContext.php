@@ -9,21 +9,12 @@ use Monofony\Bridge\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Customer\Model\CustomerInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Zenstruck\Foundry\Proxy;
 
 final class CustomerContext implements Context
 {
-    private RepositoryInterface $customerRepository;
-    private FactoryInterface $customerFactory;
-    private SharedStorageInterface $sharedStorage;
-
-    public function __construct(
-        RepositoryInterface $customerRepository,
-        FactoryInterface $customerFactory,
-        SharedStorageInterface $sharedStorage
-    ) {
-        $this->customerRepository = $customerRepository;
-        $this->customerFactory = $customerFactory;
-        $this->sharedStorage = $sharedStorage;
+    public function __construct(private readonly RepositoryInterface $customerRepository, private readonly FactoryInterface $customerFactory, private readonly SharedStorageInterface $sharedStorage)
+    {
     }
 
     /**
@@ -32,9 +23,9 @@ final class CustomerContext implements Context
      */
     public function getOrCreateCustomerByEmail($email): object
     {
-        /** @var CustomerInterface $customer */
         $customer = $this->customerRepository->findOneBy(['email' => $email]);
-        if (null === $customer) {
+        if (!$customer instanceof \Sylius\Component\Customer\Model\CustomerInterface) {
+            /** @var CustomerInterface $customer */
             $customer = $this->customerFactory->createNew();
             $customer->setEmail($email);
 
@@ -47,7 +38,7 @@ final class CustomerContext implements Context
     /**
      * @Transform /^(he|his|she|her|their|the customer of my account)$/
      */
-    public function getLastCustomer()
+    public function getLastCustomer(): CustomerInterface|Proxy
     {
         return $this->sharedStorage->get('customer');
     }

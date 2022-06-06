@@ -11,20 +11,8 @@ use Webmozart\Assert\Assert;
 
 final class EmailContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
-    private $sharedStorage;
-
-    /**
-     * @var EmailCheckerInterface
-     */
-    private $emailChecker;
-
-    public function __construct(SharedStorageInterface $sharedStorage, EmailCheckerInterface $emailChecker)
+    public function __construct(private readonly SharedStorageInterface $sharedStorage, private readonly EmailCheckerInterface $emailChecker)
     {
-        $this->sharedStorage = $sharedStorage;
-        $this->emailChecker = $emailChecker;
     }
 
     /**

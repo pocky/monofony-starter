@@ -5,41 +5,30 @@ declare(strict_types=1);
 namespace App\UI\CLI\Command\Installer;
 
 use App\UI\CLI\Command\Helper\CommandsRunner;
-use App\UI\CLI\Command\Helper\DirectoryChecker;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class InstallAssetsCommand extends Command
 {
-    private DirectoryChecker $directoryChecker;
-    private CommandsRunner $commandsRunner;
-    private string $publicDir;
-    private string $environment;
+    protected static $defaultName = 'app:install:assets';
 
     public function __construct(
-        DirectoryChecker $directoryChecker,
-        CommandsRunner $commandsRunner,
-        string $publicDir,
-        string $environment
+        private readonly CommandsRunner $commandsRunner,
+        private readonly string $environment,
     ) {
-        $this->directoryChecker = $directoryChecker;
-        $this->commandsRunner = $commandsRunner;
-        $this->publicDir = $publicDir;
-        $this->environment = $environment;
-
         parent::__construct();
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
-        $this
-            ->setName('app:install:assets')
-            ->setDescription('Installs all AppName assets.')
-            ->setHelp(<<<EOT
+        $this->setDescription('Installs all AppName assets.')
+            ->setHelp(
+                <<<EOT
 The <info>%command.name%</info> command downloads and installs all AppName media assets.
 EOT
             )
@@ -51,21 +40,12 @@ EOT
      *
      * @throws \Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln(sprintf('Installing AppName assets for environment <info>%s</info>.', $this->environment));
+        $io = new SymfonyStyle($input, $output);
+        $io->title(sprintf('Installing AppName assets for environment <info>%s</info>.', $this->environment));
 
-        try {
-            $this->directoryChecker->ensureDirectoryExistsAndIsWritable($this->publicDir.'/assets/', $output, $this->getName());
-            $this->directoryChecker->ensureDirectoryExistsAndIsWritable($this->publicDir.'/bundles/', $output, $this->getName());
-        } catch (\RuntimeException $exception) {
-            return 1;
-        }
-
-        $commands = [
-            'assets:install',
-        ];
-
+        $commands = ['assets:install', ];
         $this->commandsRunner->run($commands, $input, $output, $this->getApplication());
 
         return 0;

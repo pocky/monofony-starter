@@ -14,21 +14,8 @@ use Webmozart\Assert\Assert;
 
 final class ManagingCustomersContext implements Context
 {
-    private $indexPage;
-    private $updatePage;
-    private $showPage;
-    private $currentPageResolver;
-
-    public function __construct(
-        IndexPage $indexPage,
-        UpdatePage $updatePage,
-        ShowPage $showPage,
-        CurrentPageResolverInterface $currentPageResolver
-    ) {
-        $this->indexPage = $indexPage;
-        $this->updatePage = $updatePage;
-        $this->showPage = $showPage;
-        $this->currentPageResolver = $currentPageResolver;
+    public function __construct(private readonly IndexPage $indexPage, private readonly UpdatePage $updatePage, private readonly ShowPage $showPage, private readonly CurrentPageResolverInterface $currentPageResolver)
+    {
     }
 
     /**
@@ -194,7 +181,7 @@ final class ManagingCustomersContext implements Context
     {
         Assert::same(
             $this->updatePage->getValidationMessage($elementName),
-            sprintf('%s must be %s.', ucfirst($elementName), $validationMessage)
+            sprintf('%s must be %s.', ucfirst($elementName), $validationMessage),
         );
     }
 
@@ -293,7 +280,7 @@ final class ManagingCustomersContext implements Context
     {
         Assert::notNull(
             $customer->getUser()->getPassword(),
-            'Customer should have an account, but they do not.'
+            'Customer should have an account, but they do not.',
         );
     }
 

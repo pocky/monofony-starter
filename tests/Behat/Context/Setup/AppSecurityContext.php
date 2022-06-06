@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Behat\Context\Setup;
 
-use App\Shared\Infrastructure\Fixture\Factory\AdminUserExampleFactory;
+use App\Shared\Infrastructure\Fixture\Factory\AppUserFactory;
 use Behat\Behat\Context\Context;
 use Monofony\Bridge\Behat\Service\AppSecurityServiceInterface;
 use Monofony\Bridge\Behat\Service\SharedStorageInterface;
@@ -14,21 +14,12 @@ use Webmozart\Assert\Assert;
 
 final class AppSecurityContext implements Context
 {
-    private SharedStorageInterface $sharedStorage;
-    private AppSecurityServiceInterface $securityService;
-    private AdminUserExampleFactory $userFactory;
-    private UserRepositoryInterface $appUserRepository;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        AppSecurityServiceInterface $securityService,
-        AdminUserExampleFactory $userFactory,
-        UserRepositoryInterface $appUserRepository
+        private readonly SharedStorageInterface $sharedStorage,
+        private readonly AppSecurityServiceInterface $securityService,
+        private readonly AppUserFactory $userFactory,
+        private readonly UserRepositoryInterface $appUserRepository,
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->securityService = $securityService;
-        $this->userFactory = $userFactory;
-        $this->appUserRepository = $appUserRepository;
     }
 
     /**
@@ -48,8 +39,7 @@ final class AppSecurityContext implements Context
     public function iAmLoggedInAsACustomer(): void
     {
         /** @var AppUserInterface $user */
-        $user = $this->userFactory->create(['email' => 'customer@example.com', 'password' => 'password', 'roles' => ['ROLE_USER']]);
-        $this->appUserRepository->add($user);
+        $user = $this->userFactory::createOne(['email' => 'customer@example.com', 'password' => 'password', 'roles' => ['ROLE_USER']])->object();
 
         $this->securityService->logIn($user);
 

@@ -9,9 +9,6 @@ use Sylius\Component\User\Model\UserInterface;
 
 class UserRepository extends BaseUserRepository
 {
-    /**
-     * {@inheritdoc}
-     */
     public function findOneByEmail(string $email): ?UserInterface
     {
         return $this->createQueryBuilder('o')

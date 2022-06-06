@@ -13,38 +13,25 @@ use Symfony\Component\Process\Exception\RuntimeException;
 
 final class CommandExecutor
 {
-    private InputInterface $input;
-    private OutputInterface $output;
-    private Application $application;
-
-    public function __construct(InputInterface $input, OutputInterface $output, Application $application)
-    {
-        $this->input = $input;
-        $this->output = $output;
-        $this->application = $application;
+    public function __construct(
+        private readonly InputInterface $input,
+        private readonly OutputInterface $output,
+        private readonly Application $application,
+    ) {
     }
 
     /**
-     * @param $command
-     * @param array           $parameters
-     * @param OutputInterface $output
-     *
-     * @return $this
-     *
      * @throws \Exception
      */
-    public function runCommand(string $command, $parameters = [], OutputInterface $output = null)
+    public function runCommand(string $command, array $parameters = [], OutputInterface $output = null): void
     {
-        $parameters = array_merge(
-            ['command' => $command],
-            $this->getDefaultParameters(),
-            $parameters
-        );
+        $parameters = array_merge(['command' => $command], $this->getDefaultParameters(), $parameters, );
 
         $this->application->setAutoExit(false);
         $exitCode = $this->application->run(new ArrayInput($parameters), $output ?: new NullOutput());
 
         if (1 === $exitCode) {
+            dump($exitCode, $parameters);
             throw new RuntimeException('This command terminated with a permission error');
         }
 
@@ -53,25 +40,16 @@ final class CommandExecutor
 
             $errorMessage = sprintf('The command terminated with an error code: %u.', $exitCode);
             $this->output->writeln("<error>$errorMessage</error>");
-            $exception = new \Exception($errorMessage, $exitCode);
-
-            throw $exception;
+            throw new \Exception($errorMessage, $exitCode);
         }
-
-        return $this;
     }
 
-    /**
-     * Get default parameters.
-     *
-     * @return array
-     */
-    private function getDefaultParameters()
+    private function getDefaultParameters(): array
     {
         $defaultParameters = ['--no-debug' => true];
 
         if ($this->input->hasOption('env')) {
-            $defaultParameters['--env'] = $this->input->hasOption('env') ? $this->input->getOption('env') : 'dev';
+            $defaultParameters['--env'] = $this->input->getOption('env');
         }
 
         if ($this->input->hasOption('no-interaction') && true === $this->input->getOption('no-interaction')) {
