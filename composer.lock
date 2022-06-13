@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db92f6945a14b3fcaadae9c1181c088d",
+    "content-hash": "f651edb06507c2230ef48d89ebec1a69",
     "packages": [
         {
             "name": "api-platform/core",
@@ -15541,21 +15541,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.13.0",
+            "version": "0.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "bb3b32dd590cbd0deb67c2ce8ae32801357ff059"
+                "reference": "4170aad2943b150149ba9594c34539e06ced6c6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/bb3b32dd590cbd0deb67c2ce8ae32801357ff059",
-                "reference": "bb3b32dd590cbd0deb67c2ce8ae32801357ff059",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/4170aad2943b150149ba9594c34539e06ced6c6b",
+                "reference": "4170aad2943b150149ba9594c34539e06ced6c6b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.6.8"
+                "phpstan/phpstan": "^1.7.10"
             },
             "conflict": {
                 "phpstan/phpdoc-parser": "<1.2",
@@ -15574,7 +15574,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "0.12-dev"
+                    "dev-main": "0.13-dev"
                 }
             },
             "autoload": {
@@ -15589,7 +15589,7 @@
             "description": "Instant Upgrade and Automated Refactoring of any PHP code",
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.13.0"
+                "source": "https://github.com/rectorphp/rector/tree/0.13.5"
             },
             "funding": [
                 {
@@ -15597,7 +15597,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-05-23T10:26:32+00:00"
+            "time": "2022-06-09T12:54:02+00:00"
         },
         {
             "name": "robertfausk/behat-panther-extension",
@@ -18118,5 +18118,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
