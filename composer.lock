@@ -17754,16 +17754,16 @@
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "10.2.11",
+            "version": "10.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/easy-coding-standard.git",
-                "reference": "20899c6ed601ec426d9e8311798abb3166496cac"
+                "reference": "c93878b3c052321231519b6540e227380f90be17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/20899c6ed601ec426d9e8311798abb3166496cac",
-                "reference": "20899c6ed601ec426d9e8311798abb3166496cac",
+                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/c93878b3c052321231519b6540e227380f90be17",
+                "reference": "c93878b3c052321231519b6540e227380f90be17",
                 "shasum": ""
             },
             "require": {
@@ -17793,7 +17793,7 @@
             ],
             "description": "Prefixed scoped version of ECS package",
             "support": {
-                "source": "https://github.com/symplify/easy-coding-standard/tree/10.2.11"
+                "source": "https://github.com/symplify/easy-coding-standard/tree/10.3.3"
             },
             "funding": [
                 {
@@ -17805,7 +17805,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-07T07:47:12+00:00"
+            "time": "2022-06-13T14:03:37+00:00"
         },
         {
             "name": "theofidry/alice-data-fixtures",
@@ -18118,5 +18118,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
