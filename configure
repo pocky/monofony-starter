@@ -97,6 +97,7 @@ if [ $docker != false ] && [ $env = "dev" ]; then
   fi
 
   if [ $docker = "full" ] && [ $proxy = true ]; then
+    cp ./infrastructure/docker-$docker/autoconf/.dockerignore ./.dockerignore
     cp ./infrastructure/docker-$docker/autoconf/docker-compose.override.yaml.dist ./docker-compose.override.yaml
 
     sed -i -e 's/${APP_HTTP_PORT:-80}:80/80/g' ./docker-compose.yaml
