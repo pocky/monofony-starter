@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db92f6945a14b3fcaadae9c1181c088d",
+    "content-hash": "9613a82c5453cb0fb975cf55b1480f83",
     "packages": [
         {
             "name": "api-platform/core",
@@ -17754,16 +17754,16 @@
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "10.2.11",
+            "version": "11.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/easy-coding-standard.git",
-                "reference": "20899c6ed601ec426d9e8311798abb3166496cac"
+                "reference": "6293642287121f5036d0a4962c04b18a490691b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/20899c6ed601ec426d9e8311798abb3166496cac",
-                "reference": "20899c6ed601ec426d9e8311798abb3166496cac",
+                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/6293642287121f5036d0a4962c04b18a490691b1",
+                "reference": "6293642287121f5036d0a4962c04b18a490691b1",
                 "shasum": ""
             },
             "require": {
@@ -17793,7 +17793,7 @@
             ],
             "description": "Prefixed scoped version of ECS package",
             "support": {
-                "source": "https://github.com/symplify/easy-coding-standard/tree/10.2.11"
+                "source": "https://github.com/symplify/easy-coding-standard/tree/11.0.6"
             },
             "funding": [
                 {
@@ -17805,7 +17805,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-07T07:47:12+00:00"
+            "time": "2022-06-29T14:12:16+00:00"
         },
         {
             "name": "theofidry/alice-data-fixtures",
@@ -18118,5 +18118,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
