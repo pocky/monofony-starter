@@ -91,7 +91,7 @@
         "symfony/phpunit-bridge": "^5.4",
         "symfony/web-profiler-bundle": "5.4.*",
         "symplify/config-transformer": "^10.3",
-        "symplify/easy-coding-standard": "^10.2",
+        "symplify/easy-coding-standard": "^11.0",
         "vimeo/psalm": "^4.22"
     },
     "config": {
