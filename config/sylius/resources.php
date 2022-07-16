@@ -7,8 +7,11 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('sylius_resource', [
         'mapping' => [
-            'paths' => ['%kernel.project_dir%/src/Shared/Infrastructure/Doctrine/ORM/Entity'],
+            'paths' => [
+                '%kernel.project_dir%/src/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
+            ],
         ],
-        'resources' => null,
+        'resources' => [
+        ]
     ]);
 };

@@ -7,4 +7,7 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 return static function (RoutingConfigurator $routingConfigurator): void {
     $routingConfigurator
         ->add('api_login_check', '/api/authentication_token');
+
+    $routingConfigurator
+        ->add('gesdinet_jwt_refresh_token', '/api/token/refresh');
 };

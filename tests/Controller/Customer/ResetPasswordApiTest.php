@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Customer;
 
-use App\Security\Shared\Infrastructure\Fixture\Story\TestAppUsersStory;
-use App\Shared\Infrastructure\Fixture\Factory\AppUserFactory;
+use App\Shared\Infrastructure\Persistence\Fixture\Story\TestAppUsersStory;
+use App\Shared\Infrastructure\Persistence\Fixture\Factory\AppUserFactory;
 use App\Tests\Controller\JsonApiTestCase;
 use App\Tests\Controller\PurgeDatabaseTrait;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,6 +47,7 @@ EOT;
         $this->client->request('POST', '/api/request_password', [], [], ['CONTENT_TYPE' => 'application/json'], $data);
 
         $response = $this->client->getResponse();
+
         $this->assertEquals($response->getStatusCode(), Response::HTTP_NO_CONTENT);
     }
 

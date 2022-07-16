@@ -17,8 +17,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'App' => [
                     'is_bundle' => false,
                     'type' => 'attribute',
-                    'dir' => '%kernel.project_dir%/src/Shared/Infrastructure/Doctrine/ORM/Entity',
-                    'prefix' => 'App\Shared\Infrastructure\Doctrine\ORM\Entity',
+                    'dir' => '%kernel.project_dir%/src/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
+                    'prefix' => 'App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity',
                     'alias' => 'App',
                 ],
             ],

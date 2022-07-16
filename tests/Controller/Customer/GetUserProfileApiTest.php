@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Customer;
 
-use App\Security\Shared\Infrastructure\Fixture\Story\TestAppUsersStory;
-use App\Shared\Infrastructure\Fixture\Factory\AppUserFactory;
+use App\Shared\Infrastructure\Persistence\Fixture\Story\TestAppUsersStory;
+use App\Shared\Infrastructure\Persistence\Fixture\Factory\AppUserFactory;
 use App\Tests\Controller\AuthorizedHeaderTrait;
 use App\Tests\Controller\JsonApiTestCase;
 use App\Tests\Controller\PurgeDatabaseTrait;

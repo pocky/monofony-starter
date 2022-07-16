@@ -11,12 +11,14 @@ RUN apt-get update -q && \
         git \
         libicu-dev \
         libzip-dev \
+        libpng-dev \
         libpq-dev \
         libonig-dev \
         unzip
 
 ENV APCU_VERSION 5.1.18
 RUN docker-php-ext-install \
+        gd \
         iconv \
         intl \
         mbstring \

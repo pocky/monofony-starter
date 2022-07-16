@@ -12,6 +12,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set('secret', '%env(resolve:APP_SECRET)%');
 
     $containerConfigurator->extension('security', [
+        'enable_authenticator_manager' => true,
         'providers' => [
             'sylius_admin_user_provider' => [
                 'id' => 'sylius.admin_user_provider.email_or_name_based',
@@ -51,7 +52,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     'path' => 'sylius_backend_logout',
                     'target' => 'sylius_backend_login',
                 ],
-                'anonymous' => true,
             ],
             'api_login' => [
                 'pattern' => '^/api/authentication_token',
@@ -67,11 +67,15 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'pattern' => '^/api',
                 'provider' => 'sylius_app_user_provider',
                 'stateless' => true,
-                'anonymous' => true,
-                'guard' => [
-                    'authenticators' => [
-                        'lexik_jwt_authentication.jwt_token_authenticator',
-                    ],
+                'entry_point' => 'jwt',
+                'json_login' => [
+                    'check_path' => 'api_login_check',
+                    'success_handler' => 'lexik_jwt_authentication.handler.authentication_success',
+                    'failure_handler' => 'lexik_jwt_authentication.handler.authentication_failure',
+                ],
+                'jwt' => [],
+                'refresh_jwt' => [
+                    'check_path' => 'gesdinet_jwt_refresh_token',
                 ],
             ],
             'app' => [
@@ -99,7 +103,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     'path' => 'app_frontend_logout',
                     'target' => 'app_frontend_homepage',
                 ],
-                'anonymous' => true,
             ],
             'dev' => [
                 'pattern' => '^/(_(profiler|wdt)|css|images|js)/',
@@ -107,6 +110,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
         ],
         'access_control' => [
+            ['path' => '^/api/(authentication_token|token/refresh)', 'roles' => 'PUBLIC_ACCESS'],
             ['path' => '^/login', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'],
             ['path' => '^/admin/login', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'],
             ['path' => '^/admin/login-check', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'],

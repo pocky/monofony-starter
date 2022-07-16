@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use App\Security\Shared\Infrastructure\Form\Type\AdminUserType;
-use App\Security\Shared\Infrastructure\Form\Type\AppUserType;
-use App\Shared\Infrastructure\Doctrine\ORM\Entity\Customer\Customer;
-use App\Shared\Infrastructure\Doctrine\ORM\Entity\User\AdminUser;
-use App\Shared\Infrastructure\Doctrine\ORM\Entity\User\AppUser;
-use App\Shared\Infrastructure\Doctrine\ORM\Repository\CustomerRepository;
-use App\Shared\Infrastructure\Doctrine\ORM\Repository\UserRepository;
+use App\Shared\Infrastructure\Persistence\Doctrine\ORM\CustomerRepository;
+use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\Customer;
+use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminUser;
+use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AppUser;
+use App\Shared\Infrastructure\Persistence\Doctrine\ORM\UserRepository;
+use App\UI\Backend\AdminUser\Form\Type\AdminUserType;
+use App\UI\Backend\Customer\Form\Type\AppUserType;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository as SyliusUserRepository;
 use Sylius\Component\User\Model\UserOAuth;
@@ -17,7 +17,6 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Vich\UploaderBundle\Naming\OrignameNamer;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import('../sylius/grids.php');
     $containerConfigurator->import('../sylius/resources.php');
     $containerConfigurator->import("@SyliusCustomerBundle/Resources/config/app/config.yml");
     $containerConfigurator->import("@SyliusUserBundle/Resources/config/app/config.yml");

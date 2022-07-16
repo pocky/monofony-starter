@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Shared\Infrastructure\Doctrine\ORM\Entity\RefreshToken;
+use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\RefreshToken;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {

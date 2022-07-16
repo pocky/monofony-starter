@@ -8,7 +8,7 @@ return static function (RoutingConfigurator $routingConfigurator): void {
     $routingConfigurator
         ->add('app_backend_dashboard', '/')
         ->defaults([
-            '_controller' => 'App\UI\Backend\Controller\Dashboard\DashboardController:indexAction',
+            '_controller' => 'App\UI\Backend\Dashboard\Controller\DashboardController:indexAction',
             'template' => 'backend/index.html.twig',
         ]);
 
@@ -16,8 +16,6 @@ return static function (RoutingConfigurator $routingConfigurator): void {
         ->import('partial.php')
         ->prefix('/_partial');
 
-    $routingConfigurator
-        ->import('customer.php');
 
     $routingConfigurator
         ->import('security.php');

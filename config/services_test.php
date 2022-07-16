@@ -18,5 +18,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ->bind('$minkParameters', service('behat.mink.parameters'))
     ;
 
-    $services->load('App\\Tests\\Behat\\', __DIR__ . '/../tests/Behat/*');
+    $services->load('App\\Tests\\Behat\\', __DIR__ . '/../tests/Behat/');
 };
