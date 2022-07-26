@@ -11,6 +11,8 @@
 /.php_cs.dist
 /phpstan.neon
 /rector.php
+/ecs.php
+/psalm.xml
 ###< dev environment ###
 
 ###> test environment ##
