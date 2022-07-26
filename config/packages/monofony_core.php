@@ -2,13 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Shared\Infrastructure\Persistence\Doctrine\ORM\CustomerRepository;
-use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\Customer;
-use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminUser;
-use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AppUser;
-use App\Shared\Infrastructure\Persistence\Doctrine\ORM\UserRepository;
+use App\Security\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminUser;
 use App\UI\Backend\AdminUser\Form\Type\AdminUserType;
-use App\UI\Backend\Customer\Form\Type\AppUserType;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository as SyliusUserRepository;
 use Sylius\Component\User\Model\UserOAuth;
@@ -18,7 +13,6 @@ use Vich\UploaderBundle\Naming\OrignameNamer;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import('../sylius/resources.php');
-    $containerConfigurator->import("@SyliusCustomerBundle/Resources/config/app/config.yml");
     $containerConfigurator->import("@SyliusUserBundle/Resources/config/app/config.yml");
 
     $containerConfigurator->extension('framework', [
@@ -57,17 +51,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
     ]);
 
-    $containerConfigurator->extension('sylius_customer', [
-        'resources' => [
-            'customer' => [
-                'classes' => [
-                    'model' => Customer::class,
-                    'repository' => CustomerRepository::class,
-                ],
-            ],
-        ],
-    ]);
-
     $containerConfigurator->extension('sylius_mailer', [
         'sender' => [
             'name' => '%email_name%',
@@ -101,15 +84,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('sylius_user', [
         'resources' => [
-            'app' => [
-                'user' => [
-                    'classes' => [
-                        'model' => AppUser::class,
-                        'repository' => UserRepository::class,
-                        'form' => AppUserType::class,
-                    ],
-                ],
-            ],
             'admin' => [
                 'user' => [
                     'classes' => [

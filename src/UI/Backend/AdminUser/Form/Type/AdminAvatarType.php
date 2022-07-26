@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\UI\Backend\AdminUser\Form\Type;
 
-use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminAvatar;
+use App\Security\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminAvatar;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;

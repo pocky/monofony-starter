@@ -8,7 +8,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('sylius_resource', [
         'mapping' => [
             'paths' => [
-                '%kernel.project_dir%/src/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
+                '%kernel.project_dir%/src/Security/Infrastructure/Persistence/Doctrine/ORM/Entity',
             ],
         ],
         'resources' => [

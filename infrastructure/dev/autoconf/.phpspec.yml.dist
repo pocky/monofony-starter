@@ -1,1 +1,0 @@
-runner.maintainers.errors.level: 22527 # E_ALL ^ E_STRICT ^ E_DEPRECATED

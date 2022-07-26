@@ -17,7 +17,7 @@
     <issueHandlers>
         <LessSpecificImplementedReturnType>
             <errorLevel type="suppress">
-                <directory name="src/Shared/Infrastructure/Doctrine/ORM/Repository" />
+                <directory name="src/Security/Infrastructure/Doctrine/ORM/Repository" />
             </errorLevel>
         </LessSpecificImplementedReturnType>
     </issueHandlers>

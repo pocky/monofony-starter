@@ -48,7 +48,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         'blocks' => [
             'sonata.block.service.template' => [
                 'settings' => [
-                    'customer' => null,
                     'form' => null,
                     'resource' => null,
                     'resources' => null,

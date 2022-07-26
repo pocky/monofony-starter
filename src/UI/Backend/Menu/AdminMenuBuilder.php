@@ -19,22 +19,9 @@ final class AdminMenuBuilder implements AdminMenuBuilderInterface
     {
         $menu = $this->factory->createItem('root');
 
-        $this->addCustomerSubMenu($menu);
         $this->addConfigurationSubMenu($menu);
 
         return $menu;
-    }
-
-    private function addCustomerSubMenu(ItemInterface $menu): void
-    {
-        $customer = $menu
-            ->addChild('customer')
-            ->setLabel('sylius.ui.customer')
-        ;
-
-        $customer->addChild('backend_customer', ['route' => 'sylius_backend_customer_index'])
-            ->setLabel('sylius.ui.customers')
-            ->setLabelAttribute('icon', 'users');
     }
 
     private function addConfigurationSubMenu(ItemInterface $menu): void

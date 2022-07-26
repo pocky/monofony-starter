@@ -21,20 +21,4 @@ class DashboardContext implements Context
     {
         $this->dashboardPage->open();
     }
-
-    /**
-     * @Then I should see :number new customers in the list
-     */
-    public function iShouldSeeNewCustomersInTheList($number)
-    {
-        Assert::same($this->dashboardPage->getNumberOfNewCustomersInTheList(), (int) $number);
-    }
-
-    /**
-     * @Then I should see :number new customers
-     */
-    public function iShouldSeeNewCustomers($number)
-    {
-        Assert::same($this->dashboardPage->getNumberOfNewCustomers(), (int) $number);
-    }
 }

@@ -14,12 +14,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'naming_strategy' => 'doctrine.orm.naming_strategy.underscore_number_aware',
             'auto_mapping' => true,
             'mappings' => [
-                'App' => [
+                'Security' => [
                     'is_bundle' => false,
                     'type' => 'attribute',
-                    'dir' => '%kernel.project_dir%/src/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
-                    'prefix' => 'App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity',
-                    'alias' => 'App',
+                    'dir' => '%kernel.project_dir%/src/Security/Infrastructure/Persistence/Doctrine/ORM/Entity',
+                    'prefix' => 'App\Security\Infrastructure\Persistence\Doctrine\ORM\Entity',
+                    'alias' => 'Security',
                 ],
             ],
         ],

@@ -2,32 +2,25 @@
 
 declare(strict_types=1);
 
-use Rector\Core\Configuration\Option;
+use Rector\Core\ValueObject\PhpVersion;
+use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
+
+use Rector\Config\RectorConfig;
+use Rector\Symfony\Set\SymfonyLevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
-    $parameters->set(Option::PATHS, [__DIR__ . '/src', __DIR__ . '/tests']);
-    $parameters->set(
-        Option::SYMFONY_CONTAINER_XML_PATH_PARAMETER,
-        __DIR__ .  '/var/cache/dev/App_KernelDevDebugContainer.xml')
-    ;
+return static function (RectorConfig $rectorConfig): void {
+    $rectorConfig->parallel();
 
-    $parameters->set(Option::SETS, [
-        SetList::CODE_QUALITY_STRICT,
-        SetList::CODE_QUALITY,
-        SymfonySetList::SYMFONY_52,
-        SymfonySetList::SYMFONY_CODE_QUALITY,
-        SetList::SAFE_07
-    ]);
-
-    $parameters->set(Option::PATHS, [
+    $rectorConfig->paths([
         __DIR__ . '/src',
+        __DIR__ . '/tests',
     ]);
 
-    $parameters->set(Option::SKIP, [
-        __DIR__ . '/src/Migrations/*',
+    $rectorConfig->sets([
+        LevelSetList::UP_TO_PHP_81,
+        SetList::CODE_QUALITY,
+        SymfonyLevelSetList::UP_TO_SYMFONY_54,
     ]);
 };

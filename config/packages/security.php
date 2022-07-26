@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Security\Shared\Infrastructure\Security\UserChecker;
 use Sylius\Component\User\Model\UserInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
@@ -16,9 +15,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         'providers' => [
             'sylius_admin_user_provider' => [
                 'id' => 'sylius.admin_user_provider.email_or_name_based',
-            ],
-            'sylius_app_user_provider' => [
-                'id' => 'sylius.app_user_provider.email_or_name_based',
             ],
         ],
         'password_hashers' => [
@@ -55,7 +51,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
             'api_login' => [
                 'pattern' => '^/api/authentication_token',
-                'provider' => 'sylius_app_user_provider',
+                'provider' => 'sylius_admin_user_provider',
                 'stateless' => true,
                 'json_login' => [
                     'check_path' => '/api/authentication_token',
@@ -65,7 +61,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
             'api' => [
                 'pattern' => '^/api',
-                'provider' => 'sylius_app_user_provider',
+                'provider' => 'sylius_admin_user_provider',
                 'stateless' => true,
                 'entry_point' => 'jwt',
                 'json_login' => [
@@ -78,32 +74,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     'check_path' => 'gesdinet_jwt_refresh_token',
                 ],
             ],
-            'app' => [
-                'switch_user' => true,
-                'context' => 'app',
-                'pattern' => '/.*',
-                'user_checker' => UserChecker::class,
-                'provider' => 'sylius_app_user_provider',
-                'form_login' => [
-                    'provider' => 'sylius_app_user_provider',
-                    'login_path' => 'app_frontend_login',
-                    'check_path' => 'app_frontend_login_check',
-                    'failure_path' => 'app_frontend_login',
-                    'default_target_path' => 'app_frontend_homepage',
-                    'use_forward' => false,
-                    'use_referer' => false,
-                ],
-                'remember_me' => [
-                    'secret' => '%env(APP_SECRET)%',
-                    'name' => 'APP_REMEMBER_ME',
-                    'lifetime' => 31536000,
-                    'remember_me_parameter' => '_remember_me',
-                ],
-                'logout' => [
-                    'path' => 'app_frontend_logout',
-                    'target' => 'app_frontend_homepage',
-                ],
-            ],
             'dev' => [
                 'pattern' => '^/(_(profiler|wdt)|css|images|js)/',
                 'security' => false,
@@ -111,7 +81,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
         'access_control' => [
             ['path' => '^/api/(authentication_token|token/refresh)', 'roles' => 'PUBLIC_ACCESS'],
-            ['path' => '^/login', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'],
             ['path' => '^/admin/login', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'],
             ['path' => '^/admin/login-check', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'],
             ['path' => '^/admin/dashboard', 'role' => 'ROLE_ADMIN'],

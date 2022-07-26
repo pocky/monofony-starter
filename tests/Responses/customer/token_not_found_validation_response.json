@@ -1,7 +1,0 @@
-{
-    "@context": "/api/contexts/Error",
-    "@type": "hydra:Error",
-    "hydra:title": "An error occurred",
-    "hydra:description": "Token not found.",
-    "trace": @array@
-}
