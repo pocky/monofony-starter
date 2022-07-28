@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\UI\Backend\Dashboard\Controller;
 
+use App\Shared\UI\Responder\HtmlResponder;
 use Monofony\Contracts\Admin\Dashboard\DashboardStatisticsProviderInterface;
 use Sylius\Component\Resource\Annotation\SyliusRoute;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ final class DashboardController
 {
     public function __construct(
         private readonly DashboardStatisticsProviderInterface $statisticsProvider,
-        private readonly Environment $twig,
+        private readonly HtmlResponder $htmlResponder,
     ) {
     }
 
@@ -22,8 +23,7 @@ final class DashboardController
     public function indexAction(): Response
     {
         $statistics = $this->statisticsProvider->getStatistics();
-        $content = $this->twig->render('backend/index.html.twig', ['statistics' => $statistics]);
 
-        return new Response($content);
+        return ($this->htmlResponder)('backend/index', ['statistics' => $statistics]);
     }
 }
