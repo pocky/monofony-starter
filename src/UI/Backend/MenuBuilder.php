@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Backend\Menu;
+namespace App\UI\Backend;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Monofony\Component\Admin\Menu\AdminMenuBuilderInterface;
 
-final class AdminMenuBuilder implements AdminMenuBuilderInterface
+final class MenuBuilder implements AdminMenuBuilderInterface
 {
     public function __construct(
         private readonly FactoryInterface $factory,

@@ -2,7 +2,7 @@
 
 {% set breadcrumbs = [
         { label: 'sylius.ui.administration'|trans, url: path('app_backend_dashboard') },
-        { label: (metadata.applicationName~'.ui.'~metadata.pluralName)|trans },
+        { label: ('backend.'~metadata.applicationName~'.ui.'~metadata.pluralName~'.breadcrumb')|trans },
     ]
 %}
 
