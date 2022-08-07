@@ -3,6 +3,10 @@
 declare(strict_types=1);
 
 use App\Shared\Infrastructure\Mailer\SymfonyMailer;
+use App\Shared\Infrastructure\Maker\Command\DoctrineEntity\Maker as DoctrineEntityMaker;
+use App\Shared\Infrastructure\Maker\Command\DoctrineForm\Maker as DoctrineFormMaker;
+use App\Shared\Infrastructure\Maker\Command\PackageBuilder\Maker as PackageMaker;
+use App\Shared\Infrastructure\Maker\Command\SyliusFactory\Maker as SyliusFactoryMaker;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
@@ -48,4 +52,32 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             '$senderName' => '%email_name%',
         ])
     ;
+
+    $services
+        ->set(DoctrineEntityMaker::class)
+        ->args([
+            service('maker.file_manager'),
+            service('maker.doctrine_helper'),
+        ]);
+
+    $services
+        ->set(DoctrineFormMaker::class)
+        ->args([
+            service('maker.doctrine_helper'),
+            service('maker.renderer.form_type_renderer'),
+            service('maker.file_manager'),
+        ]);
+
+    $services
+        ->set(PackageMaker::class)
+        ->args([
+            '%kernel.project_dir%',
+            service('maker.file_manager'),
+        ]);
+
+    $services
+        ->set(SyliusFactoryMaker::class)
+        ->args([
+            service('maker.file_manager'),
+        ]);
 };
