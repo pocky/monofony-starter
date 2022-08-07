@@ -9,7 +9,7 @@ use App\Shared\Application\Gateway\GatewayResponse;
 use App\Shared\Infrastructure\Instrumentation\LoggerInstrumentation;
 use Psr\Log\LoggerInterface;
 
-abstract class AbstractGatewayInstrumentation implements GatewayInstrumentationInterface
+abstract class AbstractGatewayInstrumentation implements GatewayInstrumentation
 {
     private LoggerInterface $logger;
 
@@ -27,13 +27,13 @@ abstract class AbstractGatewayInstrumentation implements GatewayInstrumentationI
     public function success(GatewayResponse $gatewayResponse): void
     {
         /** @phpstan-ignore-next-line */
-        $this->logger->info(\Safe\sprintf('%s.success', static::NAME), $gatewayResponse->data());
+        $this->logger->info(\sprintf('%s.success', static::NAME), $gatewayResponse->data());
     }
 
     public function error(GatewayRequest $gatewayRequest, string $reason): void
     {
         /** @phpstan-ignore-next-line */
-        $this->logger->error(\Safe\sprintf('%s.error', static::NAME), array_merge(
+        $this->logger->error(\sprintf('%s.error', static::NAME), array_merge(
             $gatewayRequest->data(),
             [' reason' => $reason]
         ));
