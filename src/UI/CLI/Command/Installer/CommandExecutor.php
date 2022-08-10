@@ -25,7 +25,7 @@ final class CommandExecutor
      */
     public function runCommand(string $command, array $parameters = [], OutputInterface $output = null): void
     {
-        $parameters = array_merge(['command' => $command], $this->getDefaultParameters(), $parameters, );
+        $parameters = array_merge(['command' => $command], $this->getDefaultParameters(), $parameters);
 
         $this->application->setAutoExit(false);
         $exitCode = $this->application->run(new ArrayInput($parameters), $output ?: new NullOutput());
@@ -38,7 +38,8 @@ final class CommandExecutor
             $this->application->setAutoExit(true);
 
             $errorMessage = sprintf('The command terminated with an error code: %u.', $exitCode);
-            $this->output->writeln("<error>$errorMessage</error>");
+            $this->output->writeln("<error>{$errorMessage}</error>");
+
             throw new \Exception($errorMessage, $exitCode);
         }
     }

@@ -25,6 +25,7 @@ class UserChecker implements UserCheckerInterface
         if (!$user->isEnabled()) {
             $ex = new DisabledException('User account is disabled.');
             $ex->setUser($user);
+
             throw $ex;
         }
     }
@@ -41,6 +42,7 @@ class UserChecker implements UserCheckerInterface
         if (!$user->isCredentialsNonExpired()) {
             $ex = new CredentialsExpiredException('User credentials have expired.');
             $ex->setUser($user);
+
             throw $ex;
         }
     }

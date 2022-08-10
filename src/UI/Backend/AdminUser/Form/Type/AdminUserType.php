@@ -33,7 +33,8 @@ class AdminUserType extends UserType
             ->add('avatar', AdminAvatarType::class, [
                 'label' => 'app.ui.avatar',
                 'required' => false,
-            ]);
+            ])
+        ;
     }
 
     /**

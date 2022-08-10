@@ -9,7 +9,7 @@ use League\Flysystem\FilesystemOperator;
 final class FileDownloader
 {
     public function __construct(
-        private readonly FilesystemOperator $filesystemOperator
+        private readonly FilesystemOperator $filesystemOperator,
     ) {
     }
 
@@ -17,7 +17,7 @@ final class FileDownloader
     {
         return new File(
             $this->filesystemOperator->readStream($encodedFilename),
-            $this->filesystemOperator->mimeType($encodedFilename)
+            $this->filesystemOperator->mimeType($encodedFilename),
         );
     }
 }

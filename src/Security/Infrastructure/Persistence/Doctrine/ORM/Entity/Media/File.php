@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Security\Infrastructure\Persistence\Doctrine\ORM\Entity\Media;
 
-use App\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\IdentifiableTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Monofony\Contracts\Core\Model\Media\FileInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -60,7 +59,7 @@ abstract class File implements FileInterface, ResourceInterface
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
         // otherwise the event listeners won't be called and the file is lost
-        if ($file !== null) {
+        if (null !== $file) {
             // if 'updatedAt' is not defined in your entity, use another property
             $this->updatedAt = new \DateTime('now');
         }

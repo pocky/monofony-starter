@@ -19,9 +19,38 @@ final class MenuBuilder implements AdminMenuBuilderInterface
     {
         $menu = $this->factory->createItem('root');
 
+        $this->addLogbookSubMenu($menu);
         $this->addConfigurationSubMenu($menu);
 
         return $menu;
+    }
+
+    private function addLogbookSubMenu(ItemInterface $menu): void
+    {
+        $customer = $menu
+            ->addChild('logbook')
+            ->setLabel('backend.logbook.ui.menu.title')
+        ;
+
+        $customer->addChild('backend_logbook_report', ['route' => 'logbook_backend_report_index'])
+            ->setLabel('backend.logbook.ui.menu.item.report')
+            ->setLabelAttribute('icon', 'users')
+        ;
+
+        $customer->addChild('backend_logbook_entry', ['route' => 'logbook_backend_entry_index'])
+            ->setLabel('backend.logbook.ui.menu.item.entry')
+            ->setLabelAttribute('icon', 'users')
+        ;
+
+        $customer->addChild('backend_logbook_division', ['route' => 'logbook_backend_division_index'])
+            ->setLabel('backend.logbook.ui.menu.item.division')
+            ->setLabelAttribute('icon', 'users')
+        ;
+
+        $customer->addChild('backend_logbook_year', ['route' => 'logbook_backend_year_index'])
+            ->setLabel('backend.logbook.ui.menu.item.year')
+            ->setLabelAttribute('icon', 'users')
+        ;
     }
 
     private function addConfigurationSubMenu(ItemInterface $menu): void
@@ -33,6 +62,7 @@ final class MenuBuilder implements AdminMenuBuilderInterface
 
         $configuration->addChild('backend_admin_user', ['route' => 'sylius_backend_admin_user_index'])
             ->setLabel('sylius.ui.admin_users')
-            ->setLabelAttribute('icon', 'lock');
+            ->setLabelAttribute('icon', 'lock')
+        ;
     }
 }

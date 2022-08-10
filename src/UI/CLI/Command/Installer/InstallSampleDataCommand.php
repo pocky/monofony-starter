@@ -30,7 +30,7 @@ final class InstallSampleDataCommand extends Command
     {
         $this->setDescription('Install sample data into AppName.')
             ->setHelp(
-                <<<EOT
+                <<<'EOT'
 The <info>%command.name%</info> command loads the sample data for AppName.
 EOT
             )

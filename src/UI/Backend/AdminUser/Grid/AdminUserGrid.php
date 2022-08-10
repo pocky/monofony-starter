@@ -29,19 +29,19 @@ final class AdminUserGrid extends AbstractGrid implements ResourceAwareGridInter
     {
         $gridBuilder
             ->orderBy('email', 'desc')
-            ->addField(StringField::create('firstName') ->setLabel('sylius.ui.first_name') ->setSortable(true), )
-            ->addField(StringField::create('lastName') ->setLabel('sylius.ui.last_name') ->setSortable(true), )
-            ->addField(StringField::create('username') ->setLabel('sylius.ui.username') ->setSortable(true), )
-            ->addField(StringField::create('email') ->setLabel('sylius.ui.email') ->setSortable(true), )
+            ->addField(StringField::create('firstName')->setLabel('sylius.ui.first_name')->setSortable(true))
+            ->addField(StringField::create('lastName')->setLabel('sylius.ui.last_name')->setSortable(true))
+            ->addField(StringField::create('username')->setLabel('sylius.ui.username')->setSortable(true))
+            ->addField(StringField::create('email')->setLabel('sylius.ui.email')->setSortable(true))
             ->addField(
                 TwigField::create('enabled', '@SyliusUi/Grid/Field/enabled.html.twig')
                     ->setLabel('sylius.ui.enabled')
                     ->setSortable(true),
             )
             ->addFilter(StringFilter::create('search', ['email', 'username', 'firstName', 'lastName']))
-            ->addActionGroup(MainActionGroup::create(CreateAction::create(), ), )
-            ->addActionGroup(ItemActionGroup::create(UpdateAction::create(), DeleteAction::create(), ), )
-            ->addActionGroup(BulkActionGroup::create(DeleteAction::create(), ), )
+            ->addActionGroup(MainActionGroup::create(CreateAction::create()))
+            ->addActionGroup(ItemActionGroup::create(UpdateAction::create(), DeleteAction::create()))
+            ->addActionGroup(BulkActionGroup::create(DeleteAction::create()))
         ;
     }
 

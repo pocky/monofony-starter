@@ -17,7 +17,7 @@ final class GatewayException extends \Exception
                 $exception->getFile(),
                 $exception->getMessage(),
             ),
-            previous: $exception
+            previous: $exception,
         );
     }
 }

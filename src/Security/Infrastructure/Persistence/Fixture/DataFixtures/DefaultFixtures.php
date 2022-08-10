@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Security\Infrastructure\Persistence\Fixture\DataFixtures;
 
 use App\Security\Infrastructure\Persistence\Fixture\Story\DefaultAdministratorsStory;
-use App\Shared\Infrastructure\Persistence\Fixture\Story\DefaultAppUsersStory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;

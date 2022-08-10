@@ -7,7 +7,7 @@ namespace App\Shared\Application\Operation;
 abstract class AbstractEvent
 {
     public function __construct(
-        private string $id,
+        private readonly string $id,
     ) {
     }
 

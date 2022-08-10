@@ -21,7 +21,7 @@ final class CanonicalizerSubscriber implements EventSubscriber
      */
     public function getSubscribedEvents(): array
     {
-        return [Events::prePersist, Events::preUpdate, ];
+        return [Events::prePersist, Events::preUpdate];
     }
 
     public function canonicalize(LifecycleEventArgs $event): void

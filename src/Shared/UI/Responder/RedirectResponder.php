@@ -15,7 +15,7 @@ final class RedirectResponder
     public function __invoke(
         string $uri,
         int $status = 302,
-        array $headers = []
+        array $headers = [],
     ): Response {
         return new RedirectResponse($uri, $status, $headers);
     }

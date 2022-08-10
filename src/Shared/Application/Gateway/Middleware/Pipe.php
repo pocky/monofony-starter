@@ -14,17 +14,18 @@ final class Pipe
      * @param array<callable> $middlewares
      */
     public function __construct(
-        private array $middlewares = [],
+        private readonly array $middlewares = [],
     ) {
     }
 
     public function __invoke(GatewayRequest $request, ?callable $next = null): GatewayResponse
     {
         foreach (array_reverse($this->middlewares) as $middleware) {
-            $next = static fn($request) => $middleware($request, $next);
+            $next = static fn ($request) => $middleware($request, $next);
         }
 
         Assert::notNull($next);
+
         return $next($request);
     }
 }

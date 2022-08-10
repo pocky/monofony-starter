@@ -40,7 +40,7 @@ final class SetupCommand extends Command
     {
         $this->setDescription('AppName configuration setup.')
             ->setHelp(
-                <<<EOT
+                <<<'EOT'
 The <info>%command.name%</info> command allows user to configure basic AppName data.
 EOT
             )
@@ -64,7 +64,7 @@ EOT
 
         try {
             $user = $this->configureNewUser($this->adminUserFactory->createNew(), $input, $output);
-        } catch (\InvalidArgumentException $exception) {
+        } catch (\InvalidArgumentException) {
             return;
         }
 

@@ -14,7 +14,7 @@ use Zenstruck\Foundry\Proxy;
  *
  * @method static AdminUser|Proxy createOne(array $attributes = [])
  * @method static AdminUser[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static AdminUser|Proxy find(object|array|mixed $criteria)
+ * @method static AdminUser|Proxy find(array|mixed|object $criteria)
  * @method static AdminUser|Proxy findOrCreate(array $attributes)
  * @method static AdminUser|Proxy first(string $sortedField = 'id')
  * @method static AdminUser|Proxy last(string $sortedField = 'id')

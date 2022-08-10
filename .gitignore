@@ -8,7 +8,7 @@
 
 ###> dev environment ##
 /.editorconfig
-/.php_cs.dist
+/.php-cs-fixer.dist.php
 /phpstan.neon
 /rector.php
 /ecs.php

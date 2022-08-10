@@ -43,10 +43,11 @@ class InstallCommand extends Command
     {
         $this->setDescription('Installs AppName in your preferred environment.')
             ->setHelp(
-                <<<EOT
+                <<<'EOT'
 The <info>%command.name%</info> command installs AppName.
 EOT
-            );
+            )
+        ;
     }
 
     /**

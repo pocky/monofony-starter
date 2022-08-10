@@ -28,7 +28,7 @@ class InstallAssetsCommand extends Command
     {
         $this->setDescription('Installs all AppName assets.')
             ->setHelp(
-                <<<EOT
+                <<<'EOT'
 The <info>%command.name%</info> command downloads and installs all AppName media assets.
 EOT
             )
@@ -45,7 +45,7 @@ EOT
         $io = new SymfonyStyle($input, $output);
         $io->title(sprintf('Installing AppName assets for environment <info>%s</info>.', $this->environment));
 
-        $commands = ['assets:install', ];
+        $commands = ['assets:install'];
         $this->commandsRunner->run($commands, $input, $output, $this->getApplication());
 
         return 0;

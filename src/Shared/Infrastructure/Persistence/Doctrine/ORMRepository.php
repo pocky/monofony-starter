@@ -28,7 +28,7 @@ abstract class ORMRepository
     {
         Assert::notNull($this->manager);
 
-        /** @phpstan-ignore-next-line */
+        // @phpstan-ignore-next-line
         return new ($this->manager->getClassMetadata($this->getClassName())->getName());
     }
 
@@ -39,25 +39,25 @@ abstract class ORMRepository
 
     public function getQueryBuilder(): QueryBuilder
     {
-        /** @phpstan-ignore-next-line */
+        // @phpstan-ignore-next-line
         return $this->manager->createQueryBuilder();
     }
 
     public function getQuery(string $sql): Query
     {
-        /** @phpstan-ignore-next-line */
+        // @phpstan-ignore-next-line
         return $this->manager->createQuery($sql);
     }
 
     public function getNativeQuery(string $sql, ResultSetMapping $resultSetMapping): NativeQuery
     {
-        /** @phpstan-ignore-next-line */
+        // @phpstan-ignore-next-line
         return $this->manager->createNativeQuery($sql, $resultSetMapping);
     }
 
     public function getRsm(): Query\ResultSetMappingBuilder
     {
-        /** @phpstan-ignore-next-line */
+        // @phpstan-ignore-next-line
         return new Query\ResultSetMappingBuilder($this->manager);
     }
 }

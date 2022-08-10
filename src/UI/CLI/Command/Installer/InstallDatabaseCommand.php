@@ -30,7 +30,7 @@ class InstallDatabaseCommand extends Command
     {
         $this->setDescription('Install AppName database.')
             ->setHelp(
-                <<<EOT
+                <<<'EOT'
 The <info>%command.name%</info> command creates AppName database.
 EOT
             )
@@ -45,7 +45,7 @@ EOT
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $io->writeln(sprintf('Creating AppName database for environment <info>%s</info>.', $this->environment, ));
+        $io->writeln(sprintf('Creating AppName database for environment <info>%s</info>.', $this->environment));
         $commands = $this
             ->databaseSetupCommandsProvider
             ->getCommands($input, $output, $this->getHelper('question'))

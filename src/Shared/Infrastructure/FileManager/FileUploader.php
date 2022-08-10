@@ -10,7 +10,7 @@ use Ramsey\Uuid\Uuid;
 final class FileUploader
 {
     public function __construct(
-        private readonly FilesystemOperator $filesystemOperator
+        private readonly FilesystemOperator $filesystemOperator,
     ) {
     }
 

@@ -11,7 +11,7 @@ use Psr\Log\LoggerInterface;
 
 abstract class AbstractGatewayInstrumentation implements GatewayInstrumentation
 {
-    private LoggerInterface $logger;
+    private readonly LoggerInterface $logger;
 
     public function __construct(LoggerInstrumentation $loggerInstrumentation)
     {
@@ -20,22 +20,19 @@ abstract class AbstractGatewayInstrumentation implements GatewayInstrumentation
 
     public function start(GatewayRequest $gatewayRequest): void
     {
-        /** @phpstan-ignore-next-line */
+        // @phpstan-ignore-next-line
         $this->logger->info(static::NAME, $gatewayRequest->data());
     }
 
     public function success(GatewayResponse $gatewayResponse): void
     {
-        /** @phpstan-ignore-next-line */
+        // @phpstan-ignore-next-line
         $this->logger->info(\sprintf('%s.success', static::NAME), $gatewayResponse->data());
     }
 
     public function error(GatewayRequest $gatewayRequest, string $reason): void
     {
-        /** @phpstan-ignore-next-line */
-        $this->logger->error(\sprintf('%s.error', static::NAME), array_merge(
-            $gatewayRequest->data(),
-            [' reason' => $reason]
-        ));
+        // @phpstan-ignore-next-line
+        $this->logger->error(\sprintf('%s.error', static::NAME), [...$gatewayRequest->data(), ...[' reason' => $reason]]);
     }
 }
