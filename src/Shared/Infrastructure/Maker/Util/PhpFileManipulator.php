@@ -148,7 +148,7 @@ final class PhpFileManipulator
     public function addUseStatementIfNecessary(string $class): string
     {
         $shortClassName = Str::getShortClassName($class);
-        $namespaceNode = $this->getNamespaceNode();
+        $namespaceNode = $this->getUseNode();
 
         $targetIndex = null;
 
@@ -182,7 +182,15 @@ final class PhpFileManipulator
         return $shortClassName;
     }
 
-    private function getNamespaceNode()
+    public function getFqdn(): string
+    {
+        $namespace = $this->getNamespaceNode()->name->toString();
+        $class = $this->getClassNode()->name->toString();
+
+        return sprintf('%s\%s', $namespace, $class);
+    }
+
+    private function getUseNode()
     {
         $nodes = $this->findFirstNode(function ($node) {
             return $node instanceof Node\Stmt\Use_;
@@ -193,6 +201,32 @@ final class PhpFileManipulator
         }
 
         return $nodes;
+    }
+
+    private function getClassNode(): Node\Stmt\Class_
+    {
+        $node = $this->findFirstNode(function ($node) {
+            return $node instanceof Node\Stmt\Class_;
+        });
+
+        if (!$node) {
+            throw new \Exception('Could not find class node');
+        }
+
+        return $node;
+    }
+
+    private function getNamespaceNode(): Node\Stmt\Namespace_
+    {
+        $node = $this->findFirstNode(function ($node) {
+            return $node instanceof Node\Stmt\Namespace_;
+        });
+
+        if (!$node) {
+            throw new \Exception('Could not find namespace node');
+        }
+
+        return $node;
     }
 
     private function findFirstNode(callable $filterCallback): ?Node
