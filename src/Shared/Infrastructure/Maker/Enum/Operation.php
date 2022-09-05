@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Infrastructure\Maker\Enum;
 
 enum Operation: string
@@ -23,7 +25,7 @@ enum Operation: string
 
     public function entryClass(): string
     {
-        return match($this) {
+        return match ($this) {
             self::BROWSE => 'Browser',
             self::READ => 'Reader',
             self::EDIT => 'Updater',
@@ -34,7 +36,7 @@ enum Operation: string
 
     public function entryMethod(): string
     {
-        return match($this) {
+        return match ($this) {
             self::BROWSE => 'browse',
             self::READ => 'read',
             self::EDIT => 'update',
@@ -45,7 +47,7 @@ enum Operation: string
 
     public function type(): string
     {
-        return match($this) {
+        return match ($this) {
             self::BROWSE, self::READ => 'Provider',
             self::EDIT, self::ADD, self::DELETE => 'Persister',
         };
@@ -53,7 +55,7 @@ enum Operation: string
 
     public function exception(): string
     {
-        return match($this) {
+        return match ($this) {
             self::ADD => 'UnableToCreate',
             self::READ => 'Unknown',
             self::EDIT => 'UnableToUpdate',
@@ -61,11 +63,28 @@ enum Operation: string
         };
     }
 
-    public function operation(): string
+    public function event(): string
     {
-        return match($this) {
+        return match ($this) {
+            self::ADD => 'WasCreated',
+            self::EDIT => 'WasUpdated',
+            self::DELETE => 'WasDeleted',
+        };
+    }
+
+    public function operationType(): string
+    {
+        return match ($this) {
             self::BROWSE, self::READ => 'Read',
             self::EDIT, self::ADD, self::DELETE => 'Write',
+        };
+    }
+
+    public function operationDTO(): string
+    {
+        return match ($this) {
+            self::BROWSE, self::READ => 'Query',
+            self::EDIT, self::ADD, self::DELETE => 'Command',
         };
     }
 }
