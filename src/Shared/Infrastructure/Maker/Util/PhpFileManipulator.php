@@ -12,7 +12,6 @@ use PhpParser\Parser;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Bundle\MakerBundle\Util\PrettyPrinter;
-use PhpParser\Builder;
 
 final class PhpFileManipulator
 {
@@ -62,14 +61,14 @@ final class PhpFileManipulator
 
     public function findClosureNodes(): array
     {
-        return $this->findAllNodes(function($node) {
+        return $this->findAllNodes(function ($node) {
             return $node instanceof Node\Expr\Closure;
         });
     }
 
     public function findExistingStringNodes(string $name): array
     {
-        return $this->findAllNodes(function($node) use ($name) {
+        return $this->findAllNodes(function ($node) use ($name) {
             return $node instanceof Node\Scalar\String_ && $node->value === $name;
         });
     }
@@ -79,7 +78,7 @@ final class PhpFileManipulator
         $newCode = $this->printer->printFormatPreserving(
             $this->newStmts,
             $this->oldStmts,
-            $this->oldTokens
+            $this->oldTokens,
         );
 
         // replace the 3 "fake" items that may be in the code (allowing for different indentation)
@@ -97,7 +96,7 @@ final class PhpFileManipulator
                 continue;
             }
 
-            $newCode = str_replace($placeholder, '// '.$comment, $newCode);
+            $newCode = str_replace($placeholder, '// ' . $comment, $newCode);
         }
         $this->pendingComments = [];
 
@@ -165,7 +164,7 @@ final class PhpFileManipulator
                     // we have a conflicting alias!
                     // to be safe, use the fully-qualified class name
                     // everywhere and do not add another use statement
-                    return '\\'.$class;
+                    return '\\' . $class;
                 }
 
                 $targetIndex = $index;
@@ -238,5 +237,4 @@ final class PhpFileManipulator
 
         return $visitor->getFoundNode();
     }
-
 }

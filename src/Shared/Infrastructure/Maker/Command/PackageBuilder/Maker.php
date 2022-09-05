@@ -31,7 +31,7 @@ final class Maker extends AbstractMaker
 {
     public function __construct(
         private readonly string $projectDir,
-        private readonly FileManager $fileManager
+        private readonly FileManager $fileManager,
     ) {
     }
 
@@ -58,7 +58,7 @@ final class Maker extends AbstractMaker
     public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator): void
     {
         $configuration = new Configuration(
-            $input->getArgument('package')
+            $input->getArgument('package'),
         );
 
         $fs = new Filesystem();
@@ -74,7 +74,7 @@ final class Maker extends AbstractMaker
 
         $fs->copy(
             sprintf('%s/src/Shared/Infrastructure/Maker/Resources/skeleton/config/packages.tpl.php', $this->projectDir),
-            sprintf('%s/config/packages/%s.php', $this->projectDir, Str::asTwigVariable($configuration->getPackage()))
+            sprintf('%s/config/packages/%s.php', $this->projectDir, Str::asTwigVariable($configuration->getPackage())),
         );
 
         $this->manipulateApiPlatform($configuration, $io);
@@ -109,7 +109,7 @@ final class Maker extends AbstractMaker
     {
         $path = $this->getFile('packages/doctrine');
         $manipulator = new PhpFileManipulator(
-            $this->fileManager->getFileContents($path)
+            $this->fileManager->getFileContents($path),
         );
 
         $manipulator->setIo($io);
@@ -125,7 +125,7 @@ final class Maker extends AbstractMaker
     {
         $path = $this->getFile('packages/api_platform');
         $manipulator = new PhpFileManipulator(
-            $this->fileManager->getFileContents($path)
+            $this->fileManager->getFileContents($path),
         );
 
         $manipulator->setIo($io);
@@ -139,7 +139,7 @@ final class Maker extends AbstractMaker
     {
         $path = $this->getFile('sylius/resources');
         $manipulator = new PhpFileManipulator(
-            $this->fileManager->getFileContents($path)
+            $this->fileManager->getFileContents($path),
         );
 
         $manipulator->setIo($io);

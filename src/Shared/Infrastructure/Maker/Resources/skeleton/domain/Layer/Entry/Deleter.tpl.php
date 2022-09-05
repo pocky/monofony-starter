@@ -15,10 +15,10 @@ final class <?= "$class_name\n" ?>
     ) {
     }
 
-    public function <?= $entry_method ?>(<?= $identifier ?> $id): <?= $entry_model . "\n" ?>
+    public function <?= $entry_method ?>(<?= $identifier ?> $id): void
     {
         try {
-            return $this->persister-><?= $entry_method ?>($id);
+            $this->persister-><?= $entry_method ?>($id);
         } catch (\Exception $exception) {
             throw new <?= $exception ?>($id, $exception);
         }

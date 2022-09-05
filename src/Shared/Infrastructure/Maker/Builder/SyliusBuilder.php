@@ -15,8 +15,8 @@ final class SyliusBuilder
 {
     public function addResource(
         PhpFileManipulator $manipulator,
-        NameInterface&PackageInterface $configuration,
-        array $element
+        NameInterface & PackageInterface $configuration,
+        array $element,
     ): void {
         Assert::keyExists($element, 'type');
         Assert::keyExists($element, 'value');
@@ -60,7 +60,6 @@ final class SyliusBuilder
         foreach ($targetNodes as $item) {
             if ($item->key instanceof Node\Scalar\String_ && $item->key->value === 'classes') {
                 foreach ($item->value->items as $value) {
-
                     if ($element['type'] !== $value->key->value) {
                         continue;
                     }

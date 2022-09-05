@@ -18,7 +18,7 @@ final class PackageBuilder
         PackageInterface $configuration,
     ): void {
         $node = new Node\Scalar\String_(
-            sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity','%kernel.project_dir%', $configuration->getPackage())
+            sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity', '%kernel.project_dir%', $configuration->getPackage()),
         );
 
         $manipulator->addValueToArrayItemNode('paths', $node);
@@ -28,10 +28,9 @@ final class PackageBuilder
     public function addMappingPathToSylius(
         PhpFileManipulator $manipulator,
         PackageInterface $configuration,
-    ): void
-    {
+    ): void {
         $node = new Node\Scalar\String_(
-            sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity','%kernel.project_dir%', $configuration->getPackage())
+            sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity', '%kernel.project_dir%', $configuration->getPackage()),
         );
 
         $manipulator->addValueToArrayItemNode('paths', $node);
@@ -41,8 +40,7 @@ final class PackageBuilder
     public function addMappingToDoctrine(
         PhpFileManipulator $manipulator,
         PackageInterface $configuration,
-    ): void
-    {
+    ): void {
         $alias = new Node\Expr\ArrayItem(
             new Node\Scalar\String_($configuration->getPackage()),
             new Node\Scalar\String_('alias'),
@@ -54,7 +52,7 @@ final class PackageBuilder
         );
 
         $dir = new Node\Expr\ArrayItem(
-            new Node\Scalar\String_(sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity','%kernel.project_dir%', $configuration->getPackage())),
+            new Node\Scalar\String_(sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity', '%kernel.project_dir%', $configuration->getPackage())),
             new Node\Scalar\String_('dir'),
         );
 
@@ -85,8 +83,8 @@ final class PackageBuilder
 
     public function createSyliusFactoryService(
         PhpFileManipulator $manipulator,
-        PackageInterface&NameInterface $configuration,
-        array $element
+        PackageInterface & NameInterface $configuration,
+        array $element,
     ): void {
         Assert::keyExists($element, 'factory');
         Assert::keyExists($element, 'entity');
@@ -105,24 +103,28 @@ final class PackageBuilder
         $generator = $manipulator->addUseStatementIfNecessary($element['generator']);
 
         $expression[] = new Node\Stmt\Expression(new Node\Expr\Variable(
-            '__EXTRA__LINE'
+            '__EXTRA__LINE',
         ));
 
         $expression[] = new Node\Stmt\Expression(new Node\Expr\MethodCall(
             new Node\Expr\MethodCall(
                 new Node\Expr\Variable(new Node\Name('services')),
-                new Node\Name('set'),[
+                new Node\Name('set'),
+                [
                 new Node\Scalar\String_($serviceName),
-                new Node\Name(sprintf('%s::class', $factory))
-            ]),
-            new Node\Name('args'),[
+                new Node\Name(sprintf('%s::class', $factory)),
+            ],
+            ),
+            new Node\Name('args'),
+            [
                 new Node\Expr\Array_([
                     new Node\Expr\ArrayItem(new Node\Expr\ConstFetch(new Node\Name(sprintf('%s::class', $entity)))),
                     new Node\Expr\ArrayItem(new Node\Expr\FuncCall(new Node\Name('service'), [
-                        new Node\Arg(new Node\Expr\ConstFetch(new Node\Name(sprintf('%s::class', $generator))))
-                    ]))
-                ], ['kind' => Node\Expr\Array_::KIND_SHORT])
-        ]));
+                        new Node\Arg(new Node\Expr\ConstFetch(new Node\Name(sprintf('%s::class', $generator)))),
+                    ])),
+                ], ['kind' => Node\Expr\Array_::KIND_SHORT]),
+        ],
+        ));
 
         array_push($nodes[0]->stmts, ...$expression);
 
