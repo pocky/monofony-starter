@@ -179,7 +179,7 @@ final class Maker extends AbstractMaker
     ): void {
         $generator->generateClass(
             $classNameDetails->getFullName(),
-            sprintf('%s/../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplatePath()),
+            sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplatePath()),
             $variables,
         );
     }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace <?= $namespace; ?>;
 
-use App\Shared\Application\Gateway\Instrumentation\AbstractGatewayInstrumentation;
+<?= $use_statements ?>
 
-final class Instrumentation extends AbstractGatewayInstrumentation
+final class <?= $class_name ?> extends AbstractGatewayInstrumentation
 {
-    public const NAME = '<?= $instrumentation_signal; ?>';
+    public const NAME = '<?= $event_name; ?>';
 }

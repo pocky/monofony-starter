@@ -68,7 +68,7 @@ final class Maker extends AbstractMaker
 
         $generator->generateClass(
             $classNameDetails->getFullName(),
-            sprintf('%s/../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplatePath()),
+            sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplatePath()),
         );
 
         $generator->writeChanges();
@@ -101,7 +101,7 @@ final class Maker extends AbstractMaker
 
         $generator->generateClass(
             $classNameDetails->getFullName(),
-            sprintf('%s/../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplateGeneratorPath()),
+            sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplateGeneratorPath()),
             [
                 'use_statements' => $useStatements,
                 'identifier_name' => $identifierClassDetails->getShortName(),
@@ -122,7 +122,7 @@ final class Maker extends AbstractMaker
     ): void {
         $generator->generateClass(
             $classNameDetails->getFullName(),
-            sprintf('%s/../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplatePath()),
+            sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplatePath()),
             $variables,
         );
     }

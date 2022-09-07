@@ -73,7 +73,7 @@ final class SyliusEntityClassGenerator
 
         $entityPath = $this->generator->generateClass(
             $entityClassDetails->getFullName(),
-            sprintf('%s/../../Resources/skeleton/infrastructure/doctrine/Entity.tpl.php', __DIR__),
+            sprintf('%s/../../../Resources/skeleton/infrastructure/doctrine/Entity.tpl.php', __DIR__),
             [
                 'use_statements' => $useStatements,
                 'repository_class_name' => $repoClassDetails->getShortName(),
@@ -114,7 +114,7 @@ final class SyliusEntityClassGenerator
 
         $this->generator->generateClass(
             $repositoryClass,
-            sprintf('%s/../../Resources/skeleton/infrastructure/doctrine/Repository.tpl.php', __DIR__),
+            sprintf('%s/../../../Resources/skeleton/infrastructure/doctrine/Repository.tpl.php', __DIR__),
             [
                 'use_statements' => $useStatements,
                 'entity_class_name' => $shortEntityClass,

@@ -34,7 +34,7 @@ final class Maker extends AbstractMaker
 
     public static function getCommandDescription(): string
     {
-        return 'Create a domain operation';
+        return 'Create an application operation';
     }
 
     public function configureCommand(Command $command, InputConfiguration $inputConfig)
@@ -181,7 +181,7 @@ final class Maker extends AbstractMaker
 
         $generator->generateClass(
             $dtoDetails->getFullName(),
-            sprintf('%s/../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getOperationDataTemplate()),
+            sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getOperationDataTemplate()),
             [
                 'use_statements' => $useStatements,
                 'fields' => $fields,
@@ -233,7 +233,7 @@ final class Maker extends AbstractMaker
 
             $generator->generateClass(
                 $eventDetails->getFullName(),
-                sprintf('%s/../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getOperationEventTemplate()),
+                sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getOperationEventTemplate()),
             );
 
             $generator->writeChanges();
@@ -313,7 +313,7 @@ final class Maker extends AbstractMaker
 
         $generator->generateClass(
             $handlerDetails->getFullName(),
-            sprintf('%s/../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getOperationHandlerTemplate()),
+            sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getOperationHandlerTemplate()),
             [
                 'use_statements' => $useStatements,
                 'constructor_arguments' => $constructor,
@@ -340,7 +340,7 @@ final class Maker extends AbstractMaker
 
         $generator->generateClass(
             $handlerDetails->getFullName(),
-            sprintf('%s/../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getOperationHandlerTemplate()),
+            sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getOperationHandlerTemplate()),
         );
 
         $generator->writeChanges();
