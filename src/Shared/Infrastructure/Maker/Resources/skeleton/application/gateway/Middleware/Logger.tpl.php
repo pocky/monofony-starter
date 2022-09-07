@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace <?= $namespace; ?>;
 
-use <?= $parent; ?>\Instrumentation;
-use App\Shared\Application\Gateway\GatewayRequest;
-use App\Shared\Application\Gateway\GatewayResponse;
+<?= $use_statements ?>
 
-final class Logger
+final class <?= $class_name . "\n" ?>
 {
     public function __construct(
         private readonly Instrumentation $instrumentation,

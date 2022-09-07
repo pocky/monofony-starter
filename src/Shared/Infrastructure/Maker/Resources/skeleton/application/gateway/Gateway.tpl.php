@@ -4,14 +4,9 @@ declare(strict_types=1);
 
 namespace <?= $namespace; ?>;
 
-use <?= $namespace; ?>\Middleware\ErrorHandler;
-use <?= $namespace; ?>\Middleware\Logger;
-use <?= $namespace; ?>\Middleware\Processor;
-use App\Shared\Application\Gateway\GatewayRequest;
-use App\Shared\Application\Gateway\GatewayResponse;
-use App\Shared\Application\Gateway\Middleware\Pipe;
+<?= $use_statements; ?>
 
-final class Gateway
+final class <?= $class_name . "\n"; ?>
 {
     public function __construct(
         private readonly ErrorHandler $errorHandler,
