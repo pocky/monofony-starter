@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use App\Shared\Infrastructure\Mailer\SymfonyMailer;
-use App\Shared\Infrastructure\Maker\Command\DoctrineEntity\Maker as DoctrineEntityMaker;
-use App\Shared\Infrastructure\Maker\Command\DoctrineForm\Maker as DoctrineFormMaker;
+use App\Shared\Infrastructure\Maker\Command\Doctrine\Entity\Maker as DoctrineEntityMaker;
+use App\Shared\Infrastructure\Maker\Command\Doctrine\Form\Maker as DoctrineFormMaker;
 use App\Shared\Infrastructure\Maker\Command\PackageBuilder\Maker as PackageMaker;
-use App\Shared\Infrastructure\Maker\Command\SyliusFactory\Maker as SyliusFactoryMaker;
+use App\Shared\Infrastructure\Maker\Command\Sylius\Factory\Maker as SyliusFactoryMaker;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
