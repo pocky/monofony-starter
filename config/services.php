@@ -32,7 +32,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->load('App\\', __DIR__ . '/../src/')
         ->exclude([
             __DIR__ . '/../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}',
-            __DIR__ . '/../src/Security/Infrastructure/Persistence/Doctrine/ORM/Entity',
+            __DIR__ . '/../src/Security/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
         ]);
 
     $services

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Behat\Context\Setup;
 
-use App\Security\Infrastructure\Persistence\Fixture\Factory\AdminUserFactory;
+use App\Security\Shared\Infrastructure\Persistence\Fixture\Factory\AdminUserFactory;
 use Behat\Behat\Context\Context;
 use Monofony\Bridge\Behat\Service\AdminSecurityServiceInterface;
 use Monofony\Bridge\Behat\Service\SharedStorageInterface;

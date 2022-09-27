@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Security\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminUser;
+use App\Security\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminUser;
 use App\UI\Backend\AdminUser\Form\Type\AdminUserType;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository as SyliusUserRepository;

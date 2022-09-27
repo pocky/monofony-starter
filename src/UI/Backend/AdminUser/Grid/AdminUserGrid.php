@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\UI\Backend\AdminUser\Grid;
 
-use App\Security\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminUser;
+use App\Security\Shared\Infrastructure\Persistence\Doctrine\ORM\Entity\User\AdminUser;
 use Sylius\Bundle\GridBundle\Builder\Action\CreateAction;
 use Sylius\Bundle\GridBundle\Builder\Action\DeleteAction;
 use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;

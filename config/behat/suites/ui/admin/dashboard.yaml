@@ -6,6 +6,6 @@ default:
 
                 - App\Tests\Behat\Context\Setup\AdminSecurityContext
 
-                - App\Tests\Behat\Context\Ui\Backend\DashboardContext
+                - App\Tests\Behat\Context\UI\Backend\DashboardContext
             filters:
                 tags: "@admin_dashboard&&@ui"

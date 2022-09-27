@@ -10,8 +10,8 @@ default:
                 - App\Tests\Behat\Context\Transform\AdminUserContext
                 - App\Tests\Behat\Context\Transform\SharedStorageContext
 
-                - App\Tests\Behat\Context\Ui\Backend\ManagingAdministratorsContext
-                - App\Tests\Behat\Context\Ui\Backend\LoginContext
-                - App\Tests\Behat\Context\Ui\Backend\NotificationContext
+                - App\Tests\Behat\Context\UI\Backend\ManagingAdministratorsContext
+                - App\Tests\Behat\Context\UI\Backend\LoginContext
+                - App\Tests\Behat\Context\UI\Backend\NotificationContext
             filters:
                 tags: "@managing_administrators&&@ui"
