@@ -98,7 +98,7 @@ final class CreateContextCommand extends Command
                     ];
                 }
 
-                if ('infrastructure:sylius:factory' === $command['name']) {
+                if ('make:infrastructure:sylius:factory' === $command['name']) {
                     $parameters = [
                         $input->getArgument('package'),
                         $input->getArgument('name'),

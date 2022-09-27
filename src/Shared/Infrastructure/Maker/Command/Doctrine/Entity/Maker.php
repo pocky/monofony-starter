@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure\Maker\Command\Doctrine\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use function App\Shared\Infrastructure\Maker\Command\DoctrineEntity\str_starts_with;
 use Doctrine\DBAL\Types\Type;
 use Sylius\Component\Resource\Annotation\SyliusCrudRoutes;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;

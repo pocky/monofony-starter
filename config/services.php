@@ -9,6 +9,7 @@ use App\Shared\Infrastructure\Maker\Command\PackageBuilder\Maker as PackageMaker
 use App\Shared\Infrastructure\Maker\Command\Sylius\Factory\Maker as SyliusFactoryMaker;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->parameters()
