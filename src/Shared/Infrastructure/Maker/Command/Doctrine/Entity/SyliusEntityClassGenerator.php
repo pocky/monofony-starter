@@ -59,7 +59,9 @@ final class SyliusEntityClassGenerator
             $repoClassDetails->getFullName(),
             $identifierClassDetails->getFullName(),
             Types::class,
-            ['Doctrine\\ORM\\Mapping' => 'ORM'],
+            [
+                'Doctrine\\ORM\\Mapping' => 'ORM',
+            ],
         ]);
 
         if ($apiResource) {

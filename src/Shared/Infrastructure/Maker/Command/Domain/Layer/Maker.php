@@ -73,15 +73,4 @@ final class Maker extends AbstractMaker
 
         return Command::SUCCESS;
     }
-
-    private function generateDomain(
-        Configuration $configuration,
-        Generator $generator,
-        ConsoleStyle $io,
-    ): void {
-        $classNameDetails = $generator->createClassNameDetails(
-            $configuration->getOperation()->entry(),
-            $configuration->getIdentifierPath(),
-        );
-    }
 }

@@ -37,7 +37,9 @@ final class ManagingAdministratorsContext implements Context
      */
     public function iWantToEditThisAdministrator(AdminUserInterface|Proxy $adminUser): void
     {
-        $this->updatePage->open(['id' => $adminUser->getId()]);
+        $this->updatePage->open([
+            'id' => $adminUser->getId(),
+        ]);
     }
 
     /**
@@ -130,7 +132,9 @@ final class ManagingAdministratorsContext implements Context
      */
     public function iDeleteAdministratorWithEmail(string $email): void
     {
-        $this->indexPage->deleteResourceOnPage(['email' => $email]);
+        $this->indexPage->deleteResourceOnPage([
+            'email' => $email,
+        ]);
     }
 
     /**
@@ -138,7 +142,9 @@ final class ManagingAdministratorsContext implements Context
      */
     public function iCheckTheAdministrator(string $email): void
     {
-        $this->indexPage->checkResourceOnPage(['email' => $email]);
+        $this->indexPage->checkResourceOnPage([
+            'email' => $email,
+        ]);
     }
 
     /**
@@ -168,7 +174,9 @@ final class ManagingAdministratorsContext implements Context
     {
         $this->indexPage->open();
 
-        Assert::true($this->indexPage->isSingleResourceOnPage(['email' => $email]));
+        Assert::true($this->indexPage->isSingleResourceOnPage([
+            'email' => $email,
+        ]));
     }
 
     /**
@@ -179,7 +187,9 @@ final class ManagingAdministratorsContext implements Context
     {
         $this->indexPage->open();
 
-        Assert::true($this->indexPage->isSingleResourceOnPage(['username' => $username]));
+        Assert::true($this->indexPage->isSingleResourceOnPage([
+            'username' => $username,
+        ]));
     }
 
     /**
@@ -238,7 +248,9 @@ final class ManagingAdministratorsContext implements Context
      */
     public function thereShouldBeNoAnymore($email): void
     {
-        Assert::false($this->indexPage->isSingleResourceOnPage(['email' => $email]));
+        Assert::false($this->indexPage->isSingleResourceOnPage([
+            'email' => $email,
+        ]));
     }
 
     /**

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\UI\CLI\Command\Maker;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,10 +14,11 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 
+#[AsCommand(
+    name: 'app:create:context',
+)]
 final class CreateContextCommand extends Command
 {
-    protected static $defaultName = 'app:create:context';
-
     private array $commands = [
         [
             'name' => 'make:package',
@@ -45,6 +47,10 @@ final class CreateContextCommand extends Command
         [
             'name' => 'doctrine:migrations:diff',
             'message' => 'Generate diff',
+        ],
+        [
+            'name' => 'cache:clear',
+            'message' => 'Clearing cache',
         ],
     ];
 
@@ -98,7 +104,7 @@ final class CreateContextCommand extends Command
                     ];
                 }
 
-                if ('infrastructure:sylius:factory' === $command['name']) {
+                if ('make:infrastructure:sylius:factory' === $command['name']) {
                     $parameters = [
                         $input->getArgument('package'),
                         $input->getArgument('name'),

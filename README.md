@@ -167,6 +167,48 @@ and `config/sylius/resources.php`. (Blog is our context)
 ],
 ```
 
+### OMG! I am lazy!
+
+Don't worry, there is a special command to generate all the things.
+
+```bash
+bin/console app:create:context <package> <entity> -a -s 
+```
+
+```bash
+Usage:
+  app:create:context [options] [--] <package> <name>
+
+Arguments:
+  package               The package.
+  name                  The entity.
+
+Options:
+  -a, --api-resource    Mark this class as an API Platform resource (expose a CRUD API for it)
+  -s, --sylius-crud     Use Sylius crud
+  -h, --help            Display help for the given command. When no command is given display help for the list command
+  -q, --quiet           Do not output any message
+  -V, --version         Display this application version
+      --ansi|--no-ansi  Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction  Do not ask any interactive question
+  -e, --env=ENV         The Environment name. [default: "dev"]
+      --no-debug        Switch off debug mode.
+  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+```
+
+### And then?
+
+The generated code is not "standard", you should run ecs
+
+```bash
+vendor/bin/ecs check src config --fix
+```
+
+Take a look at your files in `config`, you probably want to fix array alignements.
+
+
+```bash
+
 ## Contributing
 
 See the [CONTRIBUTING](.github/CONTRIBUTING.md) file.
@@ -185,5 +227,5 @@ This project is licensed under MIT.
 
 ## Credits
 
-Created by [Alexandre Balmes](https://alexandre.balmes.co).
+Create²d by [Alexandre Balmes](https://alexandre.balmes.co).
 See also the [thank you](.github/thank-you.md).

@@ -15,9 +15,9 @@ use Symfony\Bundle\MakerBundle\Util\PrettyPrinter;
 
 final class PhpFileManipulator
 {
-    private Parser\Php7 $parser;
-    private Lexer\Emulative $lexer;
-    private PrettyPrinter $printer;
+    private readonly Parser\Php7 $parser;
+    private readonly Lexer\Emulative $lexer;
+    private readonly PrettyPrinter $printer;
     private ?ConsoleStyle $io = null;
 
     private ?array $oldStmts = null;
@@ -54,23 +54,17 @@ final class PhpFileManipulator
 
     public function findArrayItemNodes(): array
     {
-        return $this->findAllNodes(function ($node) {
-            return $node instanceof Node\Expr\ArrayItem;
-        });
+        return $this->findAllNodes(fn ($node) => $node instanceof Node\Expr\ArrayItem);
     }
 
     public function findClosureNodes(): array
     {
-        return $this->findAllNodes(function ($node) {
-            return $node instanceof Node\Expr\Closure;
-        });
+        return $this->findAllNodes(fn ($node) => $node instanceof Node\Expr\Closure);
     }
 
     public function findExistingStringNodes(string $name): array
     {
-        return $this->findAllNodes(function ($node) use ($name) {
-            return $node instanceof Node\Scalar\String_ && $node->value === $name;
-        });
+        return $this->findAllNodes(fn ($node) => $node instanceof Node\Scalar\String_ && $node->value === $name);
     }
 
     public function updateSourceCodeFromNewStmts(): void
@@ -153,7 +147,7 @@ final class PhpFileManipulator
 
         foreach ($namespaceNode->uses as $index => $use) {
             if ($use instanceof Node\Stmt\UseUse) {
-                $alias = $use->alias ? $use->alias->name : $use->name->getLast();
+                $alias = $use->alias !== null ? $use->alias->name : $use->name->getLast();
 
                 // the use statement already exists? Don't add it again
                 if ($class === (string) $use->name) {
@@ -191,11 +185,9 @@ final class PhpFileManipulator
 
     private function getUseNode()
     {
-        $nodes = $this->findFirstNode(function ($node) {
-            return $node instanceof Node\Stmt\Use_;
-        });
+        $nodes = $this->findFirstNode(fn ($node) => $node instanceof Node\Stmt\Use_);
 
-        if (!$nodes) {
+        if (!$nodes instanceof \PhpParser\Node) {
             throw new \Exception('Could not find namespace node');
         }
 
@@ -204,11 +196,9 @@ final class PhpFileManipulator
 
     private function getClassNode(): Node\Stmt\Class_
     {
-        $node = $this->findFirstNode(function ($node) {
-            return $node instanceof Node\Stmt\Class_;
-        });
+        $node = $this->findFirstNode(fn ($node) => $node instanceof Node\Stmt\Class_);
 
-        if (!$node) {
+        if (!$node instanceof \PhpParser\Node) {
             throw new \Exception('Could not find class node');
         }
 
@@ -217,11 +207,9 @@ final class PhpFileManipulator
 
     private function getNamespaceNode(): Node\Stmt\Namespace_
     {
-        $node = $this->findFirstNode(function ($node) {
-            return $node instanceof Node\Stmt\Namespace_;
-        });
+        $node = $this->findFirstNode(fn ($node) => $node instanceof Node\Stmt\Namespace_);
 
-        if (!$node) {
+        if (!$node instanceof \PhpParser\Node) {
             throw new \Exception('Could not find namespace node');
         }
 

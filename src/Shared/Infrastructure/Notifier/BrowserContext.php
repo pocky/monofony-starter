@@ -10,9 +10,9 @@ final class BrowserContext
      * @param array<string,string> $parameters
      */
     public function __construct(
-        private string $subject,
-        private string $alert = 'info',
-        private array $parameters = [],
+        private readonly string $subject,
+        private readonly string $alert = 'info',
+        private readonly array $parameters = [],
     ) {
     }
 

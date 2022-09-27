@@ -190,7 +190,8 @@ final class Maker extends AbstractMaker
             sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getInstrumentationTemplate()),
             [
                 'use_statements' => $useStatements,
-                'event_name' => sprintf('%s.%s',
+                'event_name' => sprintf(
+                    '%s.%s',
                     str_replace('_', '.', Str::asTwigVariable($configuration->getPackage())),
                     Str::asTwigVariable($configuration->getName()),
                 ),
@@ -226,7 +227,7 @@ final class Maker extends AbstractMaker
         if (1 !== count($methods)) {
             $response = $io->choice(
                 'Which method is your entry point?',
-                array_map(static fn (\ReflectionMethod $method) => $method->getName(), $methods)
+                array_map(static fn (\ReflectionMethod $method) => $method->getName(), $methods),
             );
 
             $method = $operation->getMethod($response);
@@ -242,6 +243,10 @@ final class Maker extends AbstractMaker
         ];
 
         foreach ($method->getParameters() as $parameter) {
+            if (null === $parameter->getType()) {
+                continue;
+            }
+
             if (true === str_contains($parameter->getType()->getName(), 'Query')) {
                 $use[] = QueryBusInterface::class;
                 $use[] = $parameter->getType()->getName();
@@ -256,12 +261,17 @@ final class Maker extends AbstractMaker
             $parameters = $class->getMethod('__construct')->getParameters();
 
             foreach ($parameters as $param) {
+                if (null === $param->getType()) {
+                    continue;
+                }
+
                 $type = $param->getType();
+                Assert::notNull($type);
+
                 $field = false === $type->allowsNull() ? 'required' : 'optional';
 
-                $requestParameters[$field][$param->getName()] = $param->getType()->getName();
+                $requestParameters[$field][$param->getName()] = $type->getName();
             }
-
         }
 
         $responseParameters = [
@@ -269,7 +279,7 @@ final class Maker extends AbstractMaker
             'optional' => [],
         ];
 
-        if ('void' !== $method->getReturnType()->getName()) {
+        if (null !== $method->getReturnType() && 'void' !== $method->getReturnType()->getName()) {
             $field = true === $method->getReturnType()->allowsNull() ? 'optional' : 'required';
             $returnType = $method->getReturnType()->getName();
             $responseParameters[$field]['model'] = $returnType;
@@ -277,7 +287,7 @@ final class Maker extends AbstractMaker
             if (false === $method->getReturnType()->isBuiltin()) {
                 $returnTypeDetails = $generator->createClassNameDetails(
                     $method->getReturnType()->getName(),
-                    ''
+                    '',
                 );
 
                 $returnType = $returnTypeDetails->getShortName();
@@ -301,7 +311,7 @@ final class Maker extends AbstractMaker
 
             $identityGeneratorDetails = $generator->createClassNameDetails(
                 $identityGenerator,
-                ''
+                '',
             );
 
             $use[] = $identityGenerator;
@@ -431,7 +441,7 @@ final class Maker extends AbstractMaker
 
         \sort($choices);
 
-        if (empty($choices)) {
+        if ($choices === []) {
             throw new RuntimeCommandException('No operation found.');
         }
 
@@ -456,7 +466,7 @@ final class Maker extends AbstractMaker
 
         \sort($choices);
 
-        if (empty($choices)) {
+        if ($choices === []) {
             throw new RuntimeCommandException('No generator found.');
         }
 

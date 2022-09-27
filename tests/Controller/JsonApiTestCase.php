@@ -20,6 +20,8 @@ class JsonApiTestCase extends BaseJsonApiTestCase
      */
     public function setUpClient(): void
     {
-        $this->client = static::createClient([], ['HTTP_ACCEPT' => 'application/ld+json']);
+        $this->client = static::createClient([], [
+            'HTTP_ACCEPT' => 'application/ld+json',
+        ]);
     }
 }

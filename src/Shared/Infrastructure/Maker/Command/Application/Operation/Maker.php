@@ -24,6 +24,7 @@ use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
+use Webmozart\Assert\Assert;
 
 final class Maker extends AbstractMaker
 {
@@ -107,18 +108,21 @@ final class Maker extends AbstractMaker
         $method = $domain->getMethod($configuration->getOperation()->entryMethod());
 
         foreach ($method->getParameters() as $parameter) {
-            if (strpos($parameter->getType()?->getName(), 'Identifier')) {
+            $type = $parameter->getType();
+            Assert::notNull($type);
+
+            if (strpos($type->getName(), 'Identifier')) {
                 $fields[] = [
                     'fieldName' => sprintf('get%s', ucfirst($parameter->getName())),
-                    'class' => $parameter->getType()?->getName(),
-                    'short_name' => Str::getShortClassName($parameter->getType()?->getName()),
+                    'class' => $type->getName(),
+                    'short_name' => Str::getShortClassName($type->getName()),
                     'argument_type' => 'string',
                 ];
 
                 continue;
             }
 
-            if (true === in_array($parameter->getType()?->getName(), [
+            if (true === in_array($type->getName(), [
                 'string',
                 'array',
                 'bool',
@@ -126,15 +130,15 @@ final class Maker extends AbstractMaker
             ])) {
                 $fields[] = [
                     'fieldName' => sprintf('get%s', ucfirst($parameter->getName())),
-                    'class' => $parameter->getType()?->getName(),
-                    'short_name' => Str::getShortClassName($parameter->getType()?->getName()),
-                    'argument_type' => $parameter->getType()?->getName(),
+                    'class' => $type->getName(),
+                    'short_name' => Str::getShortClassName($type->getName()),
+                    'argument_type' => $type->getName(),
                 ];
 
                 continue;
             }
 
-            $model = new \ReflectionClass($parameter->getType()?->getName());
+            $model = new \ReflectionClass($type->getName());
 
             foreach ($model->getMethods() as $method) {
                 if ('__construct' === $method->getName()) {
@@ -366,7 +370,7 @@ final class Maker extends AbstractMaker
 
         \sort($choices);
 
-        if (empty($choices)) {
+        if ($choices === []) {
             throw new RuntimeCommandException('No domain operation found.');
         }
 

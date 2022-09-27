@@ -73,7 +73,9 @@ final class PackageBuilder
                 $dir,
                 $prefix,
                 $alias,
-            ], ['kind' => Node\Expr\Array_::KIND_SHORT]),
+            ], [
+                'kind' => Node\Expr\Array_::KIND_SHORT,
+            ]),
             new Node\Scalar\String_($configuration->getPackage()),
         );
 
@@ -86,6 +88,7 @@ final class PackageBuilder
         PackageInterface & NameInterface $configuration,
         array $element,
     ): void {
+        $expression = [];
         Assert::keyExists($element, 'factory');
         Assert::keyExists($element, 'entity');
         Assert::keyExists($element, 'generator');
@@ -111,9 +114,9 @@ final class PackageBuilder
                 new Node\Expr\Variable(new Node\Name('services')),
                 new Node\Name('set'),
                 [
-                new Node\Scalar\String_($serviceName),
-                new Node\Name(sprintf('%s::class', $factory)),
-            ],
+                    new Node\Scalar\String_($serviceName),
+                    new Node\Name(sprintf('%s::class', $factory)),
+                ],
             ),
             new Node\Name('args'),
             [
@@ -122,8 +125,10 @@ final class PackageBuilder
                     new Node\Expr\ArrayItem(new Node\Expr\FuncCall(new Node\Name('service'), [
                         new Node\Arg(new Node\Expr\ConstFetch(new Node\Name(sprintf('%s::class', $generator)))),
                     ])),
-                ], ['kind' => Node\Expr\Array_::KIND_SHORT]),
-        ],
+                ], [
+                    'kind' => Node\Expr\Array_::KIND_SHORT,
+                ]),
+            ],
         ));
 
         array_push($nodes[0]->stmts, ...$expression);

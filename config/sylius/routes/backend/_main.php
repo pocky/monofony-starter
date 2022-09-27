@@ -10,13 +10,15 @@ return static function (RoutingConfigurator $routingConfigurator): void {
         ->defaults([
             '_controller' => 'App\UI\Backend\Dashboard\Controller\DashboardController::indexAction',
             'template' => 'backend/index.html.twig',
-        ]);
+        ])
+    ;
 
     $routingConfigurator
         ->import('partial.php')
-        ->prefix('/_partial');
-
+        ->prefix('/_partial')
+    ;
 
     $routingConfigurator
-        ->import('security.php');
+        ->import('security.php')
+    ;
 };

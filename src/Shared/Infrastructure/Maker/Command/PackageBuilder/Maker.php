@@ -91,6 +91,7 @@ final class Maker extends AbstractMaker
 
     private function getPackageFile(string $path, ConsoleStyle $io): string
     {
+        $contents = null;
         if ($this->fileManager->fileExists($path)) {
             $contents = $this->fileManager->getFileContents($path);
         }

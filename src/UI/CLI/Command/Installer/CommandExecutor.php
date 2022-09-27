@@ -25,7 +25,9 @@ final class CommandExecutor
      */
     public function runCommand(string $command, array $parameters = [], OutputInterface $output = null): void
     {
-        $parameters = array_merge(['command' => $command], $this->getDefaultParameters(), $parameters);
+        $parameters = array_merge([
+            'command' => $command,
+        ], $this->getDefaultParameters(), $parameters);
 
         $this->application->setAutoExit(false);
         $exitCode = $this->application->run(new ArrayInput($parameters), $output ?: new NullOutput());
@@ -46,7 +48,9 @@ final class CommandExecutor
 
     private function getDefaultParameters(): array
     {
-        $defaultParameters = ['--no-debug' => true];
+        $defaultParameters = [
+            '--no-debug' => true,
+        ];
 
         if ($this->input->hasOption('env')) {
             $defaultParameters['--env'] = $this->input->getOption('env');

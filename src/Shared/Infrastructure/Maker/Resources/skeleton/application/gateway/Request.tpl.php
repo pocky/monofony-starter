@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use Symfony\Bundle\MakerBundle\Str;
 
@@ -29,7 +29,7 @@ final class <?= $class_name; ?> implements GatewayRequest
             '<?= $key ?>',
 <?php endforeach; ?>
         ];
-<?php if([] !== $request_parameters['optional']): ?>
+<?php if ([] !== $request_parameters['optional']): ?>
         $optionalFields = [
 <?php foreach ($request_parameters['optional'] as $key => $value): ?>
             '<?= $key ?>',
@@ -41,7 +41,7 @@ final class <?= $class_name; ?> implements GatewayRequest
         foreach ($requiredFields as $field) {
             $dto->{$field} = $accessor->getValue($data, "[{$field}]");
         }
-<?php if([] !== $request_parameters['optional']): ?>
+<?php if ([] !== $request_parameters['optional']): ?>
         foreach ($optionalFields as $field) {
             if (true === isset($data[$field])) {
                 $dto->{$field} = $accessor->getValue($data, "[{$field}]");

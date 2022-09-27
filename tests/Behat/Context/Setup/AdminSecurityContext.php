@@ -26,7 +26,10 @@ final class AdminSecurityContext implements Context
      */
     public function iAmLoggedInAsAnAdministrator(): void
     {
-        $user = $this->userFactory::createOne(['email' => 'admin@example.com', 'password' => 'admin'])
+        $user = $this->userFactory::createOne([
+            'email' => 'admin@example.com',
+            'password' => 'admin',
+        ])
             ->disableAutoRefresh();
 
         $this->securityService->logIn($user->object());

@@ -13,7 +13,7 @@ namespace <?= $namespace; ?>;
 
 final class <?= $class_name . "\n" ?>
 {
-<?php $i = 0; $number = count($fields); ?>
+<?php $i = 0; $number = is_countable($fields) ? count($fields) : 0; ?>
 
 <?php if (0 !== $number): ?>
     public function __construct(

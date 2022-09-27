@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Naming\OrignameNamer;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import('../sylius/resources.php');
-    $containerConfigurator->import("@SyliusUserBundle/Resources/config/app/config.yml");
+    $containerConfigurator->import('@SyliusUserBundle/Resources/config/app/config.yml');
 
     $containerConfigurator->extension('framework', [
         'translator' => [
@@ -37,7 +37,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'quality' => 100,
                 'filters' => [
                     'auto_rotate' => null,
-                    'relative_resize' => ['scale' => 1],
+                    'relative_resize' => [
+                        'scale' => 1,
+                    ],
                 ],
             ],
             'app_backend_admin_user_avatar_thumbnail' => [

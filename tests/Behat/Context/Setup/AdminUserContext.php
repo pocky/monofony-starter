@@ -22,7 +22,11 @@ final class AdminUserContext implements Context
      */
     public function thereIsAnAdministratorIdentifiedBy($email, $password = 'admin'): void
     {
-        $adminUser = $this->adminUserFactory::createOne(['email' => $email, 'password' => $password, 'enabled' => true])->object();
+        $adminUser = $this->adminUserFactory::createOne([
+            'email' => $email,
+            'password' => $password,
+            'enabled' => true,
+        ])->object();
         $this->sharedStorage->set('administrator', $adminUser);
     }
 
@@ -31,7 +35,9 @@ final class AdminUserContext implements Context
      */
     public function thereIsAnAdministratorWithName($username): void
     {
-        $adminUser = $this->adminUserFactory::createOne(['username' => $username])->object();
+        $adminUser = $this->adminUserFactory::createOne([
+            'username' => $username,
+        ])->object();
 
         $this->sharedStorage->set('administrator', $adminUser);
     }

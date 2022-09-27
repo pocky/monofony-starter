@@ -36,12 +36,16 @@ final class SyliusBuilder
             foreach ($nodes as $item) {
                 if ($item->key instanceof Node\Scalar\String_ && $item->key->value === 'resources') {
                     $classes = new Node\Expr\ArrayItem(
-                        new Node\Expr\Array_([], ['kind' => Node\Expr\Array_::KIND_SHORT]),
+                        new Node\Expr\Array_([], [
+                            'kind' => Node\Expr\Array_::KIND_SHORT,
+                        ]),
                         new Node\Scalar\String_('classes'),
                     );
 
                     $item->value->items[] = new Node\Expr\ArrayItem(
-                        new Node\Expr\Array_([$classes], ['kind' => Node\Expr\Array_::KIND_SHORT]),
+                        new Node\Expr\Array_([$classes], [
+                            'kind' => Node\Expr\Array_::KIND_SHORT,
+                        ]),
                         new Node\Scalar\String_($key),
                     );
                 }
