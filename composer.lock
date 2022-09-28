@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5435931410d5d84926d1ae22aa728a7c",
+    "content-hash": "246c587018795bf87b84e0e6e4da989e",
     "packages": [
         {
             "name": "api-platform/core",
@@ -15419,16 +15419,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.7.12",
+            "version": "1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "32f10779d9cd88a9cbd972ec611a4148a3cbbc7e"
+                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/32f10779d9cd88a9cbd972ec611a4148a3cbbc7e",
-                "reference": "32f10779d9cd88a9cbd972ec611a4148a3cbbc7e",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c386ab2741e64cc9e21729f891b28b2b10fe6618",
+                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618",
                 "shasum": ""
             },
             "require": {
@@ -15452,9 +15452,13 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.7.12"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.6"
             },
             "funding": [
                 {
@@ -15466,15 +15470,11 @@
                     "type": "github"
                 },
                 {
-                    "url": "https://www.patreon.com/phpstan",
-                    "type": "patreon"
-                },
-                {
                     "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-09T12:39:36+00:00"
+            "time": "2022-09-23T09:54:39+00:00"
         },
         {
             "name": "phpstan/phpstan-doctrine",
@@ -16152,31 +16152,29 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.13.0",
+            "version": "0.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "bb3b32dd590cbd0deb67c2ce8ae32801357ff059"
+                "reference": "149764b07abdbfd23e98c4bb33fa6c49e2ad57cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/bb3b32dd590cbd0deb67c2ce8ae32801357ff059",
-                "reference": "bb3b32dd590cbd0deb67c2ce8ae32801357ff059",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/149764b07abdbfd23e98c4bb33fa6c49e2ad57cc",
+                "reference": "149764b07abdbfd23e98c4bb33fa6c49e2ad57cc",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.6.8"
+                "phpstan/phpstan": "^1.8.3"
             },
             "conflict": {
-                "phpstan/phpdoc-parser": "<1.2",
                 "rector/rector-cakephp": "*",
                 "rector/rector-doctrine": "*",
                 "rector/rector-laravel": "*",
-                "rector/rector-nette": "*",
+                "rector/rector-php-parser": "*",
                 "rector/rector-phpoffice": "*",
                 "rector/rector-phpunit": "*",
-                "rector/rector-prefixed": "*",
                 "rector/rector-symfony": "*"
             },
             "bin": [
@@ -16185,7 +16183,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "0.12-dev"
+                    "dev-main": "0.14-dev"
                 }
             },
             "autoload": {
@@ -16200,7 +16198,7 @@
             "description": "Instant Upgrade and Automated Refactoring of any PHP code",
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.13.0"
+                "source": "https://github.com/rectorphp/rector/tree/0.14.4"
             },
             "funding": [
                 {
@@ -16208,7 +16206,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-05-23T10:26:32+00:00"
+            "time": "2022-09-27T23:39:09+00:00"
         },
         {
             "name": "robertfausk/behat-panther-extension",
