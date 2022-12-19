@@ -15,8 +15,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'command.bus' => null,
                 'query.bus' => null,
                 'event.bus' => [
-                    'default_middleware' => 'allow_no_handlers'
-                ]
+                    'default_middleware' => 'allow_no_handlers',
+                ],
             ],
         ],
     ]);

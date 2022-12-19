@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Shared\Infrastructure\Mailer\SymfonyMailer;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->parameters()
@@ -36,8 +35,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ]);
 
     $services
-        ->load('App\\UI\\Backend\\Dashboard\\Controller\\',
-            __DIR__ . '/../src/UI/Backend/Dashboard/Controller')
+        ->load(
+            'App\\UI\\Backend\\Dashboard\\Controller\\',
+            __DIR__ . '/../src/UI/Backend/Dashboard/Controller',
+        )
         ->tag('controller.service_arguments');
 
     $services

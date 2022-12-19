@@ -9,5 +9,5 @@ return static function (RoutingConfigurator $routingConfigurator): void {
         ->add('api_login_check', '/api/authentication_token');
 
     $routingConfigurator
-        ->add('gesdinet_jwt_refresh_token', '/api/token/refresh');
+        ->add('api_refresh_token', '/api/token/refresh');
 };

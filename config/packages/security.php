@@ -64,11 +64,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'provider' => 'sylius_admin_user_provider',
                 'stateless' => true,
                 'entry_point' => 'jwt',
-                'json_login' => [
-                    'check_path' => 'api_login_check',
-                    'success_handler' => 'lexik_jwt_authentication.handler.authentication_success',
-                    'failure_handler' => 'lexik_jwt_authentication.handler.authentication_failure',
-                ],
                 'jwt' => [],
                 'refresh_jwt' => [
                     'check_path' => 'gesdinet_jwt_refresh_token',
@@ -81,8 +76,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
         'access_control' => [
             ['path' => '^/api/(authentication_token|token/refresh)', 'roles' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/login', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'],
-            ['path' => '^/admin/login-check', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'],
+            ['path' => '^/admin/login', 'role' => 'PUBLIC_ACCESS'],
+            ['path' => '^/admin/login-check', 'role' => 'PUBLIC_ACCESS'],
             ['path' => '^/admin/dashboard', 'role' => 'ROLE_ADMIN'],
             ['path' => '^/admin.*', 'role' => 'ROLE_ADMIN'],
         ],

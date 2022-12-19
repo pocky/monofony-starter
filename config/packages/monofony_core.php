@@ -76,12 +76,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
     ]);
 
-    $containerConfigurator->extension('security', [
-        'encoders' => [
-            'argon2i' => 'argon2id',
-        ],
-    ]);
-
     $containerConfigurator->extension('sylius_user', [
         'resources' => [
             'admin' => [
@@ -116,10 +110,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     ]);
 
     if ('test' === $containerConfigurator->env()) {
-        $containerConfigurator->extension('swiftmailer', [
-            'spool' => [
-                'type' => 'file',
-                'path' => '%kernel.cache_dir%/spool',
+        $containerConfigurator->extension('framework', [
+            'cache' => [
+                'pools' => [
+                    'test.mailer_pool' => [
+                        'adapter' => 'cache.adapter.filesystem',
+                    ],
+                ],
             ],
         ]);
     }

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure\Mailer;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailerInterface;
 use Symfony\Component\Mime\Address;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SymfonyMailer implements MailerInterface
@@ -33,7 +33,7 @@ class SymfonyMailer implements MailerInterface
             ->subject($this->translator->trans(
                 $email->getSubject(),
                 $email->getParameters(),
-                'emails'
+                'emails',
             ))
             ->htmlTemplate($email->getHtmlTemplate())
             ->textTemplate($email->getTextTemplate())

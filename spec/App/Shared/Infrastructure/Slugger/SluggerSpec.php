@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\App\Shared\Infrastructure\Slugger;
 
 use App\Shared\Infrastructure\Slugger\Slugger;

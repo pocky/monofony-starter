@@ -22,7 +22,7 @@ const displayUploadedImage = function displayUploadedImage(input) {
 
 $.fn.extend({
   previewUploadedImage(root) {
-    $(root).on('change', 'input[type="file"]', function() {
+    $(root).on('change', 'input[type="file"]', function () {
       displayUploadedImage(this);
     });
   },
