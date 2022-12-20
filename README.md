@@ -8,12 +8,20 @@
 
 ## Installation
 
-- Clone this project
-- Profit!
+1. Clone this project 
+2. Take a look at `configure` script. For example, if you want to setup a full docker environement for dev, 
+run `./configure --env=dev --with-docker=full --with-proxy --clean-before-tasks`
+3. Run `make install` to install the project
+4. You should have a blank project for http://www.monofony.localhost with admin
+http://www.monofony.localhost/admin and api http://www.monofony.localhost/api
+5. Run the following commands to install the assets and the database (use `docker compose exec php` if you are using docker):
+    - `$ bin/console app:install            # install the application with non-interactive mode`
+    - `$ bin/console doctrine:fixtures:load # load data fixtures`
+6. Profit!
 
 ## Usage
 
-// todo
+Follow the monofony documentation : https://docs.monofony.com/current/resources
 
 ## Contributing
 
