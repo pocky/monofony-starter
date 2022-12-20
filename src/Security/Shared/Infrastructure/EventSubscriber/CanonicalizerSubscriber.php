@@ -21,14 +21,17 @@ final class CanonicalizerSubscriber implements EventSubscriber
      */
     public function getSubscribedEvents(): array
     {
-        return [Events::prePersist, Events::preUpdate];
+        return [
+            Events::prePersist,
+            Events::preUpdate,
+        ];
     }
 
     public function canonicalize(LifecycleEventArgs $event): void
     {
         $item = $event->getEntity();
 
-        if ($item instanceof UserInterface) {
+        if ($item instanceof UserInterface && method_exists($item, 'getUsername')) {
             $item->setUsernameCanonical($this->canonicalizer->canonicalize($item->getUsername()));
             $item->setEmailCanonical($this->canonicalizer->canonicalize($item->getEmail()));
         }

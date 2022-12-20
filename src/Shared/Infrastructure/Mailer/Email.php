@@ -13,7 +13,7 @@ final class Email
         private readonly string $subject,
         private readonly string $textTemplate,
         private readonly string $htmlTemplate,
-        private readonly array $parameters
+        private readonly array $parameters,
     ) {
     }
 

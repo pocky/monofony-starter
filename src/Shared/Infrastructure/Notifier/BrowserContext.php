@@ -12,7 +12,7 @@ final class BrowserContext
     public function __construct(
         private string $subject,
         private string $alert = 'info',
-        private array $parameters = []
+        private array $parameters = [],
     ) {
     }
 

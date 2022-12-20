@@ -6,6 +6,8 @@ use App\Kernel;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->import('@SyliusUiBundle/Resources/config/app/config.yml');
+
     $containerConfigurator->extension('framework', [
         'assets' => [
             'json_manifest_path' => '%kernel.project_dir%/public/assets/backend/manifest.json',
@@ -17,29 +19,27 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
     ]);
 
-    $containerConfigurator->extension('sylius_grid', [
-        'templates' => [
-            'action' => [
-                'default' => '@SyliusUi/Grid/Action/default.html.twig',
-                'create' => '@SyliusUi/Grid/Action/create.html.twig',
-                'delete' => '@SyliusUi/Grid/Action/delete.html.twig',
-                'show' => '@SyliusUi/Grid/Action/show.html.twig',
-                'update' => '@SyliusUi/Grid/Action/update.html.twig',
-                'apply_transition' => '@SyliusUi/Grid/Action/applyTransition.html.twig',
-                'links' => '@SyliusUi/Grid/Action/links.html.twig',
-                'archive' => '@SyliusUi/Grid/Action/archive.html.twig',
+    $containerConfigurator->extension('sylius_ui', [
+        'events' => [
+            'sylius.admin.layout.topbar_left' => [
+                'blocks' => [
+                    'sidebar_toggle' => [
+                        'template' => 'backend/layout/_sidebar_toggle.html.twig',
+                        'priority' => 30,
+                    ],
+                    'search' => [
+                        'template' => 'backend/layout/_search.html.twig',
+                        'priority' => 10,
+                    ],
+                ],
             ],
-            'bulk_action' => [
-                'delete' => '@SyliusUi/Grid/BulkAction/delete.html.twig',
-            ],
-            'filter' => [
-                'string' => '@SyliusUi/Grid/Filter/string.html.twig',
-                'boolean' => '@SyliusUi/Grid/Filter/boolean.html.twig',
-                'date' => '@SyliusUi/Grid/Filter/date.html.twig',
-                'entity' => '@SyliusUi/Grid/Filter/entity.html.twig',
-                'money' => '@SyliusUi/Grid/Filter/money.html.twig',
-                'exists' => '@SyliusUi/Grid/Filter/exists.html.twig',
-                'select' => '@SyliusUi/Grid/Filter/select.html.twig',
+            'sylius.admin.layout.topbar_right' => [
+                'blocks' => [
+                    'security' => [
+                        'template' => 'backend/layout/_security.html.twig',
+                        'priority' => 10,
+                    ],
+                ],
             ],
         ],
     ]);

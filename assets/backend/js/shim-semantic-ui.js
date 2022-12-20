@@ -10,7 +10,7 @@ import 'semantic-ui-css/components/modal';
 import 'semantic-ui-css/components/nag';
 import 'semantic-ui-css/components/popup';
 import 'semantic-ui-css/components/progress';
-import 'semantic-ui-css/components/range';
+//import 'semantic-ui-css/components/range';
 import 'semantic-ui-css/components/rating';
 import 'semantic-ui-css/components/search';
 import 'semantic-ui-css/components/shape';

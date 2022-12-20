@@ -11,11 +11,18 @@ import './sylius-compound-form-errors';
 import '../scss/main.scss';
 
 $(document).ready(function () {
-    $(document).previewUploadedImage('#sylius_admin_user_avatar');
-    $('.sylius-autocomplete').autoComplete();
-    $('.sylius-tabular-form').addTabErrors();
-    $('.ui.accordion').addAccordionErrors();
+  $(document).previewUploadedImage('#sylius_admin_user_avatar');
 
-    $('.app-date-picker').datePicker();
-    $('.app-date-time-picker').dateTimePicker();
+  // Use this previewer for files uploads
+  // $(document).previewUploadedFile('#app_book_file');
+
+  $('.sylius-autocomplete').autoComplete();
+  $('.sylius-tabular-form').addTabErrors();
+  $('.ui.accordion').addAccordionErrors();
+  $('#sylius_customer_createUser').change(function () {
+    $('#user-form').toggle();
+  });
+
+  $('.app-date-picker').datePicker();
+  $('.app-date-time-picker').dateTimePicker();
 });

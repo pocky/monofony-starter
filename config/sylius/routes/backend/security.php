@@ -8,7 +8,7 @@ return static function (RoutingConfigurator $routingConfigurator): void {
     $routingConfigurator
         ->add('sylius_backend_login', '/login')
         ->defaults([
-            '_controller' => 'sylius.controller.security:loginAction',
+            '_controller' => 'sylius.controller.security::loginAction',
             '_sylius' => [
                 'template' => 'backend/security/login.html.twig',
                 'permission' => true,
@@ -18,7 +18,7 @@ return static function (RoutingConfigurator $routingConfigurator): void {
     $routingConfigurator
         ->add('sylius_backend_login_check', '/login-check')
         ->defaults([
-            '_controller' => 'sylius.controller.security:checkAction',
+            '_controller' => 'sylius.controller.security::checkAction',
         ]);
 
     $routingConfigurator

@@ -8,7 +8,7 @@ return static function (RoutingConfigurator $routingConfigurator): void {
     $routingConfigurator
         ->add('app_backend_dashboard', '/')
         ->defaults([
-            '_controller' => 'App\UI\Backend\Dashboard\Controller\DashboardController:indexAction',
+            '_controller' => 'App\UI\Backend\Dashboard\Controller\DashboardController::indexAction',
             'template' => 'backend/index.html.twig',
         ]);
 

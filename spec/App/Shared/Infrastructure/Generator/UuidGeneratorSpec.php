@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\App\Shared\Infrastructure\Generator;
 
 use App\Shared\Infrastructure\Generator\GeneratorInterface;
