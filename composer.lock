@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c09146b6f4e56e15c1a22ebdb1fccd4",
+    "content-hash": "92cf8bd80a610662e9a7c0f934654036",
     "packages": [
         {
             "name": "api-platform/core",
@@ -17939,16 +17939,16 @@
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "10.3.3",
+            "version": "11.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/easy-coding-standard.git",
-                "reference": "c93878b3c052321231519b6540e227380f90be17"
+                "reference": "860b88c552af9682ad9715e8fa400916fa529e24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/c93878b3c052321231519b6540e227380f90be17",
-                "reference": "c93878b3c052321231519b6540e227380f90be17",
+                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/860b88c552af9682ad9715e8fa400916fa529e24",
+                "reference": "860b88c552af9682ad9715e8fa400916fa529e24",
                 "shasum": ""
             },
             "require": {
@@ -17978,7 +17978,7 @@
             ],
             "description": "Prefixed scoped version of ECS package",
             "support": {
-                "source": "https://github.com/symplify/easy-coding-standard/tree/10.3.3"
+                "source": "https://github.com/symplify/easy-coding-standard/tree/11.1.20"
             },
             "funding": [
                 {
@@ -17990,7 +17990,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-13T14:03:37+00:00"
+            "time": "2022-12-19T12:28:29+00:00"
         },
         {
             "name": "theofidry/alice-data-fixtures",
