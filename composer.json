@@ -93,7 +93,7 @@
         "symfony/maker-bundle": "^1.48",
         "symfony/phpunit-bridge": "^6.2",
         "symfony/web-profiler-bundle": "^5.4 || ^6.0",
-        "symplify/config-transformer": "^10.3",
+        "symplify/config-transformer": "^11.1",
         "symplify/easy-coding-standard": "^10.2",
         "vimeo/psalm": "^4.22"
     },
