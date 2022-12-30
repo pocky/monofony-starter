@@ -69,7 +69,6 @@ final class CreateContextCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $io->title('Creating context...');
 
-        $errored = false;
         foreach ($this->commands as $step => $command) {
             $parameters = [];
 
@@ -132,12 +131,13 @@ final class CreateContextCommand extends Command
                     ),
                 );
 
+                $process->setTimeout(3600);
                 $process->setTty(true);
                 $process->run();
 
                 $output->writeln('');
-            } catch (RuntimeException) {
-                $errored = true;
+            } catch (RuntimeException $exception) {
+                throw new \LogicException($exception->getMessage());
             }
         }
 
