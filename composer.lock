@@ -1826,16 +1826,16 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "2.5.5",
+            "version": "2.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "38670dd6ac8f2d997a0b5b6c98cb380ef0ba9bd3"
+                "reference": "7729fc2a7e5efc8bbfa408a3b8adeb8f5b84f5d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/38670dd6ac8f2d997a0b5b6c98cb380ef0ba9bd3",
-                "reference": "38670dd6ac8f2d997a0b5b6c98cb380ef0ba9bd3",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/7729fc2a7e5efc8bbfa408a3b8adeb8f5b84f5d1",
+                "reference": "7729fc2a7e5efc8bbfa408a3b8adeb8f5b84f5d1",
                 "shasum": ""
             },
             "require": {
@@ -1847,18 +1847,18 @@
                 "psr/cache": "^1.0 || ^2.0 || ^3.0"
             },
             "conflict": {
-                "doctrine/annotations": "<1.0 || >=2.0",
+                "doctrine/annotations": "<1.0 || >=3.0",
                 "doctrine/common": "<2.10"
             },
             "require-dev": {
                 "composer/package-versions-deprecated": "^1.11",
-                "doctrine/annotations": "^1.0",
-                "doctrine/coding-standard": "^9 || ^10",
+                "doctrine/annotations": "^1 || ^2",
+                "doctrine/coding-standard": "^9 || ^11",
                 "doctrine/common": "^3.0",
-                "phpstan/phpstan": "~1.4.10 || 1.8.8",
+                "phpstan/phpstan": "~1.4.10 || 1.9.4",
                 "phpunit/phpunit": "^7.5.20 || ^8.5 || ^9.5",
                 "symfony/cache": "^4.4 || ^5.4 || ^6.0",
-                "vimeo/psalm": "4.29.0"
+                "vimeo/psalm": "4.30.0 || 5.3.0"
             },
             "type": "library",
             "autoload": {
@@ -1908,7 +1908,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/2.5.5"
+                "source": "https://github.com/doctrine/persistence/tree/2.5.6"
             },
             "funding": [
                 {
@@ -1924,7 +1924,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-13T07:17:40+00:00"
+            "time": "2023-01-01T18:11:10+00:00"
         },
         {
             "name": "doctrine/sql-formatter",
@@ -9528,16 +9528,16 @@
         },
         {
             "name": "symfony/property-access",
-            "version": "v6.2.0",
+            "version": "v6.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-access.git",
-                "reference": "ed937ca8e103fdcefb43020c8784f87d3e5d09c3"
+                "reference": "9c267d87dd665d5d33e897290bbb9f64ae905b94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/property-access/zipball/ed937ca8e103fdcefb43020c8784f87d3e5d09c3",
-                "reference": "ed937ca8e103fdcefb43020c8784f87d3e5d09c3",
+                "url": "https://api.github.com/repos/symfony/property-access/zipball/9c267d87dd665d5d33e897290bbb9f64ae905b94",
+                "reference": "9c267d87dd665d5d33e897290bbb9f64ae905b94",
                 "shasum": ""
             },
             "require": {
@@ -9588,7 +9588,7 @@
                 "reflection"
             ],
             "support": {
-                "source": "https://github.com/symfony/property-access/tree/v6.2.0"
+                "source": "https://github.com/symfony/property-access/tree/v6.2.3"
             },
             "funding": [
                 {
@@ -9604,20 +9604,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-28T16:24:13+00:00"
+            "time": "2022-12-23T08:18:26+00:00"
         },
         {
             "name": "symfony/property-info",
-            "version": "v6.2.0",
+            "version": "v6.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-info.git",
-                "reference": "ddfa5c49812d7bcfea21f9ad5341092daa82e4cc"
+                "reference": "b4cbbbcc8679460cfeb1d5bdcb8127a2e85c376c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/property-info/zipball/ddfa5c49812d7bcfea21f9ad5341092daa82e4cc",
-                "reference": "ddfa5c49812d7bcfea21f9ad5341092daa82e4cc",
+                "url": "https://api.github.com/repos/symfony/property-info/zipball/b4cbbbcc8679460cfeb1d5bdcb8127a2e85c376c",
+                "reference": "b4cbbbcc8679460cfeb1d5bdcb8127a2e85c376c",
                 "shasum": ""
             },
             "require": {
@@ -9630,7 +9630,7 @@
                 "symfony/dependency-injection": "<5.4"
             },
             "require-dev": {
-                "doctrine/annotations": "^1.10.4",
+                "doctrine/annotations": "^1.10.4|^2",
                 "phpdocumentor/reflection-docblock": "^5.2",
                 "phpstan/phpdoc-parser": "^1.0",
                 "symfony/cache": "^5.4|^6.0",
@@ -9677,7 +9677,7 @@
                 "validator"
             ],
             "support": {
-                "source": "https://github.com/symfony/property-info/tree/v6.2.0"
+                "source": "https://github.com/symfony/property-info/tree/v6.2.3"
             },
             "funding": [
                 {
@@ -9693,7 +9693,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-25T07:37:13+00:00"
+            "time": "2022-12-20T16:41:15+00:00"
         },
         {
             "name": "symfony/proxy-manager-bridge",
@@ -12407,16 +12407,16 @@
         },
         {
             "name": "zenstruck/foundry",
-            "version": "v1.24.1",
+            "version": "v1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/foundry.git",
-                "reference": "ddf9b01f3c98f7d2d359a96f014bda8eeb678760"
+                "reference": "65799bfe27ca81821be24f6dfec824ac4942a892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/ddf9b01f3c98f7d2d359a96f014bda8eeb678760",
-                "reference": "ddf9b01f3c98f7d2d359a96f014bda8eeb678760",
+                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/65799bfe27ca81821be24f6dfec824ac4942a892",
+                "reference": "65799bfe27ca81821be24f6dfec824ac4942a892",
                 "shasum": ""
             },
             "require": {
@@ -12424,7 +12424,7 @@
                 "fakerphp/faker": "^1.5",
                 "php": ">=8.0",
                 "symfony/deprecation-contracts": "^2.2|^3.0",
-                "symfony/property-access": "^3.4|^4.4|^5.0|^6.0",
+                "symfony/property-access": "^4.4|^5.0|^6.0",
                 "symfony/string": "^5.4|^6.0",
                 "zenstruck/assert": "^1.0",
                 "zenstruck/callback": "^1.1"
@@ -12480,7 +12480,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/foundry/issues",
-                "source": "https://github.com/zenstruck/foundry/tree/v1.24.1"
+                "source": "https://github.com/zenstruck/foundry/tree/v1.27.0"
             },
             "funding": [
                 {
@@ -12488,7 +12488,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-29T18:37:09+00:00"
+            "time": "2023-01-09T14:40:55+00:00"
         }
     ],
     "packages-dev": [
