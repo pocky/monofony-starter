@@ -28,14 +28,14 @@ var build = (name, assetPath, vendorUiPath) => {
       to: 'img/[path][name].[ext]',
     })
     .configureFilenames({
-      js: 'js/[name].[hash:8].js',
-      css: 'css/[name].[hash:8].css',
+      js: 'js/[name].[fullhash].js',
+      css: 'css/[name].[fullhash].css',
     })
     .configureImageRule({
-      filename: 'img/[name].[hash:8].[ext]',
+      filename: 'img/[name].[fullhash].[ext]',
     })
     .configureFontRule({
-      filename: 'font/[name].[hash:8].[ext]'
+      filename: 'font/[name].[fullhash].[ext]'
     })
   ;
 
