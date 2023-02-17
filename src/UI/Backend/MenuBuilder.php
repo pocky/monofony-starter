@@ -31,7 +31,10 @@ final class MenuBuilder implements AdminMenuBuilderInterface
             ->setLabel('sylius.ui.configuration')
         ;
 
-        $configuration->addChild('backend_admin_user', ['route' => 'sylius_backend_admin_user_index'])
+        $configuration
+            ->addChild('backend_admin_user', [
+                'route' => 'sylius_backend_admin_user_index',
+            ])
             ->setLabel('sylius.ui.admin_users')
             ->setLabelAttribute('icon', 'lock')
         ;

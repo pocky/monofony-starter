@@ -25,13 +25,17 @@ class TwigSpec extends ObjectBehavior
         ]);
 
         $environment->setLoader($loader);
-        $environment->render('index', ['name' => 'you'])->willReturn('hello you');
+        $environment->render('index', [
+            'name' => 'you',
+        ])->willReturn('hello you');
 
         $this->beConstructedWith($environment);
     }
 
     public function it_should_render_a_twig_template(Environment $environment)
     {
-        $this->render('index', ['name' => 'you'])->shouldBeString();
+        $this->render('index', [
+            'name' => 'you',
+        ])->shouldBeString();
     }
 }

@@ -8,6 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 use Monofony\Contracts\Core\Model\User\AdminUserInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\User\Repository\UserRepositoryInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,10 +21,11 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
+#[AsCommand(
+    name: 'app:install:setup',
+)]
 final class SetupCommand extends Command
 {
-    protected static $defaultName = 'app:install:setup';
-
     public function __construct(
         private readonly ObjectManager $adminUserManager,
         private readonly FactoryInterface $adminUserFactory,
@@ -91,6 +93,7 @@ EOT
             return $user;
         }
 
+        /** @var QuestionHelper $questionHelper */
         $questionHelper = $this->getHelper('question');
 
         do {

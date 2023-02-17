@@ -57,7 +57,9 @@ class InstallerContext extends DefaultContext
         $this->getTester()->setInputs($this->inputChoices);
 
         try {
-            $this->getTester()->execute(['command' => $name]);
+            $this->getTester()->execute([
+                'command' => $name,
+            ]);
         } catch (\Exception) {
         }
     }
@@ -86,7 +88,9 @@ class InstallerContext extends DefaultContext
         $this->getTester()->setInputs(['y', 'y']);
 
         try {
-            $this->getTester()->execute(['command' => $name]);
+            $this->getTester()->execute([
+                'command' => $name,
+            ]);
         } catch (\Exception) {
         }
     }

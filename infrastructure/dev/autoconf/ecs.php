@@ -4,22 +4,20 @@ declare(strict_types=1);
 
 use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
 use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
-use PhpCsFixer\Fixer\Comment\HeaderCommentFixer;
 use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
 use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
 use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
-use PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitInternalClassFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitMethodCasingFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitTestClassRequiresCoversFixer;
 use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\Strict\StrictComparisonFixer;
-use PhpCsFixer\RuleSet\Sets\PHP80MigrationSet;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer;
+use PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer;
+use PhpCsFixer\RuleSet\Sets\PHP81MigrationSet;
+use Symplify\CodingStandard\Fixer\ArrayNotation\ArrayListItemNewlineFixer;
+use Symplify\CodingStandard\Fixer\ArrayNotation\ArrayOpenerAndCloserNewlineFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
-use Symplify\EasyCodingStandard\ValueObject\Option;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return static function (ECSConfig $ecsConfig): void {
@@ -32,10 +30,12 @@ return static function (ECSConfig $ecsConfig): void {
     ]);
 
     $services = $ecsConfig->services();
+    $services->set(ArrayIndentationFixer::class);
     $services->set(DeclareStrictTypesFixer::class);
     $services->set(OrderedImportsFixer::class);
     $services->set(NoUnusedImportsFixer::class);
     $services->set(StrictComparisonFixer::class);
+    $services->set(PHP81MigrationSet::class);
 
     $services->set(ArraySyntaxFixer::class)
         ->call('configure', [[
@@ -57,8 +57,8 @@ return static function (ECSConfig $ecsConfig): void {
         PhpUnitTestClassRequiresCoversFixer::class => ['*Test.php'],
         PhpUnitInternalClassFixer::class => ['*Test.php'],
         PhpUnitMethodCasingFixer::class => ['*Test.php'],
+        NoUnusedImportsFixer::class => [
+            __DIR__ . '/src/Shared/Infrastructure/Maker/Resources/skeleton/config/packages.tpl.php',
+        ],
     ]);
-
-
-
 };

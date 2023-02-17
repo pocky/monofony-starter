@@ -6,15 +6,17 @@ namespace App\UI\CLI\Command\Installer;
 
 use App\Shared\Infrastructure\Installer\Provider\DatabaseSetupCommandsProviderInterface;
 use App\UI\CLI\Command\Helper\CommandsRunner;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(
+    name: 'app:install:database',
+)]
 class InstallDatabaseCommand extends Command
 {
-    protected static $defaultName = 'app:install:database';
-
     public function __construct(
         private readonly DatabaseSetupCommandsProviderInterface $databaseSetupCommandsProvider,
         private readonly CommandsRunner $commandsRunner,

@@ -20,6 +20,8 @@ final class DashboardController
     {
         $statistics = $this->statisticsProvider->getStatistics();
 
-        return ($this->htmlResponder)('backend/index', ['statistics' => $statistics]);
+        return ($this->htmlResponder)('backend/index', [
+            'statistics' => $statistics,
+        ]);
     }
 }

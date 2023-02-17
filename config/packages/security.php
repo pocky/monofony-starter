@@ -18,7 +18,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
         ],
         'password_hashers' => [
-           UserInterface::class => 'auto',
+            UserInterface::class => 'auto',
         ],
         'role_hierarchy' => [
             'ROLE_ADMIN' => 'ROLE_USER',
@@ -75,11 +75,26 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
         ],
         'access_control' => [
-            ['path' => '^/api/(authentication_token|token/refresh)', 'roles' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/login', 'role' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/login-check', 'role' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/dashboard', 'role' => 'ROLE_ADMIN'],
-            ['path' => '^/admin.*', 'role' => 'ROLE_ADMIN'],
+            [
+                'path' => '^/api/(authentication_token|token/refresh)',
+                'roles' => 'PUBLIC_ACCESS',
+            ],
+            [
+                'path' => '^/admin/login',
+                'role' => 'PUBLIC_ACCESS',
+            ],
+            [
+                'path' => '^/admin/login-check',
+                'role' => 'PUBLIC_ACCESS',
+            ],
+            [
+                'path' => '^/admin/dashboard',
+                'role' => 'ROLE_ADMIN',
+            ],
+            [
+                'path' => '^/admin.*',
+                'role' => 'ROLE_ADMIN',
+            ],
         ],
     ]);
 };

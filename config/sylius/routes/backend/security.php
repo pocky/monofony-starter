@@ -13,14 +13,17 @@ return static function (RoutingConfigurator $routingConfigurator): void {
                 'template' => 'backend/security/login.html.twig',
                 'permission' => true,
             ],
-        ]);
+        ])
+    ;
 
     $routingConfigurator
         ->add('sylius_backend_login_check', '/login-check')
         ->defaults([
             '_controller' => 'sylius.controller.security::checkAction',
-        ]);
+        ])
+    ;
 
     $routingConfigurator
-        ->add('sylius_backend_logout', '/logout');
+        ->add('sylius_backend_logout', '/logout')
+    ;
 };

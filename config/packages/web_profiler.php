@@ -12,7 +12,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ]);
 
         $containerConfigurator->extension('framework', [
-            'profiler' => ['only_exceptions' => false],
+            'profiler' => [
+                'only_exceptions' => false,
+            ],
         ]);
     }
 

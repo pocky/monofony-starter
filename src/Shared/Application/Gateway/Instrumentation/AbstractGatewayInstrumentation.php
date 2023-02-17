@@ -33,6 +33,10 @@ abstract class AbstractGatewayInstrumentation implements GatewayInstrumentation
     public function error(GatewayRequest $gatewayRequest, string $reason): void
     {
         // @phpstan-ignore-next-line
-        $this->logger->error(\sprintf('%s.error', static::NAME), [...$gatewayRequest->data(), ...[' reason' => $reason]]);
+        $this->logger->error(\sprintf('%s.error', static::NAME), [
+            ...$gatewayRequest->data(), ...[
+                ' reason' => $reason,
+
+            ], ]);
     }
 }

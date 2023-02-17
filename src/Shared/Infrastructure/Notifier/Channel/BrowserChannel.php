@@ -12,7 +12,7 @@ use Symfony\Component\Notifier\Recipient\RecipientInterface;
 final class BrowserChannel implements ChannelInterface
 {
     public function __construct(
-        private RequestStack $requestStack,
+        private readonly RequestStack $requestStack,
     ) {
     }
 

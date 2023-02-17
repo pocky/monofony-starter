@@ -28,7 +28,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     if ('test' === $containerConfigurator->env()) {
         $containerConfigurator->extension('doctrine', [
             'dbal' => [
-                'dbname_suffix' => "_test%env(default::TEST_TOKEN)%",
+                'dbname_suffix' => '_test%env(default::TEST_TOKEN)%',
             ],
         ]);
     }
