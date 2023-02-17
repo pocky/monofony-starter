@@ -1,5 +1,6 @@
 .DEFAULT_GOAL := help
 EXECJS?=
+EXECPHP?=
 
 ##
 ## Project setup
@@ -8,14 +9,14 @@ EXECJS?=
 
 install: start ## Install and start the project with vendors update
 
-start: public/build ## Start the project with vendors update
+start: vendor public/build ## Start the project with vendors update
 
 stop: ## Do nothing
 
 reset: clear start ## Stop clear and install
 
 clear: stop ## clear project
-	rm -Rf node_modules npm-cache public/build
+	rm -Rf node_modules npm-cache vendor public/build
 
 ##
 ## Assets
@@ -36,6 +37,12 @@ node_modules: package-lock.json
 
 package-lock.json: package.json
 	@echo JS vendors are not up to date.
+
+vendor: composer.lock
+	$(EXECPHP) composer install --no-interaction
+
+composer.lock: composer.json
+	@echo PHP vendors are not up to date.
 
 public/build: assets
 

@@ -2,6 +2,7 @@
 DOCKER?=docker
 DOCKER_COMPOSE?=docker-compose
 EXECJS?=$(DOCKER_COMPOSE) exec node
+EXECPHP?=$(DOCKER_COMPOSE) exec php
 
 ##
 ## Project setup
@@ -13,7 +14,7 @@ install: build start ## Install and start the project with vendors update
 up: ## Start the project without vendors update
 	$(DOCKER_COMPOSE) up -d --remove-orphans
 
-start: up public/build ## Start the project with vendors update
+start: up vendor public/build ## Start the project with vendors update
 
 stop: ## Remove docker containers
 	$(DOCKER_COMPOSE) kill
@@ -22,7 +23,7 @@ stop: ## Remove docker containers
 reset: clear build ## Stop clear and install
 
 clear: stop ## clear project
-	rm -Rf node_modules npm-cache public/build
+	rm -Rf node_modules npm-cache vendor public/build
 	rm docker-dev.lock
 
 ##
@@ -53,6 +54,12 @@ rm-docker-dev.lock:
 
 node_modules: package-lock.json
 	$(EXECJS) npm install
+
+vendor: composer.lock
+	$(EXECPHP) composer install --no-interaction
+
+composer.lock: composer.json
+	@echo PHP vendors are not up to date.
 
 package-lock.json: package.json
 	@echo JS vendors are not up to date.
