@@ -88,7 +88,7 @@
         "phpstan/phpstan-webmozart-assert": "^1.1",
         "rector/rector": "0.15.1",
         "robertfausk/behat-panther-extension": "^1.1",
-        "se/selenium-server-standalone": "2.*",
+        "se/selenium-server-standalone": "3.*",
         "symfony/debug-bundle": "^5.4 || ^6.0",
         "symfony/maker-bundle": "^1.48",
         "symfony/phpunit-bridge": "^6.2",
