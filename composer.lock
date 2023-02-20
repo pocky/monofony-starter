@@ -15227,16 +15227,16 @@
         },
         {
             "name": "phpstan/phpstan-nette",
-            "version": "1.2.0",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-nette.git",
-                "reference": "1e32a0ff252d37ee57d91fdc2fdf21256b28df07"
+                "reference": "b1e6ae1f391ce0098a2c95f3a0f67aca5ef70e1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-nette/zipball/1e32a0ff252d37ee57d91fdc2fdf21256b28df07",
-                "reference": "1e32a0ff252d37ee57d91fdc2fdf21256b28df07",
+                "url": "https://api.github.com/repos/phpstan/phpstan-nette/zipball/b1e6ae1f391ce0098a2c95f3a0f67aca5ef70e1f",
+                "reference": "b1e6ae1f391ce0098a2c95f3a0f67aca5ef70e1f",
                 "shasum": ""
             },
             "require": {
@@ -15282,9 +15282,9 @@
             "description": "Nette Framework class reflection extension for PHPStan",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-nette/issues",
-                "source": "https://github.com/phpstan/phpstan-nette/tree/1.2.0"
+                "source": "https://github.com/phpstan/phpstan-nette/tree/1.2.3"
             },
-            "time": "2022-12-16T11:14:15+00:00"
+            "time": "2023-01-25T22:05:36+00:00"
         },
         {
             "name": "phpstan/phpstan-symfony",
