@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e7e2352a904470f556f0927ec8e79e3",
+    "content-hash": "343cb7f604a8a5420526d49bdcf71353",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3629,24 +3629,24 @@
         },
         {
             "name": "monofony/admin",
-            "version": "v0.9.0",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/Admin.git",
-                "reference": "e5befeb41c29bc450943fa864ece7f1e367c3b56"
+                "reference": "33fda436bad35822ef392db27af7004a69b76f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/Admin/zipball/e5befeb41c29bc450943fa864ece7f1e367c3b56",
-                "reference": "e5befeb41c29bc450943fa864ece7f1e367c3b56",
+                "url": "https://api.github.com/repos/Monofony/Admin/zipball/33fda436bad35822ef392db27af7004a69b76f7e",
+                "reference": "33fda436bad35822ef392db27af7004a69b76f7e",
                 "shasum": ""
             },
             "require": {
                 "knplabs/knp-menu": "^3.1",
-                "monofony/admin-contracts": "^0.9",
-                "monofony/core": "^0.9",
-                "php": "^8.0",
-                "symfony/routing": "^5.4 || ^6.0"
+                "monofony/admin-contracts": "^0.10",
+                "monofony/core": "^0.10",
+                "php": "^8.1",
+                "symfony/routing": "^6.1"
             },
             "require-dev": {
                 "friends-of-behat/page-object-extension": "^0.3",
@@ -3655,7 +3655,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.10-dev"
                 }
             },
             "autoload": {
@@ -3670,26 +3670,26 @@
             "description": "Monofony admin.",
             "support": {
                 "issues": "https://github.com/Monofony/Admin/issues",
-                "source": "https://github.com/Monofony/Admin/tree/v0.9.0"
+                "source": "https://github.com/Monofony/Admin/tree/v0.10.1"
             },
-            "time": "2023-01-06T14:03:25+00:00"
+            "time": "2023-03-06T08:32:30+00:00"
         },
         {
             "name": "monofony/admin-contracts",
-            "version": "v0.9.0",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/AdminContracts.git",
-                "reference": "a10501a8c676b5cedee3a1142f90a980c613201d"
+                "reference": "24da6bcbdfb8f789d38239b6cfdd2a10fddfed92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/AdminContracts/zipball/a10501a8c676b5cedee3a1142f90a980c613201d",
-                "reference": "a10501a8c676b5cedee3a1142f90a980c613201d",
+                "url": "https://api.github.com/repos/Monofony/AdminContracts/zipball/24da6bcbdfb8f789d38239b6cfdd2a10fddfed92",
+                "reference": "24da6bcbdfb8f789d38239b6cfdd2a10fddfed92",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0"
+                "php": "^8.1"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.5"
@@ -3697,7 +3697,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.10-dev"
                 }
             },
             "autoload": {
@@ -3715,27 +3715,28 @@
             "description": "Generic abstractions related to Admin",
             "support": {
                 "issues": "https://github.com/Monofony/AdminContracts/issues",
-                "source": "https://github.com/Monofony/AdminContracts/tree/v0.9.0"
+                "source": "https://github.com/Monofony/AdminContracts/tree/v0.10.1"
             },
-            "time": "2022-11-04T07:47:59+00:00"
+            "time": "2023-03-03T08:35:27+00:00"
         },
         {
             "name": "monofony/api-contracts",
-            "version": "v0.9.0",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/ApiContracts.git",
-                "reference": "738905603395a256d4d914eed8ebbabb7e66f455"
+                "reference": "620433fd68376824f2b71bb8c94b5d313b542317"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/ApiContracts/zipball/738905603395a256d4d914eed8ebbabb7e66f455",
-                "reference": "738905603395a256d4d914eed8ebbabb7e66f455",
+                "url": "https://api.github.com/repos/Monofony/ApiContracts/zipball/620433fd68376824f2b71bb8c94b5d313b542317",
+                "reference": "620433fd68376824f2b71bb8c94b5d313b542317",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0",
-                "symfony/serializer": "^5.4 || ^6.0"
+                "api-platform/core": "^2.7 || ^3.1",
+                "php": "^8.1",
+                "symfony/serializer": "^6.1"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.5"
@@ -3743,7 +3744,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.10-dev"
                 }
             },
             "autoload": {
@@ -3761,26 +3762,26 @@
             "description": "Generic abstractions related to Api",
             "support": {
                 "issues": "https://github.com/Monofony/ApiContracts/issues",
-                "source": "https://github.com/Monofony/ApiContracts/tree/v0.9.0"
+                "source": "https://github.com/Monofony/ApiContracts/tree/v0.10.1"
             },
-            "time": "2022-11-04T07:47:59+00:00"
+            "time": "2023-03-06T08:32:57+00:00"
         },
         {
             "name": "monofony/core",
-            "version": "v0.9.0",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/Core.git",
-                "reference": "59efe7fd14d81ff9f078e450720af7f04c0429a5"
+                "reference": "ad6a2ad815b431fc4fdfc0972e5f2c06b8f78b94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/Core/zipball/59efe7fd14d81ff9f078e450720af7f04c0429a5",
-                "reference": "59efe7fd14d81ff9f078e450720af7f04c0429a5",
+                "url": "https://api.github.com/repos/Monofony/Core/zipball/ad6a2ad815b431fc4fdfc0972e5f2c06b8f78b94",
+                "reference": "ad6a2ad815b431fc4fdfc0972e5f2c06b8f78b94",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0"
+                "php": "^8.1"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.5"
@@ -3788,7 +3789,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.10-dev"
                 }
             },
             "autoload": {
@@ -3803,30 +3804,30 @@
             "description": "Monofony core.",
             "support": {
                 "issues": "https://github.com/Monofony/Core/issues",
-                "source": "https://github.com/Monofony/Core/tree/v0.9.0"
+                "source": "https://github.com/Monofony/Core/tree/v0.10.1"
             },
-            "time": "2022-11-04T07:48:03+00:00"
+            "time": "2023-03-03T08:35:33+00:00"
         },
         {
             "name": "monofony/core-bundle",
-            "version": "v0.9.0",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/CoreBundle.git",
-                "reference": "3a511d2db7cac91d34cbdcb071362a508f207139"
+                "reference": "1130c850683c497a6e43cb0f59a1496c0f573c29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/CoreBundle/zipball/3a511d2db7cac91d34cbdcb071362a508f207139",
-                "reference": "3a511d2db7cac91d34cbdcb071362a508f207139",
+                "url": "https://api.github.com/repos/Monofony/CoreBundle/zipball/1130c850683c497a6e43cb0f59a1496c0f573c29",
+                "reference": "1130c850683c497a6e43cb0f59a1496c0f573c29",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0",
-                "symfony/config": "^5.4 || ^6.0",
-                "symfony/dependency-injection": "^5.4 || ^6.0",
-                "symfony/http-foundation": "^5.4 || ^6.0",
-                "symfony/http-kernel": "^5.4 || ^6.0"
+                "php": "^8.1",
+                "symfony/config": "^6.1",
+                "symfony/dependency-injection": "^6.1",
+                "symfony/http-foundation": "^6.1",
+                "symfony/http-kernel": "^6.1"
             },
             "conflict": {
                 "symfony/symfony": "*"
@@ -3837,7 +3838,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.10-dev"
                 }
             },
             "autoload": {
@@ -3855,27 +3856,27 @@
             "description": "Monofony core bundle.",
             "support": {
                 "issues": "https://github.com/Monofony/CoreBundle/issues",
-                "source": "https://github.com/Monofony/CoreBundle/tree/v0.9.0"
+                "source": "https://github.com/Monofony/CoreBundle/tree/v0.10.1"
             },
-            "time": "2023-01-06T14:02:51+00:00"
+            "time": "2023-03-20T08:59:34+00:00"
         },
         {
             "name": "monofony/core-contracts",
-            "version": "v0.9.0",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/CoreContracts.git",
-                "reference": "3ddda0d30ef6cfe7bdd8cdc646e0644b76d0b11f"
+                "reference": "793289dd57267ee6514231769d15881be42b4612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/CoreContracts/zipball/3ddda0d30ef6cfe7bdd8cdc646e0644b76d0b11f",
-                "reference": "3ddda0d30ef6cfe7bdd8cdc646e0644b76d0b11f",
+                "url": "https://api.github.com/repos/Monofony/CoreContracts/zipball/793289dd57267ee6514231769d15881be42b4612",
+                "reference": "793289dd57267ee6514231769d15881be42b4612",
                 "shasum": ""
             },
             "require": {
                 "monofony/customer": "^1.10",
-                "php": "^8.0",
+                "php": "^8.1",
                 "sylius/user": "^1.12"
             },
             "require-dev": {
@@ -3884,7 +3885,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.10-dev"
                 }
             },
             "autoload": {
@@ -3899,9 +3900,9 @@
             "description": "Generic abstractions related to Core",
             "support": {
                 "issues": "https://github.com/Monofony/CoreContracts/issues",
-                "source": "https://github.com/Monofony/CoreContracts/tree/v0.9.0"
+                "source": "https://github.com/Monofony/CoreContracts/tree/v0.10.1"
             },
-            "time": "2023-01-06T14:04:14+00:00"
+            "time": "2023-03-03T08:35:43+00:00"
         },
         {
             "name": "monofony/customer",
@@ -3975,22 +3976,22 @@
         },
         {
             "name": "monofony/sylius-user-bridge",
-            "version": "v0.9.0",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/SyliusUserBridge.git",
-                "reference": "6c8ae30315a318d264ae619078e5fd10f65c41da"
+                "reference": "d655636b88a001d1e78494331a94946a1225da41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/SyliusUserBridge/zipball/6c8ae30315a318d264ae619078e5fd10f65c41da",
-                "reference": "6c8ae30315a318d264ae619078e5fd10f65c41da",
+                "url": "https://api.github.com/repos/Monofony/SyliusUserBridge/zipball/d655636b88a001d1e78494331a94946a1225da41",
+                "reference": "d655636b88a001d1e78494331a94946a1225da41",
                 "shasum": ""
             },
             "require": {
-                "monofony/core-contracts": "^0.9",
+                "monofony/core-contracts": "^0.10",
                 "monofony/customer": "^1.10",
-                "php": "^8.0",
+                "php": "^8.1",
                 "sylius/user": "^1.12",
                 "sylius/user-bundle": "^1.12"
             },
@@ -4000,7 +4001,7 @@
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.10-dev"
                 }
             },
             "autoload": {
@@ -4018,9 +4019,9 @@
             "description": "Monofony Sylius User Bridge",
             "support": {
                 "issues": "https://github.com/Monofony/SyliusUserBridge/issues",
-                "source": "https://github.com/Monofony/SyliusUserBridge/tree/v0.9.0"
+                "source": "https://github.com/Monofony/SyliusUserBridge/tree/v0.10.1"
             },
-            "time": "2023-01-06T14:02:16+00:00"
+            "time": "2023-03-06T08:32:31+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -14254,16 +14255,16 @@
         },
         {
             "name": "monofony/behat-bridge",
-            "version": "v0.9.0",
+            "version": "v0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/BehatBridge.git",
-                "reference": "4b956fe45b6a8d55a1a47181f3f2f8f4d2819d2f"
+                "reference": "c25f9bbe485675c576b8da95dbc65a607eddddb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/BehatBridge/zipball/4b956fe45b6a8d55a1a47181f3f2f8f4d2819d2f",
-                "reference": "4b956fe45b6a8d55a1a47181f3f2f8f4d2819d2f",
+                "url": "https://api.github.com/repos/Monofony/BehatBridge/zipball/c25f9bbe485675c576b8da95dbc65a607eddddb4",
+                "reference": "c25f9bbe485675c576b8da95dbc65a607eddddb4",
                 "shasum": ""
             },
             "require": {
@@ -14274,24 +14275,25 @@
                 "friends-of-behat/mink-extension": "^2.4",
                 "friends-of-behat/page-object-extension": "^0.3",
                 "friends-of-behat/symfony-extension": "^2.0",
-                "monofony/core": "^0.9",
-                "php": "^8.0",
+                "monofony/core": "^0.10",
+                "php": "^8.1",
                 "sylius/user": "^1.12",
-                "symfony/finder": "^5.4 || ^6.0",
-                "symfony/mailer": "^5.4 || ^6.0",
-                "symfony/routing": "^5.4 || ^6.0",
+                "symfony/finder": "^6.1",
+                "symfony/mailer": "^6.1",
+                "symfony/routing": "^6.1",
                 "webmozart/assert": "^1.9"
             },
             "require-dev": {
                 "dmore/behat-chrome-extension": "^1.3",
                 "dmore/chrome-mink-driver": "^2.7",
+                "gesdinet/jwt-refresh-token-bundle": "^1.0",
                 "phpstan/phpstan": "^1.5",
                 "robertfausk/behat-panther-extension": "^1.1"
             },
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "0.10-dev"
                 }
             },
             "autoload": {
@@ -14309,9 +14311,9 @@
             "description": "Monofony Behat Bridge",
             "support": {
                 "issues": "https://github.com/Monofony/BehatBridge/issues",
-                "source": "https://github.com/Monofony/BehatBridge/tree/v0.9.0"
+                "source": "https://github.com/Monofony/BehatBridge/tree/v0.10.1"
             },
-            "time": "2023-01-06T14:02:00+00:00"
+            "time": "2023-03-06T08:32:13+00:00"
         },
         {
             "name": "myclabs/deep-copy",
