@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74f6d620cb4d729a2af892210999c798",
+    "content-hash": "20ba1eba0850603e6077d541c23dd196",
     "packages": [
         {
             "name": "api-platform/core",
@@ -5638,16 +5638,16 @@
         },
         {
             "name": "sylius/grid-bundle",
-            "version": "v1.12.0",
+            "version": "1.13.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusGridBundle.git",
-                "reference": "b6ca8d21640e772e2124ff8db30ed4cf69e9ee17"
+                "reference": "d317ced302680d637530bac994ada63764a7a13d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusGridBundle/zipball/b6ca8d21640e772e2124ff8db30ed4cf69e9ee17",
-                "reference": "b6ca8d21640e772e2124ff8db30ed4cf69e9ee17",
+                "url": "https://api.github.com/repos/Sylius/SyliusGridBundle/zipball/d317ced302680d637530bac994ada63764a7a13d",
+                "reference": "d317ced302680d637530bac994ada63764a7a13d",
                 "shasum": ""
             },
             "require": {
@@ -5694,7 +5694,7 @@
                 "phpunit/phpunit": "^9.5",
                 "rector/rector": "^0.13",
                 "sylius-labs/coding-standard": "^4.0",
-                "sylius/resource-bundle": "^1.10",
+                "sylius/resource-bundle": "dev-poc-new-resource-metadata",
                 "symfony/console": "^5.4 || ^6.0",
                 "symfony/dotenv": "^5.4 || ^6.0",
                 "symfony/maker-bundle": "^1.36",
@@ -5707,6 +5707,7 @@
             "suggest": {
                 "sylius/currency-bundle": "^1.7"
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -5750,9 +5751,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Sylius/SyliusGridBundle/issues",
-                "source": "https://github.com/Sylius/SyliusGridBundle/tree/v1.12.0"
+                "source": "https://github.com/Sylius/SyliusGridBundle/tree/1.13"
             },
-            "time": "2022-10-31T11:24:50+00:00"
+            "time": "2023-06-21T09:09:45+00:00"
         },
         {
             "name": "sylius/mailer-bundle",
@@ -5909,28 +5910,28 @@
         },
         {
             "name": "sylius/resource-bundle",
-            "version": "v1.10.2",
+            "version": "v1.11.0-ALPHA.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "a78f1e25c11c6e7ca6432eacc2eb44fa93b6b7ff"
+                "reference": "0d40366e234052028ffee6b36bfa22a00b7ba41a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/a78f1e25c11c6e7ca6432eacc2eb44fa93b6b7ff",
-                "reference": "a78f1e25c11c6e7ca6432eacc2eb44fa93b6b7ff",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/0d40366e234052028ffee6b36bfa22a00b7ba41a",
+                "reference": "0d40366e234052028ffee6b36bfa22a00b7ba41a",
                 "shasum": ""
             },
             "require": {
                 "babdev/pagerfanta-bundle": "^3.0",
                 "doctrine/collections": "^1.6",
-                "doctrine/doctrine-bundle": "^1.12 || ^2.0",
+                "doctrine/doctrine-bundle": "^2.0",
                 "doctrine/event-manager": "^1.1",
                 "doctrine/inflector": "^1.4 || ^2.0",
-                "doctrine/persistence": "^1.3 || ^2.0",
+                "doctrine/persistence": "^2.0 || ^3.0",
                 "friendsofsymfony/rest-bundle": "^3.0",
                 "gedmo/doctrine-extensions": "^2.4.12 || ^3.0",
-                "jms/serializer-bundle": "^3.5 || ^4.0",
+                "jms/serializer-bundle": "^3.5 || ^4.0 || ^5.0",
                 "php": "^8.0",
                 "sylius/registry": "^1.2",
                 "symfony/config": "^5.4 || ^6.0",
@@ -5940,6 +5941,7 @@
                 "symfony/framework-bundle": "^5.4 || ^6.0",
                 "symfony/http-foundation": "^5.4 || ^6.0",
                 "symfony/routing": "^5.4 || ^6.0",
+                "symfony/security-core": "^5.4 || ^6.0",
                 "symfony/security-csrf": "^5.4 || ^6.0",
                 "symfony/translation": "^5.4 || ^6.0",
                 "symfony/twig-bundle": "^5.4 || ^6.0",
@@ -5947,6 +5949,7 @@
                 "symfony/yaml": "^5.4 || ^6.0",
                 "webmozart/assert": "^1.8",
                 "willdurand/hateoas-bundle": "^2.0",
+                "willdurand/negotiation": "^3.1",
                 "winzou/state-machine-bundle": "^0.6"
             },
             "replace": {
@@ -5958,7 +5961,7 @@
                 "matthiasnoback/symfony-dependency-injection-test": "^4.2.1",
                 "pagerfanta/pagerfanta": "^3.0",
                 "pamil/phpspec-skip-example-extension": "^4.2",
-                "phpspec/phpspec": "^7.2",
+                "phpspec/phpspec": "^7.3",
                 "phpspec/prophecy-phpunit": "^2.0",
                 "phpstan/phpstan": "^1.7",
                 "phpstan/phpstan-phpunit": "^1.1",
@@ -5969,6 +5972,10 @@
                 "sylius/grid-bundle": "^1.7 || v1.12.0-ALPHA.1",
                 "symfony/dependency-injection": "^5.4 || ^6.0",
                 "symfony/dotenv": "^5.4 || ^6.0",
+                "symfony/messenger": "^5.4 || ^6.0",
+                "symfony/security-bundle": "^5.4 || ^6.0",
+                "symfony/serializer": "^5.4 || ^6.0",
+                "symfony/uid": "^5.4 || ^6.0",
                 "symfony/workflow": "^5.4 || ^6.0",
                 "twig/twig": "^2.12 || ^3.0",
                 "vimeo/psalm": "^4.22"
@@ -6017,9 +6024,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Sylius/SyliusResourceBundle/issues",
-                "source": "https://github.com/Sylius/SyliusResourceBundle/tree/v1.10.2"
+                "source": "https://github.com/Sylius/SyliusResourceBundle/tree/v1.11.0-ALPHA.1"
             },
-            "time": "2023-01-04T14:01:44+00:00"
+            "time": "2023-06-22T17:38:53+00:00"
         },
         {
             "name": "sylius/ui-bundle",
@@ -18236,7 +18243,9 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "sylius/mailer": 10
+        "sylius/grid-bundle": 20,
+        "sylius/mailer": 10,
+        "sylius/resource-bundle": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
