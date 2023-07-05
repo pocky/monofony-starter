@@ -1,6 +1,6 @@
 {% extends 'backend/layout.html.twig' %}
 
-{% set header = configuration.vars.header|default(metadata.applicationName~'.ui.new_'~metadata.name) %}
+{% set header = configuration.vars.header|default(metadata.applicationName ~ '.ui.new_' ~ metadata.name) %}
 
 {% block title %}{{ parent() }} {{ header|trans }}{% endblock %}
 

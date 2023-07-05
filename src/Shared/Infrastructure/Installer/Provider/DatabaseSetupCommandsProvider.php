@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Installer\Provider;
 
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -26,7 +27,9 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
         if (!$this->isDatabasePresent()) {
             return [
                 'doctrine:database:create',
-                'doctrine:migrations:migrate' => ['--no-interaction' => true],
+                'doctrine:migrations:migrate' => [
+                    '--no-interaction' => true,
+                ],
             ];
         }
 
@@ -76,14 +79,24 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
         $question = new ConfirmationQuestion('Would you like to reset it? (y/N) ', false);
         if ($questionHelper->ask($input, $output, $question)) {
             return [
-                'doctrine:database:drop' => ['--force' => true],
+                'doctrine:database:drop' => [
+                    '--force' => true,
+                ],
                 'doctrine:database:create',
-                'doctrine:migrations:migrate' => ['--no-interaction' => true],
+                'doctrine:migrations:migrate' => [
+                    '--no-interaction' => true,
+
+                ],
             ];
         }
 
         if (!$this->isSchemaPresent()) {
-            return ['doctrine:migrations:migrate' => ['--no-interaction' => true]];
+            return [
+                'doctrine:migrations:migrate' => [
+                    '--no-interaction' => true,
+
+                ],
+            ];
         }
 
         $outputStyle->writeln('Seems like your database contains schema.');
@@ -91,8 +104,13 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
         $question = new ConfirmationQuestion('Do you want to reset it? (y/N) ', false);
         if ($questionHelper->ask($input, $output, $question)) {
             return [
-                'doctrine:schema:drop' => ['--force' => true],
-                'doctrine:migrations:migrate' => ['--no-interaction' => true],
+                'doctrine:schema:drop' => [
+                    '--force' => true,
+                ],
+                'doctrine:migrations:migrate' => [
+                    '--no-interaction' => true,
+
+                ],
             ];
         }
 
@@ -104,9 +122,15 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
         return [] !== $this->getSchemaManager()->listTableNames();
     }
 
+    /**
+     * @throws Exception
+     */
     private function getDatabaseName(): string
     {
-        return $this->getEntityManager()->getConnection()->getDatabase();
+        $database = $this->getEntityManager()->getConnection()->getDatabase();
+        Assert::notNull($database);
+
+        return $database;
     }
 
     private function getSchemaManager(): AbstractSchemaManager

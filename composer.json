@@ -4,7 +4,7 @@
     "description": "A Minimal Monofony project to create applications.",
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "api-platform/core": "^3.1",
         "cocur/slugify": "^4.1",
         "doctrine/annotations": "^1.0",
@@ -79,6 +79,7 @@
         "friends-of-behat/symfony-extension": "^2.0",
         "friends-of-behat/variadic-extension": "^1.1",
         "friendsofphp/php-cs-fixer": "^3.0",
+        "friendsoftwig/twigcs": "^6.2",
         "lchrusciel/api-test-case": "^5.1",
         "monofony/behat-bridge": "^0.10",
         "phpspec/phpspec": "^7.2",

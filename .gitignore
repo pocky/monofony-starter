@@ -3,7 +3,7 @@
 
 /Makefile
 /Makefile.local
-
+/Makefile.test
 /infrastructure/dev/docker
 
 ###> dev environment ##
@@ -19,6 +19,7 @@
 /.env.test
 /.phpspec.yml.dist
 /behat.yml.dist
+/.twig_cs.dist.php
 ###< dev environment ###
 
 ###> docker environment ##
@@ -53,12 +54,6 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
-
-###> friendsofphp/php-cs-fixer ###
-/.php-cs-fixer.php
-/.php-cs-fixer.cache
-###< friendsofphp/php-cs-fixer ###
-
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml.dist
@@ -83,4 +78,6 @@ yarn-error.log
 
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
+/config/jwt/*-test.pem
+!/config/jwt/.gitignore
 ###< lexik/jwt-authentication-bundle ###

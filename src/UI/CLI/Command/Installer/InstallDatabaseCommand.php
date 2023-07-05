@@ -6,15 +6,19 @@ namespace App\UI\CLI\Command\Installer;
 
 use App\Shared\Infrastructure\Installer\Provider\DatabaseSetupCommandsProviderInterface;
 use App\UI\CLI\Command\Helper\CommandsRunner;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Webmozart\Assert\Assert;
 
+#[AsCommand(
+    name: 'app:install:database',
+)]
 class InstallDatabaseCommand extends Command
 {
-    protected static $defaultName = 'app:install:database';
-
     public function __construct(
         private readonly DatabaseSetupCommandsProviderInterface $databaseSetupCommandsProvider,
         private readonly CommandsRunner $commandsRunner,
@@ -46,19 +50,26 @@ EOT
     {
         $io = new SymfonyStyle($input, $output);
         $io->writeln(sprintf('Creating AppName database for environment <info>%s</info>.', $this->environment));
+
+        /** @var QuestionHelper $questionHelper */
+        $questionHelper = $this->getHelper('question');
         $commands = $this
             ->databaseSetupCommandsProvider
-            ->getCommands($input, $output, $this->getHelper('question'))
+            ->getCommands($input, $output, $questionHelper)
         ;
 
-        $this->commandsRunner->run($commands, $input, $output, $this->getApplication());
+        $application = $this->getApplication();
+        Assert::notNull($application);
+
+        $this->commandsRunner->run($commands, $input, $output, $application);
         $io->newLine();
 
         // Install Sample data command is available on monofony/fixtures-plugin
         if (class_exists(InstallSampleDataCommand::class)) {
             $name = InstallSampleDataCommand::getDefaultName();
+            Assert::notNull($name);
 
-            $commandExecutor = new CommandExecutor($input, $output, $this->getApplication());
+            $commandExecutor = new CommandExecutor($input, $output, $application);
             $commandExecutor->runCommand($name, [], $output);
         }
 
