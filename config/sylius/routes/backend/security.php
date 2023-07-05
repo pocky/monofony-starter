@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 return static function (RoutingConfigurator $routingConfigurator): void {
     $routingConfigurator
-        ->add('sylius_backend_login', '/login')
+        ->add('app_backend_login', '/login')
         ->defaults([
             '_controller' => 'sylius.controller.security::loginAction',
             '_sylius' => [
@@ -16,11 +16,11 @@ return static function (RoutingConfigurator $routingConfigurator): void {
         ]);
 
     $routingConfigurator
-        ->add('sylius_backend_login_check', '/login-check')
+        ->add('app_backend_login_check', '/login-check')
         ->defaults([
             '_controller' => 'sylius.controller.security::checkAction',
         ]);
 
     $routingConfigurator
-        ->add('sylius_backend_logout', '/logout');
+        ->add('app_backend_logout', '/logout');
 };

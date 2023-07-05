@@ -18,7 +18,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
         ],
         'password_hashers' => [
-           UserInterface::class => 'auto',
+            UserInterface::class => 'auto',
         ],
         'role_hierarchy' => [
             'ROLE_ADMIN' => 'ROLE_USER',
@@ -30,9 +30,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'provider' => 'sylius_admin_user_provider',
                 'form_login' => [
                     'provider' => 'sylius_admin_user_provider',
-                    'login_path' => 'sylius_backend_login',
-                    'check_path' => 'sylius_backend_login_check',
-                    'failure_path' => 'sylius_backend_login',
+                    'login_path' => 'app_backend_login',
+                    'check_path' => 'app_backend_login_check',
+                    'failure_path' => 'app_backend_login',
                     'default_target_path' => 'app_backend_dashboard',
                     'use_forward' => false,
                     'use_referer' => false,
@@ -45,8 +45,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     'remember_me_parameter' => '_remember_me',
                 ],
                 'logout' => [
-                    'path' => 'sylius_backend_logout',
-                    'target' => 'sylius_backend_login',
+                    'path' => 'app_backend_logout',
+                    'target' => 'app_backend_login',
                 ],
             ],
             'api_login' => [

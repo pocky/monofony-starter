@@ -22,7 +22,7 @@ final class AdminUserGrid extends AbstractGrid implements ResourceAwareGridInter
 {
     public static function getName(): string
     {
-        return 'sylius_backend_admin_user';
+        return 'app_backend_admin_user';
     }
 
     public function buildGrid(GridBuilderInterface $gridBuilder): void

@@ -1,5 +1,6 @@
 includes:
 	- vendor/phpstan/phpstan-doctrine/extension.neon
+	- vendor/phpstan/phpstan-doctrine/rules.neon
 	- vendor/phpstan/phpstan-symfony/extension.neon
 	- vendor/phpstan/phpstan-webmozart-assert/extension.neon
 
@@ -7,13 +8,21 @@ parameters:
     level: max
 
     reportUnmatchedIgnoredErrors: false
+    checkGenericClassInNonGenericObjectType: false
 
     symfony:
-         container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
+        container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
+
+    doctrine:
+        ormRepositoryClass: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
 
     excludePaths:
         # Makes PHPStan crash
         - '**/DependencyInjection/Configuration.php'
+
+        # Maker templates
+        - '**/src/Shared/Infrastructure/Maker/Resources/skeleton/**'
+        - '**/src/Shared/Infrastructure/Maker/**'
 
         # Test dependencies
         - 'spec/**.php'
@@ -34,3 +43,9 @@ parameters:
         # These packages aren't in require-dev of the global package
         - '/Class Doctrine\\Bundle\\MongoDBBundle/'
         - '/Class Doctrine\\Bundle\\PHPCRBundle/'
+
+        # Reflection
+        - '/Call to an undefined method ReflectionType::/'
+
+        # Array
+        - '/type specified in iterable type array/'

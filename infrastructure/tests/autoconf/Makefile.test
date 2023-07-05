@@ -1,0 +1,27 @@
+##
+## Behat
+##-----------------------------------------------------------------
+behat: ## Run all Behat tests
+	$(DOCKER_COMPOSE) exec php vendor/bin/behat --colors --strict --no-interaction -vvv -f progress
+
+behat-backend: ## Run all backend tests
+	$(DOCKER_COMPOSE) exec php vendor/bin/behat --colors --strict --no-interaction -vvv -f progress --tags='@backend'
+
+behat-api: ## Run all api tests
+	$(DOCKER_COMPOSE) exec php vendor/bin/behat --colors --strict --no-interaction -vvv -f progress --tags='@api'
+
+behat-cli: ## Run all cli tests
+	$(DOCKER_COMPOSE) exec php vendor/bin/behat --colors --strict --no-interaction -vvv -f progress --tags='@cli'
+
+behat-security: ## Run all security tests
+	$(DOCKER_COMPOSE) exec php vendor/bin/behat --colors --strict --no-interaction -vvv -f progress --tags='@security'
+
+##
+## Dependencies
+##-----------------------------------------------------------------
+.PHONY: install-test
+
+install-test: build start ## Install test dependencies
+	$(DOCKER_COMPOSE) exec php bin/console doctrine:database:create --if-not-exists --env=test
+	$(DOCKER_COMPOSE) exec php bin/console doctrine:schema:update --force --env=test
+	$(DOCKER_COMPOSE) exec php bin/console doctrine:fixtures:load --no-interaction --env=test

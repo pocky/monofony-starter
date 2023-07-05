@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\UI\CLI\Command\Installer;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -11,9 +12,11 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Process\Exception\RuntimeException;
 use Webmozart\Assert\Assert;
 
+#[AsCommand(
+    name: 'app:install',
+)]
 class InstallCommand extends Command
 {
-    protected static $defaultName = 'app:install';
     private ?CommandExecutor $commandExecutor = null;
 
     /**
@@ -55,7 +58,10 @@ EOT
      */
     protected function initialize(InputInterface $input, OutputInterface $output): void
     {
-        $this->commandExecutor = new CommandExecutor($input, $output, $this->getApplication());
+        $application = $this->getApplication();
+        Assert::notNull($application);
+
+        $this->commandExecutor = new CommandExecutor($input, $output, $application);
     }
 
     /**

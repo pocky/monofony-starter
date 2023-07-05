@@ -5,17 +5,20 @@ declare(strict_types=1);
 namespace App\UI\CLI\Command\Installer;
 
 use App\UI\CLI\Command\Helper\CommandsRunner;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Webmozart\Assert\Assert;
 
+#[AsCommand(
+    name: 'app:install:sample-data',
+)]
 final class InstallSampleDataCommand extends Command
 {
-    protected static $defaultName = 'app:install:sample-data';
-
     public function __construct(
         private readonly CommandsRunner $commandsRunner,
         private readonly string $environment,
@@ -61,10 +64,15 @@ EOT
         }
 
         $commands = [
-            'doctrine:fixtures:load' => ['--no-interaction' => true],
+            'doctrine:fixtures:load' => [
+                '--no-interaction' => true,
+            ],
         ];
 
-        $this->commandsRunner->run($commands, $input, $output, $this->getApplication());
+        $application = $this->getApplication();
+        Assert::notNull($application);
+
+        $this->commandsRunner->run($commands, $input, $output, $application);
         $io->newLine(2);
 
         return 0;

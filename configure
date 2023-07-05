@@ -61,22 +61,23 @@ if [ $clean = true ]; then
   echo "Clean old files"
 
   preserve=(
-    .env
-    .env.local
-    .gitattributes
-    .gitignore
-    config-builder.js
-    composer.json
-    composer.lock
-    configure
-    docker-dev.lock
-    LICENSE
-    package.json
-    package-lock.json
-    README.md
-    symfony.lock
-    webpack.config.js
-  )
+      .env
+      .env.local
+      .gitattributes
+      .gitignore
+      config-builder.js
+      composer.json
+      composer.lock
+      configure
+      docker-dev.lock
+      LICENSE
+      Makefile.local
+      package.json
+      package-lock.json
+      README.md
+      symfony.lock
+      webpack.config.js
+    )
 
   find . -maxdepth 1 -type f $(for i in ${preserve[*]}; do echo "-not -name ${i}"; done) -exec rm -f "{}" \;
 fi

@@ -1,6 +1,5 @@
 .DEFAULT_GOAL := help
 EXECJS?=
-EXECPHP?=
 
 ##
 ## Project setup
@@ -9,14 +8,14 @@ EXECPHP?=
 
 install: start ## Install and start the project with vendors update
 
-start: vendor public/build ## Start the project with vendors update
+start: public/build ## Start the project with vendors update
 
 stop: ## Do nothing
 
 reset: clear start ## Stop clear and install
 
 clear: stop ## clear project
-	rm -Rf node_modules npm-cache vendor public/build
+	rm -Rf node_modules npm-cache public/build
 
 ##
 ## Assets
@@ -38,12 +37,6 @@ node_modules: package-lock.json
 package-lock.json: package.json
 	@echo JS vendors are not up to date.
 
-vendor: composer.lock
-	$(EXECPHP) composer install --no-interaction
-
-composer.lock: composer.json
-	@echo PHP vendors are not up to date.
-
 public/build: assets
 
 ##
@@ -54,4 +47,5 @@ public/build: assets
 help:
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
+-include Makefile.test
 -include Makefile.local

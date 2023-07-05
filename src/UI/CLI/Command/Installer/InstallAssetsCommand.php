@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace App\UI\CLI\Command\Installer;
 
 use App\UI\CLI\Command\Helper\CommandsRunner;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Webmozart\Assert\Assert;
 
+#[AsCommand(
+    name: 'app:install:assets',
+)]
 class InstallAssetsCommand extends Command
 {
-    protected static $defaultName = 'app:install:assets';
-
     public function __construct(
         private readonly CommandsRunner $commandsRunner,
         private readonly string $environment,
@@ -45,8 +48,11 @@ EOT
         $io = new SymfonyStyle($input, $output);
         $io->title(sprintf('Installing AppName assets for environment <info>%s</info>.', $this->environment));
 
+        $application = $this->getApplication();
+        Assert::notNull($application);
+
         $commands = ['assets:install'];
-        $this->commandsRunner->run($commands, $input, $output, $this->getApplication());
+        $this->commandsRunner->run($commands, $input, $output, $application);
 
         return 0;
     }

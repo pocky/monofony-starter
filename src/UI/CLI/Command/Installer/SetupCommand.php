@@ -8,6 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 use Monofony\Contracts\Core\Model\User\AdminUserInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\User\Repository\UserRepositoryInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,10 +21,11 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
+#[AsCommand(
+    name: 'app:install:setup',
+)]
 final class SetupCommand extends Command
 {
-    protected static $defaultName = 'app:install:setup';
-
     public function __construct(
         private readonly ObjectManager $adminUserManager,
         private readonly FactoryInterface $adminUserFactory,
@@ -63,7 +65,9 @@ EOT
         $io->writeln('Create your administrator account.');
 
         try {
-            $user = $this->configureNewUser($this->adminUserFactory->createNew(), $input, $output);
+            /** @var AdminUserInterface $user */
+            $user = $this->adminUserFactory->createNew();
+            $user = $this->configureNewUser($user, $input, $output);
         } catch (\InvalidArgumentException) {
             return;
         }
@@ -91,11 +95,14 @@ EOT
             return $user;
         }
 
+        /** @var QuestionHelper $questionHelper */
         $questionHelper = $this->getHelper('question');
 
         do {
             $question = $this->createEmailQuestion();
             $email = $questionHelper->ask($input, $output, $question);
+            Assert::string($email);
+
             $exists = null !== $this->adminUserRepository->findOneByEmail($email);
 
             if ($exists) {
@@ -114,10 +121,9 @@ EOT
     {
         return (new Question('E-mail:'))
             ->setValidator(function ($value) {
-                /** @var ConstraintViolationListInterface $errors */
                 $errors = $this->validator->validate((string) $value, [new Email(), new NotBlank()]);
                 foreach ($errors as $error) {
-                    throw new \DomainException($error->getMessage());
+                    throw new \DomainException((string) $error->getMessage());
                 }
 
                 return $value;
@@ -137,6 +143,8 @@ EOT
             $confirmPasswordQuestion = $this->createPasswordQuestion('Confirm password:', $validator);
 
             $password = $questionHelper->ask($input, $output, $passwordQuestion);
+            Assert::string($password);
+
             $repeatedPassword = $questionHelper->ask($input, $output, $confirmPasswordQuestion);
 
             if ($repeatedPassword !== $password) {
@@ -153,7 +161,7 @@ EOT
             /** @var ConstraintViolationListInterface $errors */
             $errors = $this->validator->validate($value, [new NotBlank()]);
             foreach ($errors as $error) {
-                throw new \DomainException($error->getMessage());
+                throw new \DomainException((string) $error->getMessage());
             }
 
             return $value;

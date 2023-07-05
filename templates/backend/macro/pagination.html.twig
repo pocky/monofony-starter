@@ -2,7 +2,7 @@
 <a class="{% if number == paginator.currentPage %}active {% endif %}item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge(app.request.query.all)|merge({'page': number})) }}">{{ number }}</a>
 {% endmacro %}
 
-{% macro render(paginator, options)  %}
+{% macro render(paginator, options) %}
     {% import _self as pagination %}
 
     {% if paginator.haveToPaginate() %}

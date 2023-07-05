@@ -9,6 +9,7 @@ use Monofony\Contracts\Core\Model\User\AdminAvatarInterface;
 use Monofony\Contracts\Core\Model\User\AdminUserInterface;
 use Sylius\Component\Resource\Annotation\SyliusCrudRoutes;
 use Sylius\Component\User\Model\User as BaseUser;
+use Webmozart\Assert\Assert;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'sylius_admin_user')]
@@ -18,7 +19,7 @@ use Sylius\Component\User\Model\User as BaseUser;
     section: 'backend',
     redirect: 'index',
     templates: 'backend/crud',
-    grid: 'sylius_backend_admin_user',
+    grid: 'app_backend_admin_user',
     except: ['show'],
     vars: [
         'all' => [
@@ -52,7 +53,10 @@ class AdminUser extends BaseUser implements AdminUserInterface
 
     public function getUserIdentifier(): string
     {
-        return $this->getUsername();
+        $username = $this->getUsername();
+        Assert::notNull($username);
+
+        return $username;
     }
 
     public function getLastName(): ?string
