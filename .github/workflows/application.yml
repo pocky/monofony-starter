@@ -9,6 +9,10 @@ on:
         -
             cron: "0 1 * * 6" # Run at 1am every Saturday
 
+permissions:
+    contents: write
+    pull-requests: write
+
 jobs:
     static-checks:
         runs-on: ubuntu-latest
@@ -97,6 +101,8 @@ jobs:
 
     test-application:
         runs-on: ubuntu-22.04
+
+        needs: [static-checks]
 
         name: "Test application (PHP ${{ matrix.php }}, Behat driver ${{ matrix.behat_driver }}), PostgreSQL ${{ matrix.mysql }})"
 
@@ -289,3 +295,32 @@ jobs:
                     name: "Symfony logs (PHP ${{ matrix.php }})"
                     path: var/log/
                     if-no-files-found: ignore
+
+    dependabot-major-minor:
+        runs-on: ubuntu-latest
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        needs: [static-checks, test-application]
+        steps:
+            -   name: Check out code
+                uses: actions/checkout@v3
+
+            -   name: Auto-merge major/minor for Dependabot PRs
+                run: gh pr merge --auto --merge "$PR_URL"
+                if: ${{steps.metadata.outputs.update-type != 'version-update:semver-patch'}}
+                env:
+                    PR_URL: ${{github.event.pull_request.html_url}}
+                    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    dependabot-patch:
+        runs-on: ubuntu-latest
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        steps:
+            -   name: Check out code
+                uses: actions/checkout@v3
+
+            -   name: Auto-merge major/minor for Dependabot PRs
+                run: gh pr merge --auto --merge "$PR_URL"
+                if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
+                env:
+                    PR_URL: ${{github.event.pull_request.html_url}}
+                    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
