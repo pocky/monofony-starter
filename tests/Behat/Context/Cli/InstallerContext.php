@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Behat\Context\Cli;
 
-use App\UI\CLI\Command\Installer\SetupCommand;
+use App\Shared\Infrastructure\UI\CLI\Command\Installer\SetupCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\HttpKernel\KernelInterface;

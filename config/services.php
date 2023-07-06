@@ -36,8 +36,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services
         ->load(
-            'App\\UI\\Backend\\Dashboard\\Controller\\',
-            __DIR__ . '/../src/UI/Backend/Dashboard/Controller',
+            'App\\Shared\\Infrastructure\\UI\\Backend\\Dashboard\\Controller\\',
+            __DIR__ . '/../src/Shared/Infrastructure/UI/Backend/Dashboard/Controller',
         )
         ->tag('controller.service_arguments');
 
