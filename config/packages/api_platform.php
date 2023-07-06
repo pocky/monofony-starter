@@ -8,7 +8,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('api_platform', [
         'mapping' => [
             'paths' => [
-                '%kernel.project_dir%/src/Security/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
+                '%kernel.project_dir%/src/Security/Infrastructure/Persistence/Doctrine/ORM/Entity',
             ],
         ],
         'patch_formats' => [

@@ -7,7 +7,7 @@ namespace App\Tests\Behat\Page\Backend\Administrator;
 use Monofony\Bridge\Behat\Crud\AbstractUpdatePage;
 use Monofony\Bridge\Behat\Crud\UpdatePageInterface;
 
-class UpdatePage extends AbstractUpdatePage implements UpdatePageInterface
+class UpdatePage extends AbstractUpdatePage
 {
     /**
      * {@inheritdoc}

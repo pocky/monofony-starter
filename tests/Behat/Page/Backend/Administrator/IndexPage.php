@@ -7,7 +7,7 @@ namespace App\Tests\Behat\Page\Backend\Administrator;
 use Monofony\Bridge\Behat\Crud\AbstractIndexPage;
 use Monofony\Bridge\Behat\Crud\IndexPageInterface;
 
-class IndexPage extends AbstractIndexPage implements IndexPageInterface
+class IndexPage extends AbstractIndexPage
 {
     /**
      * {@inheritdoc}

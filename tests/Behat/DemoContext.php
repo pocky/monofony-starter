@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 final class DemoContext implements Context
 {
-    private ?\Symfony\Component\HttpFoundation\Response $response = null;
+    private ?Response $response = null;
 
     public function __construct(private readonly KernelInterface $kernel)
     {
@@ -36,7 +36,7 @@ final class DemoContext implements Context
      */
     public function theResponseShouldBeReceived(): void
     {
-        if (!$this->response instanceof \Symfony\Component\HttpFoundation\Response) {
+        if (!$this->response instanceof Response) {
             throw new \RuntimeException('No response received');
         }
     }
