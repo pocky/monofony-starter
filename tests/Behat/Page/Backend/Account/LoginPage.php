@@ -30,7 +30,7 @@ class LoginPage extends SymfonyPage
 
     public function getRouteName(): string
     {
-        return 'sylius_backend_login';
+        return 'app_backend_login';
     }
 
     protected function getDefinedElements(): array
