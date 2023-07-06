@@ -11,11 +11,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class CommandsRunner
+final readonly class CommandsRunner
 {
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private readonly ProgressBarCreator $progressBarCreator,
+        private EntityManagerInterface $entityManager,
+        private ProgressBarCreator $progressBarCreator,
     ) {
     }
 

@@ -9,14 +9,14 @@ use Symfony\Component\Mime\Address;
 final class MailerContext
 {
     /** @var Address[] */
-    private array $recipients;
+    private readonly array $recipients;
 
     /**
      * @param array<string,string> $parameters
      */
     public function __construct(
-        private string $subject,
-        private array $parameters = [],
+        private readonly string $subject,
+        private readonly array $parameters = [],
         Address ...$address,
     ) {
         $this->recipients = $address;

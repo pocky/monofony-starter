@@ -11,13 +11,13 @@ use Monofony\Bridge\Behat\Service\SharedStorageInterface;
 use Sylius\Component\User\Repository\UserRepositoryInterface;
 use Webmozart\Assert\Assert;
 
-final class AdminSecurityContext implements Context
+final readonly class AdminSecurityContext implements Context
 {
     public function __construct(
-        private readonly SharedStorageInterface $sharedStorage,
-        private readonly AdminSecurityServiceInterface $securityService,
-        private readonly AdminUserFactory $userFactory,
-        private readonly UserRepositoryInterface $adminUserRepository,
+        private SharedStorageInterface $sharedStorage,
+        private AdminSecurityServiceInterface $securityService,
+        private AdminUserFactory $userFactory,
+        private UserRepositoryInterface $adminUserRepository,
     ) {
     }
 

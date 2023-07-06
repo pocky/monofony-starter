@@ -14,6 +14,7 @@ use Webmozart\Assert\Assert;
 
 #[AsCommand(
     name: 'app:install',
+    description: 'Installs AppName in your preferred environment.',
 )]
 class InstallCommand extends Command
 {
@@ -44,7 +45,7 @@ class InstallCommand extends Command
      */
     protected function configure(): void
     {
-        $this->setDescription('Installs AppName in your preferred environment.')
+        $this
             ->setHelp(
                 <<<'EOT'
 The <info>%command.name%</info> command installs AppName.
@@ -99,7 +100,7 @@ EOT
         $io->success($this->getProperFinalMessage($errored));
         $io->info('You can now open your website at the following path under the website root: /');
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     private function getProperFinalMessage(bool $errored): string

@@ -6,14 +6,14 @@ namespace App\Shared\Infrastructure\Mailer;
 
 use Symfony\Component\Mime\Address;
 
-final class Email
+final readonly class Email
 {
     public function __construct(
-        private readonly Address $receiverEmail,
-        private readonly string $subject,
-        private readonly string $textTemplate,
-        private readonly string $htmlTemplate,
-        private readonly array $parameters,
+        private Address $receiverEmail,
+        private string $subject,
+        private string $textTemplate,
+        private string $htmlTemplate,
+        private array $parameters,
     ) {
     }
 

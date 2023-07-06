@@ -16,6 +16,7 @@ use Webmozart\Assert\Assert;
 
 #[AsCommand(
     name: 'app:install:sample-data',
+    description: 'Installs sample data into AppName.',
 )]
 final class InstallSampleDataCommand extends Command
 {
@@ -31,7 +32,7 @@ final class InstallSampleDataCommand extends Command
      */
     protected function configure(): void
     {
-        $this->setDescription('Install sample data into AppName.')
+        $this
             ->setHelp(
                 <<<'EOT'
 The <info>%command.name%</info> command loads the sample data for AppName.
@@ -60,7 +61,7 @@ EOT
         if (!$questionHelper->ask($input, $output, new ConfirmationQuestion('Continue? (y/N) ', false))) {
             $io->writeln('Cancelled loading sample data.');
 
-            return 0;
+            return Command::SUCCESS;
         }
 
         $commands = [
@@ -75,6 +76,6 @@ EOT
         $this->commandsRunner->run($commands, $input, $output, $application);
         $io->newLine(2);
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

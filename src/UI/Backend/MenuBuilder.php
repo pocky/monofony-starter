@@ -8,10 +8,10 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Monofony\Component\Admin\Menu\AdminMenuBuilderInterface;
 
-final class MenuBuilder implements AdminMenuBuilderInterface
+final readonly class MenuBuilder implements AdminMenuBuilderInterface
 {
     public function __construct(
-        private readonly FactoryInterface $factory,
+        private FactoryInterface $factory,
     ) {
     }
 

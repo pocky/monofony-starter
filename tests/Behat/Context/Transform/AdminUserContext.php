@@ -9,9 +9,9 @@ use Monofony\Bridge\Behat\Service\SharedStorageInterface;
 use Monofony\Contracts\Core\Model\User\AdminUserInterface;
 use Zenstruck\Foundry\Proxy;
 
-final class AdminUserContext implements Context
+final readonly class AdminUserContext implements Context
 {
-    public function __construct(private readonly SharedStorageInterface $sharedStorage)
+    public function __construct(private SharedStorageInterface $sharedStorage)
     {
     }
 

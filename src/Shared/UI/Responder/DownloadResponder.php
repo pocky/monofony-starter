@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-final class DownloadResponder
+final readonly class DownloadResponder
 {
     public function __construct(
-        private readonly FileDownloader $fileDownloader,
+        private FileDownloader $fileDownloader,
     ) {
     }
 

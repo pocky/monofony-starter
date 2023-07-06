@@ -73,7 +73,7 @@ jobs:
 
             -
                 name: Validate coding standard
-                run: vendor/bin/ecs check src tests spec config
+                run: vendor/bin/ecs check
                 if: always() && steps.end-of-setup.outcome == 'success'
 
             -
@@ -82,7 +82,7 @@ jobs:
                 if: always() && steps.end-of-setup.outcome == 'success'
 
             -
-                name: Validate Yaml files
+                name: Validate Yaml filesgit
                 run: bin/console lint:yaml config --parse-tags
                 if: always() && steps.end-of-setup.outcome == 'success'
 

@@ -7,10 +7,10 @@ namespace App\Shared\Infrastructure\FileManager;
 use League\Flysystem\FilesystemOperator;
 use Ramsey\Uuid\Uuid;
 
-final class FileUploader
+final readonly class FileUploader
 {
     public function __construct(
-        private readonly FilesystemOperator $filesystemOperator,
+        private FilesystemOperator $filesystemOperator,
     ) {
     }
 

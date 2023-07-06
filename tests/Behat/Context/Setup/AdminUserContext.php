@@ -8,11 +8,11 @@ use App\Security\Shared\Infrastructure\Persistence\Fixture\Factory\AdminUserFact
 use Behat\Behat\Context\Context;
 use Monofony\Bridge\Behat\Service\SharedStorageInterface;
 
-final class AdminUserContext implements Context
+final readonly class AdminUserContext implements Context
 {
     public function __construct(
-        private readonly SharedStorageInterface $sharedStorage,
-        private readonly AdminUserFactory $adminUserFactory,
+        private SharedStorageInterface $sharedStorage,
+        private AdminUserFactory $adminUserFactory,
     ) {
     }
 

@@ -10,9 +10,9 @@ use Doctrine\ORM\Events;
 use Sylius\Component\User\Canonicalizer\CanonicalizerInterface;
 use Sylius\Component\User\Model\UserInterface;
 
-final class CanonicalizerSubscriber implements EventSubscriber
+final readonly class CanonicalizerSubscriber implements EventSubscriber
 {
-    public function __construct(private readonly CanonicalizerInterface $canonicalizer)
+    public function __construct(private CanonicalizerInterface $canonicalizer)
     {
     }
 
