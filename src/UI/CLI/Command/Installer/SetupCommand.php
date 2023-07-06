@@ -23,6 +23,7 @@ use Webmozart\Assert\Assert;
 
 #[AsCommand(
     name: 'app:install:setup',
+    description: 'AppName configuration setup.',
 )]
 final class SetupCommand extends Command
 {
@@ -40,7 +41,7 @@ final class SetupCommand extends Command
      */
     protected function configure(): void
     {
-        $this->setDescription('AppName configuration setup.')
+        $this
             ->setHelp(
                 <<<'EOT'
 The <info>%command.name%</info> command allows user to configure basic AppName data.
@@ -56,7 +57,7 @@ EOT
     {
         $this->setupAdministratorUser($input, $output);
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     protected function setupAdministratorUser(InputInterface $input, OutputInterface $output): void
@@ -103,7 +104,7 @@ EOT
             $email = $questionHelper->ask($input, $output, $question);
             Assert::string($email);
 
-            $exists = null !== $this->adminUserRepository->findOneByEmail($email);
+            $exists = $this->adminUserRepository->findOneByEmail($email) instanceof \Sylius\Component\User\Model\UserInterface;
 
             if ($exists) {
                 $output->writeln('<error>E-Mail is already in use!</error>');
@@ -129,7 +130,7 @@ EOT
                 return $value;
             })
             ->setMaxAttempts(3)
-            ;
+        ;
     }
 
     private function getAdministratorPassword(InputInterface $input, OutputInterface $output): string
@@ -175,6 +176,6 @@ EOT
             ->setMaxAttempts(3)
             ->setHidden(true)
             ->setHiddenFallback(false)
-            ;
+        ;
     }
 }

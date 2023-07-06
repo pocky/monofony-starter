@@ -36,7 +36,7 @@ final class DemoContext implements Context
      */
     public function theResponseShouldBeReceived(): void
     {
-        if ($this->response === null) {
+        if (!$this->response instanceof \Symfony\Component\HttpFoundation\Response) {
             throw new \RuntimeException('No response received');
         }
     }

@@ -14,6 +14,7 @@ use Webmozart\Assert\Assert;
 
 #[AsCommand(
     name: 'app:install:assets',
+    description: 'Installs all AppName assets.',
 )]
 class InstallAssetsCommand extends Command
 {
@@ -29,7 +30,7 @@ class InstallAssetsCommand extends Command
      */
     protected function configure(): void
     {
-        $this->setDescription('Installs all AppName assets.')
+        $this
             ->setHelp(
                 <<<'EOT'
 The <info>%command.name%</info> command downloads and installs all AppName media assets.
@@ -54,6 +55,6 @@ EOT
         $commands = ['assets:install'];
         $this->commandsRunner->run($commands, $input, $output, $application);
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

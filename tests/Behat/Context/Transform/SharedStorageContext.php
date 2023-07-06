@@ -8,9 +8,9 @@ use Behat\Behat\Context\Context;
 use Monofony\Bridge\Behat\Service\SharedStorageInterface;
 use Monofony\Component\Core\Formatter\StringInflector;
 
-final class SharedStorageContext implements Context
+final readonly class SharedStorageContext implements Context
 {
-    public function __construct(private readonly SharedStorageInterface $sharedStorage)
+    public function __construct(private SharedStorageInterface $sharedStorage)
     {
     }
 

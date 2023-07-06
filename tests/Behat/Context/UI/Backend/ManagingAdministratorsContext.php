@@ -17,9 +17,9 @@ use Monofony\Contracts\Core\Model\User\AdminUserInterface;
 use Webmozart\Assert\Assert;
 use Zenstruck\Foundry\Proxy;
 
-final class ManagingAdministratorsContext implements Context
+final readonly class ManagingAdministratorsContext implements Context
 {
-    public function __construct(private readonly CreatePage $createPage, private readonly IndexPage $indexPage, private readonly UpdatePage $updatePage, private readonly TopBarElement $topBarElement, private readonly NotificationCheckerInterface $notificationChecker, private readonly SharedStorageInterface $sharedStorage, private readonly ObjectManager $objectManager)
+    public function __construct(private CreatePage $createPage, private IndexPage $indexPage, private UpdatePage $updatePage, private TopBarElement $topBarElement, private NotificationCheckerInterface $notificationChecker, private SharedStorageInterface $sharedStorage, private ObjectManager $objectManager)
     {
     }
 

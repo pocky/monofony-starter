@@ -14,7 +14,7 @@ use PhpCsFixer\Fixer\PhpUnit\PhpUnitTestClassRequiresCoversFixer;
 use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\Strict\StrictComparisonFixer;
 use PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer;
-use PhpCsFixer\RuleSet\Sets\PHP81MigrationSet;
+use PhpCsFixer\RuleSet\Sets\PHP82MigrationSet;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
@@ -24,7 +24,8 @@ return static function (ECSConfig $ecsConfig): void {
 
     $ecsConfig->paths([
         __DIR__.'/src',
-        __DIR__.'/config'
+        __DIR__.'/config',
+        __DIR__.'/tests',
     ]);
 
     $services = $ecsConfig->services();
@@ -33,7 +34,7 @@ return static function (ECSConfig $ecsConfig): void {
     $services->set(OrderedImportsFixer::class);
     $services->set(NoUnusedImportsFixer::class);
     $services->set(StrictComparisonFixer::class);
-    $services->set(PHP81MigrationSet::class);
+    $services->set(PHP82MigrationSet::class);
 
     $services->set(ArraySyntaxFixer::class)
         ->call('configure', [[

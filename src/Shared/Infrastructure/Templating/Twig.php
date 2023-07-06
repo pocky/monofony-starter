@@ -6,9 +6,9 @@ namespace App\Shared\Infrastructure\Templating;
 
 use Twig\Environment;
 
-final class Twig implements TemplatingInterface
+final readonly class Twig implements TemplatingInterface
 {
-    public function __construct(private readonly Environment $twig)
+    public function __construct(private Environment $twig)
     {
     }
 

@@ -6,10 +6,10 @@ namespace App\Shared\Infrastructure\FileManager;
 
 use League\Flysystem\FilesystemOperator;
 
-final class FileDownloader
+final readonly class FileDownloader
 {
     public function __construct(
-        private readonly FilesystemOperator $filesystemOperator,
+        private FilesystemOperator $filesystemOperator,
     ) {
     }
 

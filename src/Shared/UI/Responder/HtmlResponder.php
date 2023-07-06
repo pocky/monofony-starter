@@ -7,10 +7,10 @@ namespace App\Shared\UI\Responder;
 use App\Shared\Infrastructure\Templating\TemplatingInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-final class HtmlResponder
+final readonly class HtmlResponder
 {
     public function __construct(
-        private readonly TemplatingInterface $templating,
+        private TemplatingInterface $templating,
     ) {
     }
 

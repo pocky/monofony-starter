@@ -16,6 +16,7 @@ use Webmozart\Assert\Assert;
 
 #[AsCommand(
     name: 'app:install:database',
+    description: 'Installs AppName database.',
 )]
 class InstallDatabaseCommand extends Command
 {
@@ -32,7 +33,7 @@ class InstallDatabaseCommand extends Command
      */
     protected function configure(): void
     {
-        $this->setDescription('Install AppName database.')
+        $this
             ->setHelp(
                 <<<'EOT'
 The <info>%command.name%</info> command creates AppName database.
@@ -73,6 +74,6 @@ EOT
             $commandExecutor->runCommand($name, [], $output);
         }
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

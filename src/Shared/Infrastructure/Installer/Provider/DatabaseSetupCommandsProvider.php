@@ -15,10 +15,10 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
-final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProviderInterface
+final readonly class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProviderInterface
 {
     public function __construct(
-        private readonly ManagerRegistry $doctrineRegistry,
+        private ManagerRegistry $doctrineRegistry,
     ) {
     }
 

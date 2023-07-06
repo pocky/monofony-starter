@@ -8,9 +8,9 @@ use Behat\Behat\Context\Context;
 use Monofony\Bridge\Behat\NotificationType;
 use Monofony\Bridge\Behat\Service\NotificationCheckerInterface;
 
-final class NotificationContext implements Context
+final readonly class NotificationContext implements Context
 {
-    public function __construct(private readonly NotificationCheckerInterface $notificationChecker)
+    public function __construct(private NotificationCheckerInterface $notificationChecker)
     {
     }
 

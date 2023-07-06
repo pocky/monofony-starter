@@ -42,7 +42,7 @@ class SymfonyMailer implements MailerInterface
 
         try {
             $this->mailer->send($mail);
-        } catch (TransportExceptionInterface $exception) {
+        } catch (TransportExceptionInterface) {
             return false;
         }
 

@@ -8,13 +8,13 @@ use App\Shared\Application\Gateway\GatewayRequest;
 use App\Shared\Application\Gateway\GatewayResponse;
 use Webmozart\Assert\Assert;
 
-final class Pipe
+final readonly class Pipe
 {
     /**
      * @param array<callable> $middlewares
      */
     public function __construct(
-        private readonly array $middlewares = [],
+        private array $middlewares = [],
     ) {
     }
 

@@ -73,7 +73,7 @@ final class CommandDirectoryChecker
 
         foreach (new RecursiveDirectoryIterator(
             $directory,
-            \FilesystemIterator::CURRENT_AS_FILEINFO,
+            \FilesystemIterator::CURRENT_AS_FILEINFO | \FilesystemIterator::SKIP_DOTS,
         ) as $subdirectory) {
             if ('.' !== $subdirectory->getFilename()[0]) {
                 $this->changePermissionsRecursively($subdirectory->getPathname(), $output);
