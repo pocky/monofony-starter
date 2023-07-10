@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Maker\Command\Doctrine\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
 use Doctrine\DBAL\Types\Type;
 use Sylius\Component\Resource\Annotation\SyliusCrudRoutes;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
@@ -168,13 +168,11 @@ final class Maker extends AbstractMaker implements InputAwareMakerInterface
             $this->entityClassGenerator->manipulateSyliusModel(
                 $configuration,
                 $entityClassDetails,
-                $io,
             );
 
             $this->entityClassGenerator->manipulateSyliusRepository(
                 $configuration,
                 $repositoryClassDetails,
-                $io,
             );
 
             $io->text([
@@ -295,10 +293,17 @@ final class Maker extends AbstractMaker implements InputAwareMakerInterface
 
     public function configureDependencies(DependencyBuilder $dependencies, InputInterface $input = null): void
     {
-        if (null !== $input && $input->getOption('api-resource')) {
+        if ($input instanceof \Symfony\Component\Console\Input\InputInterface && $input->getOption('api-resource')) {
             $dependencies->addClassDependency(
                 ApiResource::class,
                 'api',
+            );
+        }
+
+        if ($input instanceof \Symfony\Component\Console\Input\InputInterface && $input->getOption('sylius-crud')) {
+            $dependencies->addClassDependency(
+                SyliusCrudRoutes::class,
+                'sylius-resource',
             );
         }
 
@@ -383,16 +388,19 @@ final class Maker extends AbstractMaker implements InputAwareMakerInterface
         }
 
         // this is a normal field
-        $data = ['fieldName' => $fieldName, 'type' => $type];
+        $data = [
+            'fieldName' => $fieldName,
+            'type' => $type,
+        ];
         if ('string' === $type) {
             // default to 255, avoid the question
-            $data['length'] = $io->ask('Field length', '255', [Validator::class, 'validateLength']);
+            $data['length'] = $io->ask('Field length', '255', Validator::validateLength(...));
         } elseif ('decimal' === $type) {
             // 10 is the default value given in \Doctrine\DBAL\Schema\Column::$_precision
-            $data['precision'] = $io->ask('Precision (total number of digits stored: 100.00 would be 5)', '10', [Validator::class, 'validatePrecision']);
+            $data['precision'] = $io->ask('Precision (total number of digits stored: 100.00 would be 5)', '10', Validator::validatePrecision(...));
 
             // 0 is the default value given in \Doctrine\DBAL\Schema\Column::$_scale
-            $data['scale'] = $io->ask('Scale (number of decimals to store: 100.00 would be 2)', '0', [Validator::class, 'validateScale']);
+            $data['scale'] = $io->ask('Scale (number of decimals to store: 100.00 would be 2)', '0', Validator::validateScale(...));
         }
 
         if ($io->confirm('Can this field be null in the database (nullable)', false)) {
@@ -450,7 +458,7 @@ final class Maker extends AbstractMaker implements InputAwareMakerInterface
 
                 if (\is_string($subTypes) && $subTypes) {
                     $line .= sprintf(' (%s)', $subTypes);
-                } elseif (\is_array($subTypes) && !empty($subTypes)) {
+                } elseif (\is_array($subTypes) && $subTypes !== []) {
                     $line .= sprintf(
                         ' (or %s)',
                         implode(', ', array_map(

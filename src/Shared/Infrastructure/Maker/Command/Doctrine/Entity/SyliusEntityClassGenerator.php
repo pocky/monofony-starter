@@ -13,14 +13,13 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Maker\Command\Doctrine\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
 use App\Shared\Infrastructure\Maker\Builder\SyliusBuilder;
 use App\Shared\Infrastructure\Maker\Util\PhpFileManipulator;
 use Doctrine\DBAL\Types\Types;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Resource\Annotation\SyliusCrudRoutes;
 use Sylius\Component\Resource\Model\ResourceInterface;
-use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\Doctrine\DoctrineHelper;
 use Symfony\Bundle\MakerBundle\FileManager;
 use Symfony\Bundle\MakerBundle\Generator;
@@ -28,12 +27,12 @@ use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Bundle\MakerBundle\Util\ClassNameDetails;
 use Symfony\Bundle\MakerBundle\Util\UseStatementGenerator;
 
-final class SyliusEntityClassGenerator
+final readonly class SyliusEntityClassGenerator
 {
     public function __construct(
-        private readonly Generator $generator,
-        private readonly DoctrineHelper $doctrineHelper,
-        private readonly FileManager $fileManager,
+        private Generator $generator,
+        private DoctrineHelper $doctrineHelper,
+        private FileManager $fileManager,
     ) {
     }
 
@@ -59,16 +58,22 @@ final class SyliusEntityClassGenerator
             $repoClassDetails->getFullName(),
             $identifierClassDetails->getFullName(),
             Types::class,
-            ['Doctrine\\ORM\\Mapping' => 'ORM'],
+            [
+                'Doctrine\\ORM\\Mapping' => 'ORM',
+            ],
         ]);
 
         if ($apiResource) {
-            $useStatements->addUseStatement(class_exists(ApiResource::class) ? ApiResource::class : \ApiPlatform\Core\Annotation\ApiResource::class);
+            if (!class_exists(ApiResource::class)) {
+                throw new \RuntimeException('You must install api-platform/core to use the API Platform integration.');
+            }
+
+            $useStatements->addUseStatement('ApiPlatform\Metadata');
         }
 
         if ($syliusCrud) {
-            $useStatements->addUseStatement(class_exists(SyliusCrudRoutes::class) ? SyliusCrudRoutes::class : \Sylius\Component\Resource\Annotation\SyliusCrudRoutes::class);
-            $useStatements->addUseStatement(class_exists(ResourceInterface::class) ? ResourceInterface::class : \Sylius\Component\Resource\Model\ResourceInterface::class);
+            $useStatements->addUseStatement(SyliusCrudRoutes::class);
+            $useStatements->addUseStatement(ResourceInterface::class);
         }
 
         $entityPath = $this->generator->generateClass(
@@ -81,8 +86,8 @@ final class SyliusEntityClassGenerator
                 'sylius_crud' => $syliusCrud,
                 'table_name' => sprintf('%s_%s', $package, $tableName),
                 'crud_route_package' => $package,
-                'crud_route_alias' => sprintf('%s.%s', $package, $tableName),
-                'crud_route_path' => Str::asRoutePath($entityClassDetails->getRelativeName()),
+                'crud_route_alias' => sprintf('app.%s_%s', $package, $tableName),
+                'crud_route_path' => sprintf('%s%s', $package, Str::asRoutePath($entityClassDetails->getRelativeName())),
                 'crud_route_grid' => sprintf('%s_%s', $package, $tableName),
                 'crud_route_entity' => $tableName,
                 'identifier_name' => $identifierClassDetails->getShortName(),
@@ -126,14 +131,11 @@ final class SyliusEntityClassGenerator
     public function manipulateSyliusModel(
         Configuration $configuration,
         ClassNameDetails $classNameDetails,
-        ConsoleStyle $io,
     ): void {
         $path = $this->getFile('sylius/resources');
         $manipulator = new PhpFileManipulator(
             $this->fileManager->getFileContents($path),
         );
-
-        $manipulator->setIo($io);
 
         $builder = new SyliusBuilder();
         $builder->addResource(
@@ -151,14 +153,11 @@ final class SyliusEntityClassGenerator
     public function manipulateSyliusRepository(
         Configuration $configuration,
         ClassNameDetails $classNameDetails,
-        ConsoleStyle $io,
     ): void {
         $path = $this->getFile('sylius/resources');
         $manipulator = new PhpFileManipulator(
             $this->fileManager->getFileContents($path),
         );
-
-        $manipulator->setIo($io);
 
         $builder = new SyliusBuilder();
         $builder->addResource(

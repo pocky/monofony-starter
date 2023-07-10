@@ -7,12 +7,21 @@ namespace <?= $namespace ?>;
 #[ORM\Entity(repositoryClass: <?= $repository_class_name ?>::class)]
 #[ORM\Table(name: '<?= $table_name ?>')]
 <?php if ($api_resource): ?>
-#[ApiResource]
+#[Metadata\ApiResource(
+    operations: [
+        new Metadata\GetCollection(),
+        new Metadata\Get(),
+        new Metadata\Put(),
+        new Metadata\Post(),
+        new Metadata\Patch(),
+        new Metadata\Delete(),
+    ],
+)]
 <?php endif ?>
 <?php if ($sylius_crud): ?>
 #[SyliusCrudRoutes(
     alias: '<?= $crud_route_alias ?>',
-    path: '/admin<?= $crud_route_path ?>',
+    path: '/admin/<?= $crud_route_path ?>',
     section: 'backend',
     redirect: 'index',
     templates: 'backend/crud',

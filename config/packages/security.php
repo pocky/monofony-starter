@@ -75,11 +75,30 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
         ],
         'access_control' => [
-            ['path' => '^/api/(authentication_token|token/refresh)', 'roles' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/login', 'role' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/login-check', 'role' => 'PUBLIC_ACCESS'],
-            ['path' => '^/admin/dashboard', 'role' => 'ROLE_ADMIN'],
-            ['path' => '^/admin.*', 'role' => 'ROLE_ADMIN'],
+            [
+                'path' => '^/api/(authentication_token|token/refresh)',
+                'roles' => 'PUBLIC_ACCESS',
+            ],
+            [
+                'path' => '^/admin/login',
+                'role' => 'PUBLIC_ACCESS',
+            ],
+            [
+                'path' => '^/admin/login-check',
+                'role' => 'PUBLIC_ACCESS',
+            ],
+            [
+                'path' => '^/admin/dashboard',
+                'role' => 'ROLE_ADMIN',
+            ],
+            [
+                'path' => '^/admin.*',
+                'role' => 'ROLE_ADMIN',
+            ],
+            [
+                'path' => '^/api/',
+                'role' => 'ROLE_ADMIN',
+            ],
         ],
     ]);
 };

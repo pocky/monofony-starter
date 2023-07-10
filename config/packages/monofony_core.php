@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Naming\OrignameNamer;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import('../sylius/resources.php');
-    $containerConfigurator->import("@SyliusUserBundle/Resources/config/app/config.yml");
+    $containerConfigurator->import('@SyliusUserBundle/Resources/config/app/config.yml');
 
     $containerConfigurator->extension('framework', [
         'translator' => [
@@ -57,22 +57,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'address' => '%email_sender%',
         ],
         'emails' => [
-            'contact_request' => [
-                'subject' => 'app.emails.contact_request.subject',
-                'template' => 'emails/contactRequest.html.twig',
-            ],
-            'user_registration' => [
-                'subject' => 'app.emails.user_registration.subject',
-                'template' => 'emails/userRegistration.html.twig',
-            ],
-            'reset_password_token' => [
-                'subject' => 'app.emails.user.password_reset.subject',
-                'template' => 'emails/passwordReset.html.twig',
-            ],
-            'verification_token' => [
-                'subject' => 'app.emails.user.verification_token.subject',
-                'template' => 'emails/verification.html.twig',
-            ],
         ],
     ]);
 

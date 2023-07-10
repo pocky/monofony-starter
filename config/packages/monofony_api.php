@@ -7,6 +7,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('api_platform', [
+        'title' => 'Monofony API',
         'version' => Kernel::VERSION,
         'swagger' => [
             'versions' => [3],

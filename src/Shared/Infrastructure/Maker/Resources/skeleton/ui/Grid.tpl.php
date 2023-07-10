@@ -43,22 +43,22 @@ foreach ($defaultFields as $fieldname => $type) {
     if (in_array($type, ['STRING', 'TEXT'], true)) {
         echo "            ->addField(\n";
         echo "                StringField::create('" . $fieldname . "')\n";
-        echo "                    ->setLabel('" . ucfirst($fieldname) . "')\n";
+        echo "                    ->setLabel('" . ucfirst((string) $fieldname) . "')\n";
         echo "                    ->setSortable(true)\n";
         echo "            )\n";
     }
 
-    if (str_starts_with($type, 'DATE')) {
+    if (str_starts_with((string) $type, 'DATE')) {
         echo "            ->addField(\n";
         echo "                DateTimeField::create('" . $fieldname . "')\n";
-        echo "                    ->setLabel('" . ucfirst($fieldname) . "')\n";
+        echo "                    ->setLabel('" . ucfirst((string) $fieldname) . "')\n";
         echo "            )\n";
     }
 
     if ('BOOLEAN' === $type) {
         echo "            //->addField(\n";
         echo "            //    TwigField::create('" . $fieldname . "', 'path/to/field/template.html.twig')\n";
-        echo "            //        ->setLabel('" . ucfirst($fieldname) . "')\n";
+        echo "            //        ->setLabel('" . ucfirst((string) $fieldname) . "')\n";
         echo "            //)\n";
     }
 }

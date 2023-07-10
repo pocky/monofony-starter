@@ -55,12 +55,13 @@ return static function (ECSConfig $ecsConfig): void {
 
     $parameters = $ecsConfig->parameters();
     $parameters->set('skip', [
+        __DIR__ . '/src/Shared/Infrastructure/Maker/Resources/skeleton',
         VisibilityRequiredFixer::class => ['*Spec.php'],
         PhpUnitTestClassRequiresCoversFixer::class => ['*Test.php'],
         PhpUnitInternalClassFixer::class => ['*Test.php'],
         PhpUnitMethodCasingFixer::class => ['*Test.php'],
         NoUnusedImportsFixer::class => [
-            __DIR__.'/src/Shared/Infrastructure/Maker/Resources/skeleton/config/packages.tpl.php',
+            __DIR__ . '/src/Shared/Infrastructure/Maker/Resources/skeleton/config/packages.tpl.php',
         ],
     ]);
 };

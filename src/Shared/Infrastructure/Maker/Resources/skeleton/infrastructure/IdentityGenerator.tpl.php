@@ -4,7 +4,7 @@ namespace <?= $namespace; ?>;
 
 <?= $use_statements; ?>
 
-class <?= $class_name; ?>
+class <?= "$class_name\n"; ?>
 {
     public function __construct(
         private readonly GeneratorInterface $generator

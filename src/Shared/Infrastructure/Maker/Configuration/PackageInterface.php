@@ -7,4 +7,6 @@ namespace App\Shared\Infrastructure\Maker\Configuration;
 interface PackageInterface
 {
     public function getPackage(): string;
+
+    public function getPackagePath(): string;
 }

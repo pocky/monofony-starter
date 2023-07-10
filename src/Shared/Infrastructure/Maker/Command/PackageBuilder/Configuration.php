@@ -6,15 +6,20 @@ namespace App\Shared\Infrastructure\Maker\Command\PackageBuilder;
 
 use App\Shared\Infrastructure\Maker\Configuration\PackageInterface;
 
-final class Configuration implements PackageInterface
+final readonly class Configuration implements PackageInterface
 {
     public function __construct(
-        private readonly string $package,
+        private string $package,
     ) {
     }
 
     public function getPackage(): string
     {
         return $this->package;
+    }
+
+    public function getPackagePath(): string
+    {
+        return str_replace('\\', '/', $this->package);
     }
 }

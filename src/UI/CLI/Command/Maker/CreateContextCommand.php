@@ -13,10 +13,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 
+#[\Symfony\Component\Console\Attribute\AsCommand('app:create:context')]
 final class CreateContextCommand extends Command
 {
-    protected static $defaultName = 'app:create:context';
-
     private array $commands = [
         [
             'name' => 'make:package',
@@ -43,8 +42,16 @@ final class CreateContextCommand extends Command
             'message' => 'Create form for entity',
         ],
         [
+            'name' => 'make:behat:crud',
+            'message' => 'Create behat tests for entity',
+        ],
+        [
             'name' => 'doctrine:migrations:diff',
             'message' => 'Generate diff',
+        ],
+        [
+            'name' => 'cache:clear',
+            'message' => 'Clearing cache',
         ],
     ];
 
@@ -107,14 +114,26 @@ final class CreateContextCommand extends Command
 
                 if ('make:ui:sylius:grid' === $command['name']) {
                     $parameters = [
+                        /* @phpstan-ignore-next-line  */
                         sprintf('Backend\\\%s', $input->getArgument('package')),
                     ];
                 }
 
                 if ('make:ui:doctrine:form' === $command['name']) {
                     $parameters = [
+                        /* @phpstan-ignore-next-line  */
                         sprintf('Backend\\\%s', $input->getArgument('package')),
                         $input->getArgument('name'),
+                    ];
+                }
+
+                if ('make:behat:crud' === $command['name']) {
+                    $identifier = $input->getOption('behat-identifier') !== '' ? $input->getOption('behat-identifier') : null;
+                    $parameters = [
+                        $package,
+                        $name,
+                        $input->getOption('api-resource') ? '--api' : '',
+                        $identifier ? '--identifier ' . $identifier : '',
                     ];
                 }
 

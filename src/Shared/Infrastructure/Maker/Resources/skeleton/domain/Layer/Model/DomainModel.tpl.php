@@ -21,9 +21,10 @@ final class <?= $class_name . "\n"; ?>
         return $this->id;
     }
 
-<?php $i = 0; $number = count($fields); ?>
+<?php $i = 0;
+$number = is_countable($fields) ? count($fields) : 0; ?>
 <?php foreach ($fields as $field): ?>
-    public function get<?= ucfirst($field['fieldName']); ?>(): <?= $field['type'] . "\n"; ?>
+    public function get<?= ucfirst((string) $field['fieldName']); ?>(): <?= $field['type'] . "\n"; ?>
     {
         return $this-><?= $field['fieldName']; ?>;
     }

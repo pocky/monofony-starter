@@ -10,7 +10,6 @@ use Symfony\Bundle\MakerBundle\DependencyBuilder;
 use Symfony\Bundle\MakerBundle\Generator;
 use Symfony\Bundle\MakerBundle\InputConfiguration;
 use Symfony\Bundle\MakerBundle\Maker\AbstractMaker;
-use Symfony\Bundle\MakerBundle\Util\ClassNameDetails;
 use Symfony\Bundle\MakerBundle\Util\UseStatementGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -112,19 +111,6 @@ final class Maker extends AbstractMaker
 
         $io->writeln('');
         $io->writeln('Generator for identifier is generated');
-    }
-
-    private function generateClass(
-        Configuration $configuration,
-        ClassNameDetails $classNameDetails,
-        Generator $generator,
-        array $variables = [],
-    ): void {
-        $generator->generateClass(
-            $classNameDetails->getFullName(),
-            sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getTemplatePath()),
-            $variables,
-        );
     }
 
     public function configureDependencies(DependencyBuilder $dependencies)

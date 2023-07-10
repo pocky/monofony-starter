@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Maker\Command\Domain\Operation;
 
-use function App\Shared\Infrastructure\Maker\Command\DomainOperation\mb_strtolower;
 use App\Shared\Infrastructure\Maker\Enum\Operation;
 use App\Shared\Infrastructure\Maker\Util\PhpFileManipulator;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
@@ -63,7 +62,7 @@ final class Maker extends AbstractMaker
 
     public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator): int
     {
-        if (false === in_array($input->getOption('operation'), Operation::getValues())) {
+        if (!in_array($input->getOption('operation'), Operation::getValues())) {
             throw new \RuntimeException(sprintf(
                 'This operation is not valid one! Should be one of this list: %s',
                 implode(', ', Operation::getValues()),
@@ -249,7 +248,7 @@ final class Maker extends AbstractMaker
             $configuration->getPersistencePrefix(),
         );
 
-        if (true === in_array($configuration->getOperation(), [
+        if (in_array($configuration->getOperation(), [
             Operation::ADD,
             Operation::READ,
             Operation::DELETE,
@@ -263,9 +262,9 @@ final class Maker extends AbstractMaker
             $useStatements[] = $modelDetails->getFullName();
         }
 
-        if (true === in_array($configuration->getOperation(), [
-                Operation::READ,
-                Operation::DELETE,
+        if (in_array($configuration->getOperation(), [
+            Operation::READ,
+            Operation::DELETE,
         ])) {
             $identifier = new \ReflectionClass($configuration->getIdentifierName());
 
@@ -316,7 +315,7 @@ final class Maker extends AbstractMaker
         $model = new \ReflectionClass($modelDetails->getFullName());
         $properties = array_map(static fn (\ReflectionProperty $property) => $property->getName(), $model->getProperties());
 
-        if (true === in_array($configuration->getOperation(), [
+        if (in_array($configuration->getOperation(), [
             Operation::BROWSE,
             Operation::READ,
             Operation::DELETE,
@@ -429,15 +428,19 @@ final class Maker extends AbstractMaker
             $type = $io->ask('Which typehint?');
         }
 
-        $arguments = $this->askForNextArgument($io, []);
+        $arguments = $this->askForNextArgument($io);
 
-        return ['fieldName' => $fieldName, 'type' => $type, 'arguments' => $arguments];
+        return [
+            'fieldName' => $fieldName,
+            'type' => $type,
+            'arguments' => $arguments,
+        ];
     }
 
     private function askForNextArgument(
         ConsoleStyle $io,
-        array $arguments = [],
-    ): array|null {
+    ): array {
+        $arguments = [];
         $io->writeln('');
 
         while ([] === $arguments) {
@@ -447,7 +450,10 @@ final class Maker extends AbstractMaker
             }
 
             $argumentType = $io->ask('Argument type?');
-            $arguments[] = ['argumentName' => $argumentName, 'argumentType' => $argumentType];
+            $arguments[] = [
+                'argumentName' => $argumentName,
+                'argumentType' => $argumentType,
+            ];
         }
 
         return $arguments;
@@ -467,7 +473,7 @@ final class Maker extends AbstractMaker
 
         \sort($choices);
 
-        if (empty($choices)) {
+        if ($choices === []) {
             throw new RuntimeCommandException('No identifier found.');
         }
 

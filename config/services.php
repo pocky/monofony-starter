@@ -2,13 +2,16 @@
 
 declare(strict_types=1);
 
+use App\Security\Infrastructure\OpenApi\Factory\AppAuthenticationTokenOpenApiFactory;
 use App\Shared\Infrastructure\Mailer\SymfonyMailer;
 use App\Shared\Infrastructure\Maker\Command\Doctrine\Entity\Maker as DoctrineEntityMaker;
 use App\Shared\Infrastructure\Maker\Command\Doctrine\Form\Maker as DoctrineFormMaker;
 use App\Shared\Infrastructure\Maker\Command\PackageBuilder\Maker as PackageMaker;
 use App\Shared\Infrastructure\Maker\Command\Sylius\Factory\Maker as SyliusFactoryMaker;
+use App\Shared\Infrastructure\Maker\Renderer\FormTypeRenderer;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\Notifier\FlashMessage\BootstrapFlashMessageImportanceMapper;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -37,6 +40,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->exclude([
             __DIR__ . '/../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}',
             __DIR__ . '/../src/Security/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
+            __DIR__ . '/../src/UI/**/Controller/**/Form/*DTO.php',
+            __DIR__ . '/../src/**/Sylius/Factory/*Factory.php',
         ]);
 
     $services
@@ -45,6 +50,18 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             __DIR__ . '/../src/Shared/Infrastructure/UI/Backend/Dashboard/Controller',
         )
         ->tag('controller.service_arguments');
+
+    $services
+        ->set('notifier.flash_message_importance_mapper', BootstrapFlashMessageImportanceMapper::class)
+    ;
+
+    $services
+        ->set('openapi.factory', AppAuthenticationTokenOpenApiFactory::class)
+        ->args([
+            service('openapi.factory.inner'),
+        ])
+        ->decorate('api_platform.openapi.factory')
+        ->autowire(false);
 
     $services
         ->set(SymfonyMailer::class)
@@ -81,4 +98,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->args([
             service('maker.file_manager'),
         ]);
+
+    $services
+        ->set('maker.renderer.form_type_renderer')
+        ->class(FormTypeRenderer::class)
+        ->args([
+            service('maker.generator'),
+        ])
+    ;
 };

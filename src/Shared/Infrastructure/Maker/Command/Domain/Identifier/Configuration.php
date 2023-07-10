@@ -7,11 +7,11 @@ namespace App\Shared\Infrastructure\Maker\Command\Domain\Identifier;
 use App\Shared\Infrastructure\Maker\Configuration\NameInterface;
 use App\Shared\Infrastructure\Maker\Configuration\PackageInterface;
 
-final class Configuration implements NameInterface, PackageInterface
+final readonly class Configuration implements NameInterface, PackageInterface
 {
     public function __construct(
-        private readonly string $name,
-        private readonly string $package,
+        private string $name,
+        private string $package,
     ) {
     }
 
@@ -23,6 +23,11 @@ final class Configuration implements NameInterface, PackageInterface
     public function getPackage(): string
     {
         return $this->package;
+    }
+
+    public function getPackagePath(): string
+    {
+        return str_replace('\\', '/', $this->package);
     }
 
     public function getIdentifierPath(): string

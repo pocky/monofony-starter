@@ -13,12 +13,13 @@ namespace <?= $namespace; ?>;
 
 final class <?= $class_name . "\n" ?>
 {
-<?php $i = 0; $number = count($fields); ?>
+<?php $i = 0;
+$number = is_countable($fields) ? count($fields) : 0; ?>
 
 <?php if (0 !== $number): ?>
     public function __construct(
 <?php foreach ($fields as $field): ?>
-        private readonly <?= $field['argument_type']; ?> $<?= Str::asLowerCamelCase(str_replace('get', '', $field['fieldName'])); ?>,
+        private readonly <?= $field['argument_type']; ?> $<?= Str::asLowerCamelCase(str_replace('get', '', (string) $field['fieldName'])); ?>,
 <?php endforeach; ?>
     ) {
     }
@@ -35,7 +36,7 @@ final class <?= $class_name . "\n" ?>
 <?php endif; ?>
     public function <?= $field['fieldName']; ?>(): <?= $field['short_name'] . "\n"; ?>
     {
-        return $this-><?= Str::asLowerCamelCase(str_replace('get', '', $field['fieldName'])); ?>;
+        return $this-><?= Str::asLowerCamelCase(str_replace('get', '', (string) $field['fieldName'])); ?>;
     }
 <?php $i++; ?>
 <?php if ($number > 1 && $i < $number): ?>

@@ -26,7 +26,7 @@ final class <?= "$class_name\n" ?>
 <?php if ('id' === $property): ?>
                 '<?= $property ?>' => new <?= $identifier ?>($result->getId()),
 <?php else: ?>
-                '<?= $property ?>' => $result->get<?= ucfirst($property) ?>(),
+                '<?= $property ?>' => $result->get<?= ucfirst((string) $property) ?>(),
 <?php endif; ?>
 <?php endforeach; ?>
             ]));

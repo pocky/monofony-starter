@@ -91,13 +91,13 @@ final class Maker extends AbstractMaker
         ConsoleStyle $io,
     ): void {
         if (!\class_exists($configuration->getEntity())) {
-            throw new RuntimeCommandException(\sprintf('Entity "%s" not found.', $input->getArgument('entity')));
+            throw new RuntimeCommandException(\sprintf('Entity "%s" not found.', $configuration->getEntity()));
         }
 
         $entity = new \ReflectionClass($configuration->getEntity());
         $repository = new \ReflectionClass($this->managerRegistry->getRepository($entity->getName()));
 
-        if (0 !== \mb_strpos($repository->getName(), $generator->getRootNamespace())) {
+        if (!\str_starts_with($repository->getName(), $generator->getRootNamespace())) {
             // not using a custom repository
             $repository = null;
         }
@@ -139,7 +139,7 @@ final class Maker extends AbstractMaker
 
         \sort($choices);
 
-        if (empty($choices)) {
+        if ($choices === []) {
             throw new RuntimeCommandException('No entities found.');
         }
 

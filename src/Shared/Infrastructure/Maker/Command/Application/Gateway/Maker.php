@@ -71,7 +71,7 @@ final class Maker extends AbstractMaker
 
     public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator): int
     {
-        if (false === in_array($input->getOption('operation'), Operation::getValues())) {
+        if (!in_array($input->getOption('operation'), Operation::getValues())) {
             throw new \RuntimeException(sprintf(
                 'This operation is not valid one! Should be one of this list: %s',
                 implode(', ', Operation::getValues()),
@@ -95,11 +95,11 @@ final class Maker extends AbstractMaker
             Operation::from($input->getOption('operation')),
         );
 
-        //$this->generateInstrumentation($configuration, $generator, $io);
-        //$this->generateErrorHandler($configuration, $generator, $io);
-        //$this->generateLogger($configuration, $generator, $io);
+        $this->generateInstrumentation($configuration, $generator, $io);
+        $this->generateErrorHandler($configuration, $generator, $io);
+        $this->generateLogger($configuration, $generator, $io);
         $this->generateProcessor($configuration, $generator, $io, $input);
-        //$this->generateGateway($configuration, $generator, $io);
+        $this->generateGateway($configuration, $generator, $io);
 
         $this->writeSuccessMessage($io);
 
@@ -190,7 +190,8 @@ final class Maker extends AbstractMaker
             sprintf('%s/../../../Resources/skeleton/%s.tpl.php', __DIR__, $configuration->getInstrumentationTemplate()),
             [
                 'use_statements' => $useStatements,
-                'event_name' => sprintf('%s.%s',
+                'event_name' => sprintf(
+                    '%s.%s',
                     str_replace('_', '.', Str::asTwigVariable($configuration->getPackage())),
                     Str::asTwigVariable($configuration->getName()),
                 ),
@@ -226,13 +227,13 @@ final class Maker extends AbstractMaker
         if (1 !== count($methods)) {
             $response = $io->choice(
                 'Which method is your entry point?',
-                array_map(static fn (\ReflectionMethod $method) => $method->getName(), $methods)
+                array_map(static fn (\ReflectionMethod $method) => $method->getName(), $methods),
             );
 
             $method = $operation->getMethod($response);
         }
 
-        if (null === $method) {
+        if (!$method instanceof \ReflectionMethod) {
             $method = $methods[0];
         }
 
@@ -242,12 +243,16 @@ final class Maker extends AbstractMaker
         ];
 
         foreach ($method->getParameters() as $parameter) {
-            if (true === str_contains($parameter->getType()->getName(), 'Query')) {
+            if (!$parameter->getType() instanceof \ReflectionType) {
+                continue;
+            }
+
+            if (str_contains((string) $parameter->getType()->getName(), 'Query')) {
                 $use[] = QueryBusInterface::class;
                 $use[] = $parameter->getType()->getName();
             }
 
-            if (true === str_contains($parameter->getType()->getName(), 'Command')) {
+            if (str_contains((string) $parameter->getType()->getName(), 'Command')) {
                 $use[] = CommandBusInterface::class;
                 $use[] = $parameter->getType()->getName();
             }
@@ -256,12 +261,17 @@ final class Maker extends AbstractMaker
             $parameters = $class->getMethod('__construct')->getParameters();
 
             foreach ($parameters as $param) {
+                if (!$param->getType() instanceof \ReflectionType) {
+                    continue;
+                }
+
                 $type = $param->getType();
-                $field = false === $type->allowsNull() ? 'required' : 'optional';
+                Assert::notNull($type);
 
-                $requestParameters[$field][$param->getName()] = $param->getType()->getName();
+                $field = $type->allowsNull() ? 'optional' : 'required';
+
+                $requestParameters[$field][$param->getName()] = $type->getName();
             }
-
         }
 
         $responseParameters = [
@@ -269,15 +279,15 @@ final class Maker extends AbstractMaker
             'optional' => [],
         ];
 
-        if ('void' !== $method->getReturnType()->getName()) {
-            $field = true === $method->getReturnType()->allowsNull() ? 'optional' : 'required';
+        if ($method->getReturnType() instanceof \ReflectionType && 'void' !== $method->getReturnType()->getName()) {
+            $field = $method->getReturnType()->allowsNull() ? 'optional' : 'required';
             $returnType = $method->getReturnType()->getName();
             $responseParameters[$field]['model'] = $returnType;
 
             if (false === $method->getReturnType()->isBuiltin()) {
                 $returnTypeDetails = $generator->createClassNameDetails(
                     $method->getReturnType()->getName(),
-                    ''
+                    '',
                 );
 
                 $returnType = $returnTypeDetails->getShortName();
@@ -301,7 +311,7 @@ final class Maker extends AbstractMaker
 
             $identityGeneratorDetails = $generator->createClassNameDetails(
                 $identityGenerator,
-                ''
+                '',
             );
 
             $use[] = $identityGenerator;
@@ -350,10 +360,7 @@ final class Maker extends AbstractMaker
             $configuration->getMiddlewarePrefix(),
         );
 
-        $useStatements = new UseStatementGenerator(array_merge($use, [
-            $requestDetails->getFullName(),
-            $responseDetails->getFullName(),
-        ]));
+        $useStatements = new UseStatementGenerator([...$use, $requestDetails->getFullName(), $responseDetails->getFullName()]);
 
         $generator->generateClass(
             $processorDetails->getFullName(),
@@ -431,7 +438,7 @@ final class Maker extends AbstractMaker
 
         \sort($choices);
 
-        if (empty($choices)) {
+        if ($choices === []) {
             throw new RuntimeCommandException('No operation found.');
         }
 
@@ -456,7 +463,7 @@ final class Maker extends AbstractMaker
 
         \sort($choices);
 
-        if (empty($choices)) {
+        if ($choices === []) {
             throw new RuntimeCommandException('No generator found.');
         }
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure\Maker\Command\Sylius\Factory;
 
 use App\Shared\Infrastructure\Maker\Builder\PackageBuilder;
-use App\Shared\Infrastructure\Maker\Builder\SyliusBuilder;
 use App\Shared\Infrastructure\Maker\Util\PhpFileManipulator;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
@@ -107,17 +106,10 @@ final class Maker extends AbstractMaker
 
         $generator->writeChanges();
 
-        $this->manipulateSyliusFactory(
-            $configuration,
-            $classNameDetails,
-            $io,
-        );
-
         $this->createFactoryService(
             $configuration,
             $classNameDetails,
             $entityNameDetails,
-            $generatorClassDetails,
             $io,
         );
 
@@ -138,44 +130,16 @@ final class Maker extends AbstractMaker
         );
     }
 
-    private function manipulateSyliusFactory(
-        Configuration    $configuration,
-        ClassNameDetails $classNameDetails,
-        ConsoleStyle     $io,
-    ): void {
-        $path = $this->getFile('sylius/resources');
-        $manipulator = new PhpFileManipulator(
-            $this->fileManager->getFileContents($path),
-        );
-
-        $manipulator->setIo($io);
-
-        $builder = new SyliusBuilder();
-        $builder->addResource(
-            $manipulator,
-            $configuration,
-            [
-                'type' => 'factory',
-                'value' => $classNameDetails->getFullName(),
-            ],
-        );
-
-        $this->fileManager->dumpFile($path, $manipulator->getSourceCode());
-    }
-
     private function createFactoryService(
         Configuration    $configuration,
         ClassNameDetails $classNameDetails,
         ClassNameDetails $entityNameDetails,
-        ClassNameDetails $generatorNameDetails,
         ConsoleStyle     $io,
     ): void {
-        $path = $this->getFile(sprintf('packages/%s', Str::asTwigVariable($configuration->getPackage())));
+        $path = $this->getFile(sprintf('packages/app_%s', Str::asTwigVariable($configuration->getPackage())));
         $manipulator = new PhpFileManipulator(
             $this->fileManager->getFileContents($path),
         );
-
-        $manipulator->setIo($io);
 
         $builder = new PackageBuilder();
         $builder->createSyliusFactoryService(
@@ -184,7 +148,6 @@ final class Maker extends AbstractMaker
             [
                 'factory' => $classNameDetails->getFullName(),
                 'entity' => $entityNameDetails->getFullName(),
-                'generator' => $generatorNameDetails->getFullName(),
             ],
         );
 

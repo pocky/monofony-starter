@@ -22,12 +22,12 @@ final class SyliusBuilder
         Assert::keyExists($element, 'value');
 
         $package = Str::asTwigVariable($configuration->getPackage());
-        $key = sprintf('%s.%s', str_replace('backend_', '', $package), Str::asTwigVariable($configuration->getName()));
+        $key = sprintf('app.%s_%s', str_replace('backend_', '', $package), Str::asTwigVariable($configuration->getName()));
         $nodes = $manipulator->findArrayItemNodes();
 
         $targetNodes = [];
         foreach ($nodes as $item) {
-            if ($item->key instanceof Node\Scalar\String_ && null !== $item->key && $item->key->value === $key) {
+            if ($item->key instanceof Node\Scalar\String_ && $item->key instanceof \PhpParser\Node\Scalar\String_ && $item->key->value === $key) {
                 $targetNodes[] = $item->value->items[0];
             }
         }
@@ -36,12 +36,16 @@ final class SyliusBuilder
             foreach ($nodes as $item) {
                 if ($item->key instanceof Node\Scalar\String_ && $item->key->value === 'resources') {
                     $classes = new Node\Expr\ArrayItem(
-                        new Node\Expr\Array_([], ['kind' => Node\Expr\Array_::KIND_SHORT]),
+                        new Node\Expr\Array_([], [
+                            'kind' => Node\Expr\Array_::KIND_SHORT,
+                        ]),
                         new Node\Scalar\String_('classes'),
                     );
 
                     $item->value->items[] = new Node\Expr\ArrayItem(
-                        new Node\Expr\Array_([$classes], ['kind' => Node\Expr\Array_::KIND_SHORT]),
+                        new Node\Expr\Array_([$classes], [
+                            'kind' => Node\Expr\Array_::KIND_SHORT,
+                        ]),
                         new Node\Scalar\String_($key),
                     );
                 }

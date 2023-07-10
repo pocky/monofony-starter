@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 $inflector = new Symfony\Component\String\Inflector\EnglishInflector();
-    $list_name = mb_strtolower($list_name);
-    $pluralize_list_name = $inflector->pluralize($list_name)[0];
+$list_name = mb_strtolower((string) $list_name);
+$pluralize_list_name = $inflector->pluralize($list_name)[0];
 ?>
 <?= "<?php\n" ?>
 

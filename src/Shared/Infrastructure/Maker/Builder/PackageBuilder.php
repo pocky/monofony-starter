@@ -18,7 +18,11 @@ final class PackageBuilder
         PackageInterface $configuration,
     ): void {
         $node = new Node\Scalar\String_(
-            sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity', '%kernel.project_dir%', $configuration->getPackage()),
+            sprintf(
+                '%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
+                '%kernel.project_dir%',
+                $configuration->getPackagePath()
+            ),
         );
 
         $manipulator->addValueToArrayItemNode('paths', $node);
@@ -30,7 +34,11 @@ final class PackageBuilder
         PackageInterface $configuration,
     ): void {
         $node = new Node\Scalar\String_(
-            sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity', '%kernel.project_dir%', $configuration->getPackage()),
+            sprintf(
+                '%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
+                '%kernel.project_dir%',
+                $configuration->getPackagePath()
+            ),
         );
 
         $manipulator->addValueToArrayItemNode('paths', $node);
@@ -41,8 +49,11 @@ final class PackageBuilder
         PhpFileManipulator $manipulator,
         PackageInterface $configuration,
     ): void {
+        $packageAlias = str_replace('/', '', $configuration->getPackagePath());
+        ;
+
         $alias = new Node\Expr\ArrayItem(
-            new Node\Scalar\String_($configuration->getPackage()),
+            new Node\Scalar\String_($packageAlias),
             new Node\Scalar\String_('alias'),
         );
 
@@ -52,7 +63,11 @@ final class PackageBuilder
         );
 
         $dir = new Node\Expr\ArrayItem(
-            new Node\Scalar\String_(sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity', '%kernel.project_dir%', $configuration->getPackage())),
+            new Node\Scalar\String_(sprintf(
+                '%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity',
+                '%kernel.project_dir%',
+                $configuration->getPackagePath()
+            )),
             new Node\Scalar\String_('dir'),
         );
 
@@ -73,8 +88,10 @@ final class PackageBuilder
                 $dir,
                 $prefix,
                 $alias,
-            ], ['kind' => Node\Expr\Array_::KIND_SHORT]),
-            new Node\Scalar\String_($configuration->getPackage()),
+            ], [
+                'kind' => Node\Expr\Array_::KIND_SHORT,
+            ]),
+            new Node\Scalar\String_($packageAlias),
         );
 
         $manipulator->addValueToArrayItemNode('mappings', $node);
@@ -86,11 +103,11 @@ final class PackageBuilder
         PackageInterface & NameInterface $configuration,
         array $element,
     ): void {
+        $expression = [];
         Assert::keyExists($element, 'factory');
         Assert::keyExists($element, 'entity');
-        Assert::keyExists($element, 'generator');
 
-        $serviceName = sprintf('%s.factory.%s', Str::asTwigVariable($configuration->getPackage()), Str::asTwigVariable($configuration->getName()));
+        $serviceName = sprintf('app.factory.%s_%s', Str::asTwigVariable($configuration->getPackage()), Str::asTwigVariable($configuration->getName()));
 
         $serviceNodes = $manipulator->findExistingStringNodes($serviceName);
         if ([] !== $serviceNodes) {
@@ -100,7 +117,6 @@ final class PackageBuilder
         $nodes = $manipulator->findClosureNodes();
         $factory = $manipulator->addUseStatementIfNecessary($element['factory']);
         $entity = $manipulator->addUseStatementIfNecessary($element['entity']);
-        $generator = $manipulator->addUseStatementIfNecessary($element['generator']);
 
         $expression[] = new Node\Stmt\Expression(new Node\Expr\Variable(
             '__EXTRA__LINE',
@@ -108,22 +124,23 @@ final class PackageBuilder
 
         $expression[] = new Node\Stmt\Expression(new Node\Expr\MethodCall(
             new Node\Expr\MethodCall(
-                new Node\Expr\Variable(new Node\Name('services')),
-                new Node\Name('set'),
+                new Node\Expr\MethodCall(
+                    new Node\Expr\Variable(new Node\Name('services')),
+                    new Node\Name('set'),
+                    [
+                        new Node\Name(sprintf('%s::class', $factory)),
+                    ],
+                ),
+                new Node\Name('decorate'),
                 [
-                new Node\Scalar\String_($serviceName),
-                new Node\Name(sprintf('%s::class', $factory)),
-            ],
+                    new Node\Scalar\String_($serviceName),
+                ],
             ),
-            new Node\Name('args'),
+            new Node\Name('arg'),
             [
-                new Node\Expr\Array_([
-                    new Node\Expr\ArrayItem(new Node\Expr\ConstFetch(new Node\Name(sprintf('%s::class', $entity)))),
-                    new Node\Expr\ArrayItem(new Node\Expr\FuncCall(new Node\Name('service'), [
-                        new Node\Arg(new Node\Expr\ConstFetch(new Node\Name(sprintf('%s::class', $generator)))),
-                    ])),
-                ], ['kind' => Node\Expr\Array_::KIND_SHORT]),
-        ],
+                new Node\Scalar\String_('$className'),
+                new Node\Name(sprintf('%s::class', $entity)),
+            ],
         ));
 
         array_push($nodes[0]->stmts, ...$expression);

@@ -1,0 +1,14 @@
+default:
+    suites:
+        api_managing_%entity_name%:
+            contexts:
+                - App\Tests\Behat\Context\Hook\DoctrineORMContext
+                - App\Tests\Behat\Context\Setup\ApiSecurityContext
+                - %setup_context_class%
+
+                - App\Tests\Behat\Context\Transform\SharedStorageContext
+
+                - %context_class%
+                - App\Tests\Behat\Context\UI\API\NotificationContext
+            filters:
+                tags: "@api&&@%entity_name%s"

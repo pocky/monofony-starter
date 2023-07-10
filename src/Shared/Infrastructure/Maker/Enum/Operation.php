@@ -56,6 +56,7 @@ enum Operation: string
     public function exception(): string
     {
         return match ($this) {
+            self::BROWSE => null,
             self::ADD => 'UnableToCreate',
             self::READ => 'Unknown',
             self::EDIT => 'UnableToUpdate',
@@ -66,6 +67,7 @@ enum Operation: string
     public function event(): string
     {
         return match ($this) {
+            self::BROWSE, self::READ => null,
             self::ADD => 'WasCreated',
             self::EDIT => 'WasUpdated',
             self::DELETE => 'WasDeleted',

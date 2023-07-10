@@ -55,7 +55,7 @@ final class Maker extends AbstractMaker
 
     public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator): int
     {
-        if (false === in_array($input->getOption('type'), Operation::getValues())) {
+        if (!in_array($input->getOption('type'), Operation::getValues())) {
             throw new \RuntimeException(sprintf(
                 'This type is not valid one! Should be one of this list: %s',
                 implode(', ', Operation::getValues()),
@@ -72,16 +72,5 @@ final class Maker extends AbstractMaker
         $this->writeSuccessMessage($io);
 
         return Command::SUCCESS;
-    }
-
-    private function generateDomain(
-        Configuration $configuration,
-        Generator $generator,
-        ConsoleStyle $io,
-    ): void {
-        $classNameDetails = $generator->createClassNameDetails(
-            $configuration->getOperation()->entry(),
-            $configuration->getIdentifierPath(),
-        );
     }
 }

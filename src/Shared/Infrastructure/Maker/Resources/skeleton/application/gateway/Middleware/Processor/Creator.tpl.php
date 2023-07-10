@@ -1,7 +1,5 @@
-<?php
+<?php declare(strict_types=1);
 
-use App\Shared\Infrastructure\MessageBus\CommandBusInterface;
-use App\Shared\Infrastructure\MessageBus\QueryBusInterface;
 use Symfony\Bundle\MakerBundle\Str;
 
 ?>

@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure\Maker\Command\Doctrine\Form;
 
 use App\Shared\Infrastructure\Maker\Builder\SyliusBuilder;
+use App\Shared\Infrastructure\Maker\Renderer\FormTypeRenderer;
 use App\Shared\Infrastructure\Maker\Util\PhpFileManipulator;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\Persistence\ManagerRegistry;
@@ -25,7 +26,6 @@ use Symfony\Bundle\MakerBundle\FileManager;
 use Symfony\Bundle\MakerBundle\Generator;
 use Symfony\Bundle\MakerBundle\InputConfiguration;
 use Symfony\Bundle\MakerBundle\Maker\AbstractMaker;
-use Symfony\Bundle\MakerBundle\Renderer\FormTypeRenderer;
 use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Bundle\MakerBundle\Util\ClassDetails;
 use Symfony\Bundle\MakerBundle\Util\ClassNameDetails;
@@ -134,7 +134,7 @@ final class Maker extends AbstractMaker
 
         \sort($choices);
 
-        if (empty($choices)) {
+        if ($choices === []) {
             throw new RuntimeCommandException('No entities found.');
         }
 
@@ -161,7 +161,7 @@ final class Maker extends AbstractMaker
 
         $doctrineEntityDetails = $this->entityHelper->createDoctrineDetails($boundClassDetails->getFullName());
 
-        if (null !== $doctrineEntityDetails) {
+        if ($doctrineEntityDetails instanceof \Symfony\Bundle\MakerBundle\Doctrine\EntityDetails) {
             $formFields = $doctrineEntityDetails->getFormFields();
         } else {
             $classDetails = new ClassDetails($boundClassDetails->getFullName());
@@ -192,8 +192,6 @@ final class Maker extends AbstractMaker
         $manipulator = new PhpFileManipulator(
             $this->fileManager->getFileContents($path),
         );
-
-        $manipulator->setIo($io);
 
         $builder = new SyliusBuilder();
         $builder->addResource(

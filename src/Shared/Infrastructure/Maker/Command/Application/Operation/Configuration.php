@@ -8,19 +8,24 @@ use App\Shared\Infrastructure\Maker\Configuration\NameInterface;
 use App\Shared\Infrastructure\Maker\Configuration\PackageInterface;
 use App\Shared\Infrastructure\Maker\Enum\Operation;
 
-final class Configuration implements PackageInterface, NameInterface
+final readonly class Configuration implements PackageInterface, NameInterface
 {
     public function __construct(
-        private readonly string $package,
-        private readonly string $name,
-        private readonly Operation $operation,
-        private readonly string $domain,
+        private string $package,
+        private string $name,
+        private Operation $operation,
+        private string $domain,
     ) {
     }
 
     public function getPackage(): string
     {
         return $this->package;
+    }
+
+    public function getPackagePath(): string
+    {
+        return str_replace('\\', '/', $this->package);
     }
 
     public function getName(): string
@@ -46,7 +51,7 @@ final class Configuration implements PackageInterface, NameInterface
     public function getFactoryPrefix(): string
     {
         $pos = strpos($this->getDomain(), $this->getOperation()->entryClass());
-        $domain = substr($this->getDomain(), 0, ($pos - 1));
+        $domain = substr($this->getDomain(), 0, $pos - 1);
 
         return sprintf(
             '%s\\Data%s\\Factory\\',

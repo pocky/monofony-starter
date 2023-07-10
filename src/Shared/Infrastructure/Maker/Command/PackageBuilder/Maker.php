@@ -63,18 +63,18 @@ final class Maker extends AbstractMaker
 
         $fs = new Filesystem();
 
-        if ($fs->exists(sprintf('%s/src/%s', $this->projectDir, $configuration->getPackage()))) {
-            $this->writeErrorMessage($io, sprintf('The package "%s" already exists', $configuration->getPackage()));
+        if ($fs->exists(\sprintf('%s/src/%s', $this->projectDir, $configuration->getPackagePath()))) {
+            $this->writeErrorMessage($io, \sprintf('The package "%s" already exists', $configuration->getPackagePath()));
 
             return;
         }
 
-        $fs->mkdir(sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity', $this->projectDir, $configuration->getPackage()));
-        $fs->mkdir(sprintf('%s/src/%s/Shared/Domain', $this->projectDir, $configuration->getPackage()));
+        $fs->mkdir(\sprintf('%s/src/%s/Shared/Infrastructure/Persistence/Doctrine/ORM/Entity', $this->projectDir, $configuration->getPackagePath()));
+        $fs->mkdir(\sprintf('%s/src/%s/Shared/Domain', $this->projectDir, $configuration->getPackagePath()));
 
         $fs->copy(
-            sprintf('%s/src/Shared/Infrastructure/Maker/Resources/skeleton/config/packages.tpl.php', $this->projectDir),
-            sprintf('%s/config/packages/%s.php', $this->projectDir, Str::asTwigVariable($configuration->getPackage())),
+            \sprintf('%s/src/Shared/Infrastructure/Maker/Resources/skeleton/config/packages.tpl.php', $this->projectDir),
+            \sprintf('%s/config/packages/app_%s.php', $this->projectDir, Str::asTwigVariable($configuration->getPackagePath())),
         );
 
         $this->manipulateApiPlatform($configuration, $io);
@@ -89,20 +89,9 @@ final class Maker extends AbstractMaker
         // no dependencies
     }
 
-    private function getPackageFile(string $path, ConsoleStyle $io): string
-    {
-        if ($this->fileManager->fileExists($path)) {
-            $contents = $this->fileManager->getFileContents($path);
-        }
-
-        $io->text('We found your package configuration file!');
-
-        return $contents;
-    }
-
     private function getFile(string $filename): string
     {
-        return sprintf('%s/config/%s.php', $this->fileManager->getRootDirectory(), $filename);
+        return \sprintf('%s/config/%s.php', $this->fileManager->getRootDirectory(), $filename);
     }
 
     private function manipulateDoctrine(Configuration $configuration, ConsoleStyle $io): void
@@ -111,8 +100,6 @@ final class Maker extends AbstractMaker
         $manipulator = new PhpFileManipulator(
             $this->fileManager->getFileContents($path),
         );
-
-        $manipulator->setIo($io);
 
         $builder = new PackageBuilder();
         $builder->addMappingToDoctrine($manipulator, $configuration);
@@ -128,8 +115,6 @@ final class Maker extends AbstractMaker
             $this->fileManager->getFileContents($path),
         );
 
-        $manipulator->setIo($io);
-
         $builder = new PackageBuilder();
         $builder->addMappingPathToApiPlatform($manipulator, $configuration);
         $this->fileManager->dumpFile($path, $manipulator->getSourceCode());
@@ -141,8 +126,6 @@ final class Maker extends AbstractMaker
         $manipulator = new PhpFileManipulator(
             $this->fileManager->getFileContents($path),
         );
-
-        $manipulator->setIo($io);
 
         $builder = new PackageBuilder();
         $builder->addMappingPathToSylius($manipulator, $configuration);

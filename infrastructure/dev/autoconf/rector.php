@@ -18,6 +18,10 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/tests',
     ]);
 
+    $rectorConfig->skip([
+        __DIR__ . '/src/Shared/Infrastructure/Maker/Resources/skeleton'
+    ]);
+
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_82,
         SetList::CODE_QUALITY,
