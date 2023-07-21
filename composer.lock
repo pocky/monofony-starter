@@ -6040,16 +6040,16 @@
         },
         {
             "name": "sylius/ui-bundle",
-            "version": "v1.12.8",
+            "version": "v1.12.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusUiBundle.git",
-                "reference": "8226cb37f21b61357521a4a83a53ea3903fda951"
+                "reference": "0049bd3d53b1e127a57828fe8e52317e1349056d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/8226cb37f21b61357521a4a83a53ea3903fda951",
-                "reference": "8226cb37f21b61357521a4a83a53ea3903fda951",
+                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/0049bd3d53b1e127a57828fe8e52317e1349056d",
+                "reference": "0049bd3d53b1e127a57828fe8e52317e1349056d",
                 "shasum": ""
             },
             "require": {
@@ -6121,9 +6121,9 @@
                 "webshop"
             ],
             "support": {
-                "source": "https://github.com/Sylius/SyliusUiBundle/tree/v1.12.8"
+                "source": "https://github.com/Sylius/SyliusUiBundle/tree/v1.12.9"
             },
-            "time": "2023-05-19T09:35:24+00:00"
+            "time": "2023-07-07T05:15:10+00:00"
         },
         {
             "name": "sylius/user",
