@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d12e698fbf7d28dde1df5fd208ba62f",
+    "content-hash": "f2f9c349c89c003a03d3001ed8f7ba0b",
     "packages": [
         {
             "name": "api-platform/core",
@@ -17899,16 +17899,16 @@
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "11.5.0",
+            "version": "12.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/easy-coding-standard/easy-coding-standard.git",
-                "reference": "1d2400f7bfe92e3754ce71f0782f2c0521bade3d"
+                "reference": "e0443d03422229c63ccdf8464e1bf2cd1e085d7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/1d2400f7bfe92e3754ce71f0782f2c0521bade3d",
-                "reference": "1d2400f7bfe92e3754ce71f0782f2c0521bade3d",
+                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/e0443d03422229c63ccdf8464e1bf2cd1e085d7c",
+                "reference": "e0443d03422229c63ccdf8464e1bf2cd1e085d7c",
                 "shasum": ""
             },
             "require": {
@@ -17941,7 +17941,7 @@
             ],
             "support": {
                 "issues": "https://github.com/easy-coding-standard/easy-coding-standard/issues",
-                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/11.5.0"
+                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.0.1"
             },
             "funding": [
                 {
@@ -17953,7 +17953,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-21T06:26:15+00:00"
+            "time": "2023-07-25T15:19:23+00:00"
         },
         {
             "name": "theofidry/alice-data-fixtures",
