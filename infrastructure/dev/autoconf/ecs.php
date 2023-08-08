@@ -3,64 +3,65 @@
 declare(strict_types=1);
 
 use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
+use PhpCsFixer\Fixer\Basic\OctalNotationFixer;
+use PhpCsFixer\Fixer\CastNotation\NoUnsetCastFixer;
 use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
 use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
 use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
 use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
+use PhpCsFixer\Fixer\NamespaceNotation\CleanNamespaceFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitInternalClassFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitMethodCasingFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitTestClassRequiresCoversFixer;
 use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\Strict\StrictComparisonFixer;
+use PhpCsFixer\Fixer\StringNotation\SimpleToComplexStringVariableFixer;
 use PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer;
-use PhpCsFixer\RuleSet\Sets\PHP82MigrationSet;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->import(SetList::PSR_12);
+    $ecsConfig->import(SetList::CLEAN_CODE);
     $ecsConfig->parallel();
 
     $ecsConfig->paths([
-        __DIR__.'/src',
-        __DIR__.'/config',
-        __DIR__.'/tests',
+        __DIR__ . '/src',
+        __DIR__ . '/tests',
     ]);
 
-    $services = $ecsConfig->services();
-    $services->set(ArrayIndentationFixer::class);
-    $services->set(DeclareStrictTypesFixer::class);
-    $services->set(OrderedImportsFixer::class);
-    $services->set(NoUnusedImportsFixer::class);
-    $services->set(StrictComparisonFixer::class);
-    $services->set(PHP82MigrationSet::class);
+    $ecsConfig->rules([
+        ArrayIndentationFixer::class,
+        DeclareStrictTypesFixer::class,
+        OrderedImportsFixer::class,
+        NoUnusedImportsFixer::class,
+        StrictComparisonFixer::class,
+        CleanNamespaceFixer::class,
+        NoUnsetCastFixer::class,
+        SimpleToComplexStringVariableFixer::class,
+    ]);
 
-    $services->set(ArraySyntaxFixer::class)
-        ->call('configure', [[
-            'syntax' => 'short',
-        ]])
-    ;
+    $ecsConfig->ruleWithConfiguration(ArraySyntaxFixer::class, [
+        'syntax' => 'short',
+    ]);
 
-    $services->set(PhpdocAlignFixer::class)
-        ->call('configure', [[
-            'align' => 'left',
-            'tags' => ['method', 'param', 'property', 'return', 'throws', 'type', 'var'],
-        ]])
-    ;
+    $ecsConfig->ruleWithConfiguration(PhpdocAlignFixer::class, [
+        'align' => 'left',
+        'tags' => ['method', 'param', 'property', 'return', 'throws', 'type', 'var'],
+    ]);
 
-    $services->set(TrailingCommaInMultilineFixer::class)
-        ->call('configure', [['elements' => ['arrays', 'arguments', 'parameters']]])
-    ;
+    $ecsConfig->ruleWithConfiguration(TrailingCommaInMultilineFixer::class, [
+        'elements' => ['arrays', 'arguments', 'parameters']
+    ]);
 
-    $parameters = $ecsConfig->parameters();
-    $parameters->set('skip', [
+    $ecsConfig->skip([
         VisibilityRequiredFixer::class => ['*Spec.php'],
         PhpUnitTestClassRequiresCoversFixer::class => ['*Test.php'],
         PhpUnitInternalClassFixer::class => ['*Test.php'],
         PhpUnitMethodCasingFixer::class => ['*Test.php'],
         NoUnusedImportsFixer::class => [
-            __DIR__.'/src/Shared/Infrastructure/Maker/Resources/skeleton/config/packages.tpl.php',
+            __DIR__ . '/src/Shared/Infrastructure/Maker/Resources/skeleton/config/packages.tpl.php',
         ],
     ]);
 };

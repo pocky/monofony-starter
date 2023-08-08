@@ -10,6 +10,7 @@ return (new PhpCsFixer\Config())
         '@Symfony' => true,
         '@PhpCsFixer' => true,
         '@PSR12' => true,
+        '@PHP82Migration' => true,
     ])
     ->setFinder($finder)
 ;
