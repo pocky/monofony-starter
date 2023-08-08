@@ -27,7 +27,7 @@ services:
       backend: ~
 
   database:
-    image: postgres:13
+    image: postgres:15
     environment:
       - POSTGRES_DB=monofony
       - POSTGRES_USER=${POSTGRES_USER:-root}
