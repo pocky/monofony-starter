@@ -2959,16 +2959,16 @@
         },
         {
             "name": "laminas/laminas-code",
-            "version": "4.11.0",
+            "version": "4.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-code.git",
-                "reference": "169123b3ede20a9193480c53de2a8194f8c073ec"
+                "reference": "36cbee228b427446419dd51944bdfb6bb8ddbcd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/169123b3ede20a9193480c53de2a8194f8c073ec",
-                "reference": "169123b3ede20a9193480c53de2a8194f8c073ec",
+                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/36cbee228b427446419dd51944bdfb6bb8ddbcd0",
+                "reference": "36cbee228b427446419dd51944bdfb6bb8ddbcd0",
                 "shasum": ""
             },
             "require": {
@@ -3018,7 +3018,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-05-14T12:05:38+00:00"
+            "time": "2023-09-06T14:56:25+00:00"
         },
         {
             "name": "laminas/laminas-stdlib",
@@ -11517,20 +11517,21 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v6.3.0",
+            "version": "v6.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "a9a8337aa641ef2aa39c3e028f9107ec391e5927"
+                "reference": "e23292e8c07c85b971b44c1c4b87af52133e2add"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/a9a8337aa641ef2aa39c3e028f9107ec391e5927",
-                "reference": "a9a8337aa641ef2aa39c3e028f9107ec391e5927",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e23292e8c07c85b971b44c1c4b87af52133e2add",
+                "reference": "e23292e8c07c85b971b44c1c4b87af52133e2add",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
+                "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
@@ -11568,7 +11569,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v6.3.0"
+                "source": "https://github.com/symfony/yaml/tree/v6.3.3"
             },
             "funding": [
                 {
@@ -11584,7 +11585,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-28T13:28:14+00:00"
+            "time": "2023-07-31T07:08:24+00:00"
         },
         {
             "name": "thecodingmachine/safe",
@@ -13858,16 +13859,16 @@
         },
         {
             "name": "friends-of-behat/symfony-extension",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfBehat/SymfonyExtension.git",
-                "reference": "43dd1ee4dc389728e39b95a34342826346f22437"
+                "reference": "c25f3f374f8f789f7df6bd83a79dd62efee2e776"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfBehat/SymfonyExtension/zipball/43dd1ee4dc389728e39b95a34342826346f22437",
-                "reference": "43dd1ee4dc389728e39b95a34342826346f22437",
+                "url": "https://api.github.com/repos/FriendsOfBehat/SymfonyExtension/zipball/c25f3f374f8f789f7df6bd83a79dd62efee2e776",
+                "reference": "c25f3f374f8f789f7df6bd83a79dd62efee2e776",
                 "shasum": ""
             },
             "require": {
@@ -13921,9 +13922,9 @@
             "description": "Integrates Behat with Symfony.",
             "support": {
                 "issues": "https://github.com/FriendsOfBehat/SymfonyExtension/issues",
-                "source": "https://github.com/FriendsOfBehat/SymfonyExtension/tree/v2.4.0"
+                "source": "https://github.com/FriendsOfBehat/SymfonyExtension/tree/v2.4.1"
             },
-            "time": "2022-11-30T09:17:16+00:00"
+            "time": "2023-09-12T09:36:17+00:00"
         },
         {
             "name": "friends-of-behat/variadic-extension",
