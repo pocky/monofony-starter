@@ -8116,16 +8116,16 @@
         },
         {
             "name": "symfony/messenger",
-            "version": "v6.3.3",
+            "version": "v6.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/messenger.git",
-                "reference": "38a1f47041a4081bcb44827db8481a5368dd58ef"
+                "reference": "fb29632c2abdc52f4f10f9402f8f93ebb8938234"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/messenger/zipball/38a1f47041a4081bcb44827db8481a5368dd58ef",
-                "reference": "38a1f47041a4081bcb44827db8481a5368dd58ef",
+                "url": "https://api.github.com/repos/symfony/messenger/zipball/fb29632c2abdc52f4f10f9402f8f93ebb8938234",
+                "reference": "fb29632c2abdc52f4f10f9402f8f93ebb8938234",
                 "shasum": ""
             },
             "require": {
@@ -8134,6 +8134,7 @@
                 "symfony/clock": "^6.3"
             },
             "conflict": {
+                "symfony/console": "<6.3",
                 "symfony/event-dispatcher": "<5.4",
                 "symfony/event-dispatcher-contracts": "<2.5",
                 "symfony/framework-bundle": "<5.4",
@@ -8142,7 +8143,7 @@
             },
             "require-dev": {
                 "psr/cache": "^1.0|^2.0|^3.0",
-                "symfony/console": "^5.4|^6.0",
+                "symfony/console": "^6.3",
                 "symfony/dependency-injection": "^5.4|^6.0",
                 "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/event-dispatcher": "^5.4|^6.0",
@@ -8182,7 +8183,7 @@
             "description": "Helps applications send and receive messages to/from other applications or via message queues",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/messenger/tree/v6.3.3"
+                "source": "https://github.com/symfony/messenger/tree/v6.3.5"
             },
             "funding": [
                 {
@@ -8198,7 +8199,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-31T07:08:24+00:00"
+            "time": "2023-09-29T16:11:24+00:00"
         },
         {
             "name": "symfony/mime",
