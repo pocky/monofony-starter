@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60d0cd654ed335a3c1d1067c239abeda",
+    "content-hash": "a6ea0956f9098c77691537f2ccb7f0d0",
     "packages": [
         {
             "name": "api-platform/core",
@@ -17860,16 +17860,16 @@
         },
         {
             "name": "symplify/config-transformer",
-            "version": "11.2.3.72",
+            "version": "12.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/config-transformer.git",
-                "reference": "f9f1cd5425a7d44a80ccbb08de04da3bc942ebce"
+                "reference": "facd050901b8f71a0197001138b6f41bf34cbcae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/config-transformer/zipball/f9f1cd5425a7d44a80ccbb08de04da3bc942ebce",
-                "reference": "f9f1cd5425a7d44a80ccbb08de04da3bc942ebce",
+                "url": "https://api.github.com/repos/symplify/config-transformer/zipball/facd050901b8f71a0197001138b6f41bf34cbcae",
+                "reference": "facd050901b8f71a0197001138b6f41bf34cbcae",
                 "shasum": ""
             },
             "require": {
@@ -17879,11 +17879,6 @@
                 "bin/config-transformer"
             ],
             "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -17891,7 +17886,7 @@
             "description": "Prefixed version of Symfony YAML/XML to PHP/YAML config converter",
             "support": {
                 "issues": "https://github.com/symplify/config-transformer/issues",
-                "source": "https://github.com/symplify/config-transformer/tree/11.2.3.72"
+                "source": "https://github.com/symplify/config-transformer/tree/12.1.1"
             },
             "funding": [
                 {
@@ -17903,7 +17898,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-31T11:20:37+00:00"
+            "time": "2023-10-02T07:22:40+00:00"
         },
         {
             "name": "symplify/easy-coding-standard",
