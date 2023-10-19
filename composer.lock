@@ -3824,7 +3824,7 @@
         },
         {
             "name": "monofony/core-bundle",
-            "version": "v0.10.1",
+            "version": "v0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/CoreBundle.git",
@@ -3870,7 +3870,7 @@
             "description": "Monofony core bundle.",
             "support": {
                 "issues": "https://github.com/Monofony/CoreBundle/issues",
-                "source": "https://github.com/Monofony/CoreBundle/tree/v0.10.1"
+                "source": "https://github.com/Monofony/CoreBundle/tree/v0.10.2"
             },
             "time": "2023-03-20T08:59:34+00:00"
         },
