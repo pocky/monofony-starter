@@ -3782,7 +3782,7 @@
         },
         {
             "name": "monofony/core",
-            "version": "v0.10.1",
+            "version": "v0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/Core.git",
@@ -3818,7 +3818,7 @@
             "description": "Monofony core.",
             "support": {
                 "issues": "https://github.com/Monofony/Core/issues",
-                "source": "https://github.com/Monofony/Core/tree/v0.10.1"
+                "source": "https://github.com/Monofony/Core/tree/v0.10.2"
             },
             "time": "2023-03-03T08:35:33+00:00"
         },
