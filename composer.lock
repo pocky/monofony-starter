@@ -3735,7 +3735,7 @@
         },
         {
             "name": "monofony/api-contracts",
-            "version": "v0.10.1",
+            "version": "v0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/ApiContracts.git",
@@ -3776,7 +3776,7 @@
             "description": "Generic abstractions related to Api",
             "support": {
                 "issues": "https://github.com/Monofony/ApiContracts/issues",
-                "source": "https://github.com/Monofony/ApiContracts/tree/v0.10.1"
+                "source": "https://github.com/Monofony/ApiContracts/tree/v0.10.2"
             },
             "time": "2023-03-06T08:32:57+00:00"
         },
