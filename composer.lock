@@ -3643,7 +3643,7 @@
         },
         {
             "name": "monofony/admin",
-            "version": "v0.10.1",
+            "version": "v0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/Admin.git",
@@ -3684,7 +3684,7 @@
             "description": "Monofony admin.",
             "support": {
                 "issues": "https://github.com/Monofony/Admin/issues",
-                "source": "https://github.com/Monofony/Admin/tree/v0.10.1"
+                "source": "https://github.com/Monofony/Admin/tree/v0.10.2"
             },
             "time": "2023-03-06T08:32:30+00:00"
         },
