@@ -3690,7 +3690,7 @@
         },
         {
             "name": "monofony/admin-contracts",
-            "version": "v0.10.1",
+            "version": "v0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/AdminContracts.git",
@@ -3729,7 +3729,7 @@
             "description": "Generic abstractions related to Admin",
             "support": {
                 "issues": "https://github.com/Monofony/AdminContracts/issues",
-                "source": "https://github.com/Monofony/AdminContracts/tree/v0.10.1"
+                "source": "https://github.com/Monofony/AdminContracts/tree/v0.10.2"
             },
             "time": "2023-03-03T08:35:27+00:00"
         },
