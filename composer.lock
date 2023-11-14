@@ -3878,21 +3878,21 @@
         },
         {
             "name": "monofony/core-contracts",
-            "version": "v0.10.1",
+            "version": "v0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/CoreContracts.git",
-                "reference": "793289dd57267ee6514231769d15881be42b4612"
+                "reference": "f5723ac6fdffbd43580e253f40812669363383a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/CoreContracts/zipball/793289dd57267ee6514231769d15881be42b4612",
-                "reference": "793289dd57267ee6514231769d15881be42b4612",
+                "url": "https://api.github.com/repos/Monofony/CoreContracts/zipball/f5723ac6fdffbd43580e253f40812669363383a6",
+                "reference": "f5723ac6fdffbd43580e253f40812669363383a6",
                 "shasum": ""
             },
             "require": {
-                "monofony/customer": "^1.10",
                 "php": "^8.1",
+                "sylius/customer": "^1.12",
                 "sylius/user": "^1.12"
             },
             "require-dev": {
@@ -3916,9 +3916,9 @@
             "description": "Generic abstractions related to Core",
             "support": {
                 "issues": "https://github.com/Monofony/CoreContracts/issues",
-                "source": "https://github.com/Monofony/CoreContracts/tree/v0.10.1"
+                "source": "https://github.com/Monofony/CoreContracts/tree/v0.10.2"
             },
-            "time": "2023-03-03T08:35:43+00:00"
+            "time": "2023-10-19T13:33:53+00:00"
         },
         {
             "name": "monofony/customer",
@@ -5651,6 +5651,76 @@
                 "source": "https://github.com/SyliusLabs/PolyfillSymfonySecurity/tree/v1.1.2"
             },
             "time": "2022-12-12T13:28:33+00:00"
+        },
+        {
+            "name": "sylius/customer",
+            "version": "v1.12.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sylius/Customer.git",
+                "reference": "414e6a3fd61c4c5fd7cfdf247d45f04e283b33a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sylius/Customer/zipball/414e6a3fd61c4c5fd7cfdf247d45f04e283b33a4",
+                "reference": "414e6a3fd61c4c5fd7cfdf247d45f04e283b33a4",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/collections": "^1.6",
+                "php": "^8.0",
+                "sylius/resource": "^1.9"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^7.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.12-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sylius\\Component\\Customer\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paweł Jędrzejewski",
+                    "homepage": "https://pjedrzejewski.com"
+                },
+                {
+                    "name": "Michał Marcinkowski",
+                    "email": "michal.marcinkowski@lakion.com"
+                },
+                {
+                    "name": "Łukasz Chruściel",
+                    "email": "lukasz.chrusciel@lakion.com"
+                },
+                {
+                    "name": "Sylius project",
+                    "homepage": "https://sylius.com"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Sylius/Sylius/contributors"
+                }
+            ],
+            "description": "Customer handling for PHP applications.",
+            "homepage": "https://sylius.com",
+            "keywords": [
+                "customer",
+                "groups"
+            ],
+            "support": {
+                "source": "https://github.com/Sylius/Customer/tree/v1.12.11"
+            },
+            "time": "2023-06-14T19:53:36+00:00"
         },
         {
             "name": "sylius/grid-bundle",
