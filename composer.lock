@@ -6202,16 +6202,16 @@
         },
         {
             "name": "sylius/user",
-            "version": "v1.12.11",
+            "version": "v1.12.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/User.git",
-                "reference": "dec7948ed3c41813b9ecf5e4b1763cd9b3406c4d"
+                "reference": "b7da4aaeedf7b9494eddc933f0579352cd6aea17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/User/zipball/dec7948ed3c41813b9ecf5e4b1763cd9b3406c4d",
-                "reference": "dec7948ed3c41813b9ecf5e4b1763cd9b3406c4d",
+                "url": "https://api.github.com/repos/Sylius/User/zipball/b7da4aaeedf7b9494eddc933f0579352cd6aea17",
+                "reference": "b7da4aaeedf7b9494eddc933f0579352cd6aea17",
                 "shasum": ""
             },
             "require": {
@@ -6274,9 +6274,9 @@
                 "user"
             ],
             "support": {
-                "source": "https://github.com/Sylius/User/tree/v1.12.11"
+                "source": "https://github.com/Sylius/User/tree/v1.12.12"
             },
-            "time": "2023-06-14T19:53:36+00:00"
+            "time": "2023-11-17T11:00:49+00:00"
         },
         {
             "name": "sylius/user-bundle",
