@@ -17987,16 +17987,16 @@
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "12.0.8",
+            "version": "12.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/easy-coding-standard/easy-coding-standard.git",
-                "reference": "99d87d188acc712dd6655ee946569f823cfeff69"
+                "reference": "5f34a99d035b4eef048857ec47d2035140871f50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/99d87d188acc712dd6655ee946569f823cfeff69",
-                "reference": "99d87d188acc712dd6655ee946569f823cfeff69",
+                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/5f34a99d035b4eef048857ec47d2035140871f50",
+                "reference": "5f34a99d035b4eef048857ec47d2035140871f50",
                 "shasum": ""
             },
             "require": {
@@ -18004,7 +18004,7 @@
             },
             "conflict": {
                 "friendsofphp/php-cs-fixer": "<3.0",
-                "squizlabs/php_codesniffer": "<3.6",
+                "phpcsstandards/php_codesniffer": "<3.6",
                 "symplify/coding-standard": "<11.3"
             },
             "bin": [
@@ -18029,7 +18029,7 @@
             ],
             "support": {
                 "issues": "https://github.com/easy-coding-standard/easy-coding-standard/issues",
-                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.0.8"
+                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.0.11"
             },
             "funding": [
                 {
@@ -18041,7 +18041,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-09-08T10:17:14+00:00"
+            "time": "2023-12-02T09:38:08+00:00"
         },
         {
             "name": "theofidry/alice-data-fixtures",
