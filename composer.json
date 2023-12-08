@@ -63,7 +63,7 @@
         "symfony/webpack-encore-bundle": "^1.9",
         "thecodingmachine/safe": "^2.2",
         "twig/twig": "^2.7",
-        "vich/uploader-bundle": "^1.8",
+        "vich/uploader-bundle": "^2.2",
         "webmozart/assert": "^1.9",
         "zenstruck/foundry": "^1.14"
     },
