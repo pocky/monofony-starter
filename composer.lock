@@ -5726,16 +5726,16 @@
         },
         {
             "name": "sylius/grid-bundle",
-            "version": "v1.12.0",
+            "version": "v1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusGridBundle.git",
-                "reference": "b6ca8d21640e772e2124ff8db30ed4cf69e9ee17"
+                "reference": "0ea47b97aba61162d4f4545c2dcc86963c99c8d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusGridBundle/zipball/b6ca8d21640e772e2124ff8db30ed4cf69e9ee17",
-                "reference": "b6ca8d21640e772e2124ff8db30ed4cf69e9ee17",
+                "url": "https://api.github.com/repos/Sylius/SyliusGridBundle/zipball/0ea47b97aba61162d4f4545c2dcc86963c99c8d7",
+                "reference": "0ea47b97aba61162d4f4545c2dcc86963c99c8d7",
                 "shasum": ""
             },
             "require": {
@@ -5838,9 +5838,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Sylius/SyliusGridBundle/issues",
-                "source": "https://github.com/Sylius/SyliusGridBundle/tree/v1.12.0"
+                "source": "https://github.com/Sylius/SyliusGridBundle/tree/v1.12.1"
             },
-            "time": "2022-10-31T11:24:50+00:00"
+            "time": "2024-01-05T14:42:50+00:00"
         },
         {
             "name": "sylius/mailer-bundle",
