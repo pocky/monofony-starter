@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d5fe61a3442d03844f9c88c025046d4",
+    "content-hash": "79d0cddd2060def4381e26f2236481b0",
     "packages": [
         {
             "name": "api-platform/core",
@@ -15914,21 +15914,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.18.12",
+            "version": "0.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "ed8d5352a3faa69e4a5e315896abffd4bc29c828"
+                "reference": "503f4ead06b3892bd106f67f3c86d4e36c94423d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/ed8d5352a3faa69e4a5e315896abffd4bc29c828",
-                "reference": "ed8d5352a3faa69e4a5e315896abffd4bc29c828",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/503f4ead06b3892bd106f67f3c86d4e36c94423d",
+                "reference": "503f4ead06b3892bd106f67f3c86d4e36c94423d",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.10.35"
+                "phpstan/phpstan": "^1.10.52"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -15958,7 +15958,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.18.12"
+                "source": "https://github.com/rectorphp/rector/tree/0.19.0"
             },
             "funding": [
                 {
@@ -15966,7 +15966,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-04T08:47:30+00:00"
+            "time": "2024-01-09T00:49:06+00:00"
         },
         {
             "name": "robertfausk/behat-panther-extension",
