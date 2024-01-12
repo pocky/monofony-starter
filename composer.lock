@@ -2427,16 +2427,16 @@
         },
         {
             "name": "gesdinet/jwt-refresh-token-bundle",
-            "version": "v1.2.1",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/markitosgv/JWTRefreshTokenBundle.git",
-                "reference": "9cc564bf19cebf0d526124e102dea94881b7c4db"
+                "reference": "83d687cc461b4bdae9ffc6efda97464093cae739"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/9cc564bf19cebf0d526124e102dea94881b7c4db",
-                "reference": "9cc564bf19cebf0d526124e102dea94881b7c4db",
+                "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/83d687cc461b4bdae9ffc6efda97464093cae739",
+                "reference": "83d687cc461b4bdae9ffc6efda97464093cae739",
                 "shasum": ""
             },
             "require": {
@@ -2501,9 +2501,9 @@
             ],
             "support": {
                 "issues": "https://github.com/markitosgv/JWTRefreshTokenBundle/issues",
-                "source": "https://github.com/markitosgv/JWTRefreshTokenBundle/tree/v1.2.1"
+                "source": "https://github.com/markitosgv/JWTRefreshTokenBundle/tree/v1.3.0"
             },
-            "time": "2023-12-26T15:17:53+00:00"
+            "time": "2024-01-10T19:40:34+00:00"
         },
         {
             "name": "imagine/imagine",
