@@ -14007,22 +14007,22 @@
         },
         {
             "name": "friends-of-behat/variadic-extension",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfBehat/VariadicExtension.git",
-                "reference": "9c4874f3822d176c490cd8bcebacecd3162a95cf"
+                "reference": "892929189fd4deac9a920e64bb124231be624cdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfBehat/VariadicExtension/zipball/9c4874f3822d176c490cd8bcebacecd3162a95cf",
-                "reference": "9c4874f3822d176c490cd8bcebacecd3162a95cf",
+                "url": "https://api.github.com/repos/FriendsOfBehat/VariadicExtension/zipball/892929189fd4deac9a920e64bb124231be624cdc",
+                "reference": "892929189fd4deac9a920e64bb124231be624cdc",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.8",
-                "php": "^7.4 || ^8.0",
-                "symfony/dependency-injection": "^4.4 || ^5.4 || ^6.0"
+                "php": "^8.1",
+                "symfony/dependency-injection": "^5.4 || ^6.4 || ^7.0"
             },
             "require-dev": {
                 "friends-of-behat/test-context": "^1.0"
@@ -14051,9 +14051,9 @@
             "description": "Variadic support for behat context arguments",
             "support": {
                 "issues": "https://github.com/FriendsOfBehat/VariadicExtension/issues",
-                "source": "https://github.com/FriendsOfBehat/VariadicExtension/tree/v1.5.0"
+                "source": "https://github.com/FriendsOfBehat/VariadicExtension/tree/v1.6.0"
             },
-            "time": "2022-03-31T09:48:56+00:00"
+            "time": "2024-01-30T11:13:11+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
