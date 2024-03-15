@@ -1733,16 +1733,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "2.15.4",
+            "version": "2.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "f7e4b61459692f9b747f40696e6bf72080390f2d"
+                "reference": "17500f56eaa930f5cd14d765bc2cd851c7d37cc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/f7e4b61459692f9b747f40696e6bf72080390f2d",
-                "reference": "f7e4b61459692f9b747f40696e6bf72080390f2d",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/17500f56eaa930f5cd14d765bc2cd851c7d37cc0",
+                "reference": "17500f56eaa930f5cd14d765bc2cd851c7d37cc0",
                 "shasum": ""
             },
             "require": {
@@ -1771,14 +1771,14 @@
                 "doctrine/annotations": "^1.13 || ^2",
                 "doctrine/coding-standard": "^9.0.2 || ^12.0",
                 "phpbench/phpbench": "^0.16.10 || ^1.0",
-                "phpstan/phpstan": "~1.4.10 || 1.10.25",
+                "phpstan/phpstan": "~1.4.10 || 1.10.28",
                 "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6",
                 "psr/log": "^1 || ^2 || ^3",
                 "squizlabs/php_codesniffer": "3.7.2",
                 "symfony/cache": "^4.4 || ^5.4 || ^6.0",
                 "symfony/var-exporter": "^4.4 || ^5.4 || ^6.2",
                 "symfony/yaml": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "vimeo/psalm": "4.30.0 || 5.13.1"
+                "vimeo/psalm": "4.30.0 || 5.14.1"
             },
             "suggest": {
                 "ext-dom": "Provides support for XSD validation for XML mapping files",
@@ -1828,9 +1828,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/orm/issues",
-                "source": "https://github.com/doctrine/orm/tree/2.15.4"
+                "source": "https://github.com/doctrine/orm/tree/2.16.2"
             },
-            "time": "2023-07-18T07:50:04+00:00"
+            "time": "2023-08-27T18:21:56+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -3919,93 +3919,23 @@
             "time": "2023-10-19T13:33:53+00:00"
         },
         {
-            "name": "monofony/customer",
-            "version": "v1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Monofony/Customer.git",
-                "reference": "5c7a32fa8ae9d815967aeb569bf2233583b39e9f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/Customer/zipball/5c7a32fa8ae9d815967aeb569bf2233583b39e9f",
-                "reference": "5c7a32fa8ae9d815967aeb569bf2233583b39e9f",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/collections": "^1.6",
-                "php": "^7.4 || ^8.0",
-                "sylius/resource": "^1.0"
-            },
-            "require-dev": {
-                "phpspec/phpspec": "^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sylius\\Component\\Customer\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paweł Jędrzejewski",
-                    "homepage": "https://pjedrzejewski.com"
-                },
-                {
-                    "name": "Michał Marcinkowski",
-                    "email": "michal.marcinkowski@lakion.com"
-                },
-                {
-                    "name": "Łukasz Chruściel",
-                    "email": "lukasz.chrusciel@lakion.com"
-                },
-                {
-                    "name": "Sylius project",
-                    "homepage": "https://sylius.com"
-                },
-                {
-                    "name": "Community contributions",
-                    "homepage": "https://github.com/Sylius/Sylius/contributors"
-                }
-            ],
-            "description": "Customer handling for PHP applications.",
-            "homepage": "https://sylius.com",
-            "keywords": [
-                "customer",
-                "groups"
-            ],
-            "support": {
-                "source": "https://github.com/Monofony/Customer/tree/v1.10.0"
-            },
-            "time": "2021-04-06T13:12:44+00:00"
-        },
-        {
             "name": "monofony/sylius-user-bridge",
-            "version": "v0.10.1",
+            "version": "v0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Monofony/SyliusUserBridge.git",
-                "reference": "d655636b88a001d1e78494331a94946a1225da41"
+                "reference": "04f31c0a5ad4cc0967019e538f672d8befada595"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Monofony/SyliusUserBridge/zipball/d655636b88a001d1e78494331a94946a1225da41",
-                "reference": "d655636b88a001d1e78494331a94946a1225da41",
+                "url": "https://api.github.com/repos/Monofony/SyliusUserBridge/zipball/04f31c0a5ad4cc0967019e538f672d8befada595",
+                "reference": "04f31c0a5ad4cc0967019e538f672d8befada595",
                 "shasum": ""
             },
             "require": {
                 "monofony/core-contracts": "^0.10",
-                "monofony/customer": "^1.10",
                 "php": "^8.1",
+                "sylius/customer": "^1.12",
                 "sylius/user": "^1.12",
                 "sylius/user-bundle": "^1.12"
             },
@@ -4033,9 +3963,9 @@
             "description": "Monofony Sylius User Bridge",
             "support": {
                 "issues": "https://github.com/Monofony/SyliusUserBridge/issues",
-                "source": "https://github.com/Monofony/SyliusUserBridge/tree/v0.10.1"
+                "source": "https://github.com/Monofony/SyliusUserBridge/tree/v0.10.2"
             },
-            "time": "2023-03-06T08:32:31+00:00"
+            "time": "2023-10-19T13:33:27+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6273,7 +6203,7 @@
         },
         {
             "name": "sylius/user-bundle",
-            "version": "v1.12.9",
+            "version": "v1.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusUserBundle.git",
@@ -6368,7 +6298,7 @@
                 "user"
             ],
             "support": {
-                "source": "https://github.com/Sylius/SyliusUserBundle/tree/v1.12.9"
+                "source": "https://github.com/Sylius/SyliusUserBundle/tree/v1.12.11"
             },
             "time": "2023-06-14T19:53:36+00:00"
         },
