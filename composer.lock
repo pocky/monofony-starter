@@ -2821,20 +2821,20 @@
         },
         {
             "name": "knplabs/knp-menu",
-            "version": "v3.4.0",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "bf7d89a7ef406fd2ec1aae6f30f722e844bf6d31"
+                "reference": "c39403f7c427d1b72cc56f38df0a075b4b9191fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/bf7d89a7ef406fd2ec1aae6f30f722e844bf6d31",
-                "reference": "bf7d89a7ef406fd2ec1aae6f30f722e844bf6d31",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/c39403f7c427d1b72cc56f38df0a075b4b9191fe",
+                "reference": "c39403f7c427d1b72cc56f38df0a075b4b9191fe",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0"
+                "php": "^8.1"
             },
             "conflict": {
                 "twig/twig": "<1.42.3 || >=2,<2.9"
@@ -2842,11 +2842,11 @@
             "require-dev": {
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.6",
-                "psr/container": "^1.0",
-                "symfony/http-foundation": "^5.4 || ^6.0",
-                "symfony/phpunit-bridge": "^6.2",
-                "symfony/routing": "^5.4 || ^6.0",
-                "twig/twig": "^2.9 || ^3.0"
+                "psr/container": "^1.0 || ^2.0",
+                "symfony/http-foundation": "^5.4 || ^6.0 || ^7.0",
+                "symfony/phpunit-bridge": "^7.0",
+                "symfony/routing": "^5.4 || ^6.0 || ^7.0",
+                "twig/twig": "^2.16 || ^3.0"
             },
             "suggest": {
                 "twig/twig": "for the TwigRenderer and the integration with your templates"
@@ -2888,9 +2888,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/KnpMenu/issues",
-                "source": "https://github.com/KnpLabs/KnpMenu/tree/v3.4.0"
+                "source": "https://github.com/KnpLabs/KnpMenu/tree/v3.5.0"
             },
-            "time": "2023-05-17T18:48:46+00:00"
+            "time": "2024-03-23T15:35:09+00:00"
         },
         {
             "name": "knplabs/knp-menu-bundle",
@@ -3022,16 +3022,16 @@
         },
         {
             "name": "laminas/laminas-stdlib",
-            "version": "3.18.0",
+            "version": "3.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-stdlib.git",
-                "reference": "e85b29076c6216e7fc98e72b42dbe1bbc3b95ecf"
+                "reference": "6a192dd0882b514e45506f533b833b623b78fff3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/e85b29076c6216e7fc98e72b42dbe1bbc3b95ecf",
-                "reference": "e85b29076c6216e7fc98e72b42dbe1bbc3b95ecf",
+                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/6a192dd0882b514e45506f533b833b623b78fff3",
+                "reference": "6a192dd0882b514e45506f533b833b623b78fff3",
                 "shasum": ""
             },
             "require": {
@@ -3042,10 +3042,10 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "^2.5",
-                "phpbench/phpbench": "^1.2.14",
-                "phpunit/phpunit": "^10.3.3",
+                "phpbench/phpbench": "^1.2.15",
+                "phpunit/phpunit": "^10.5.8",
                 "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.15.0"
+                "vimeo/psalm": "^5.20.0"
             },
             "type": "library",
             "autoload": {
@@ -3077,7 +3077,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-09-19T10:15:21+00:00"
+            "time": "2024-01-19T12:39:49+00:00"
         },
         {
             "name": "lcobucci/clock",
@@ -5298,48 +5298,48 @@
         },
         {
             "name": "sonata-project/doctrine-extensions",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/sonata-doctrine-extensions.git",
-                "reference": "cebc169d78367ac2bf81c8260799b7dfc1c579de"
+                "reference": "cafaa3154fc488504633bc58ebce90fee1bda098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/sonata-doctrine-extensions/zipball/cebc169d78367ac2bf81c8260799b7dfc1c579de",
-                "reference": "cebc169d78367ac2bf81c8260799b7dfc1c579de",
+                "url": "https://api.github.com/repos/sonata-project/sonata-doctrine-extensions/zipball/cafaa3154fc488504633bc58ebce90fee1bda098",
+                "reference": "cafaa3154fc488504633bc58ebce90fee1bda098",
                 "shasum": ""
             },
             "require": {
-                "doctrine/dbal": "^3.4",
+                "doctrine/dbal": "^3.4 || ^4.0",
                 "doctrine/persistence": "^3.0.2",
                 "php": "^8.0"
             },
             "conflict": {
                 "doctrine/doctrine-bundle": "<2.7",
                 "doctrine/mongodb-odm": "<2.4",
-                "doctrine/orm": "<2.14"
+                "doctrine/orm": "<2.16"
             },
             "require-dev": {
-                "doctrine/doctrine-bundle": "^2.7",
+                "doctrine/doctrine-bundle": "^2.10",
                 "doctrine/event-manager": "^1.2 || ^2.0",
                 "doctrine/mongodb-odm": "^2.4",
-                "doctrine/orm": "^2.14",
+                "doctrine/orm": "^2.16 || ^3.0",
                 "friendsofphp/php-cs-fixer": "^3.4",
-                "matthiasnoback/symfony-config-test": "^4.2",
-                "matthiasnoback/symfony-dependency-injection-test": "^4.2.1",
+                "matthiasnoback/symfony-config-test": "^4.2 || ^5.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^4.2.1 || ^5.0",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^1.1",
                 "phpstan/phpstan-phpunit": "^1.0",
                 "phpstan/phpstan-strict-rules": "^1.0",
                 "phpunit/phpunit": "^9.5.13",
                 "psalm/plugin-phpunit": "^0.18",
-                "rector/rector": "^0.16",
-                "symfony/dependency-injection": "^5.4 || ^6.2",
-                "symfony/doctrine-bridge": "^5.4 || ^6.2",
-                "symfony/expression-language": "^5.4 || ^6.2",
-                "symfony/framework-bundle": "^5.4 || ^6.2",
-                "symfony/phpunit-bridge": "^6.2",
+                "rector/rector": "^0.19",
+                "symfony/dependency-injection": "^5.4 || ^6.2 || ^7.0",
+                "symfony/doctrine-bridge": "^5.4 || ^6.2 || ^7.0",
+                "symfony/expression-language": "^5.4 || ^6.2 || ^7.0",
+                "symfony/framework-bundle": "^5.4 || ^6.2 || ^7.0",
+                "symfony/phpunit-bridge": "^6.2 || ^7.0",
                 "vimeo/psalm": "^5.0"
             },
             "suggest": {
@@ -5378,7 +5378,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sonata-project/sonata-doctrine-extensions/issues",
-                "source": "https://github.com/sonata-project/sonata-doctrine-extensions/tree/2.3.0"
+                "source": "https://github.com/sonata-project/sonata-doctrine-extensions/tree/2.4.0"
             },
             "funding": [
                 {
@@ -5398,7 +5398,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-04T07:48:30+00:00"
+            "time": "2024-02-21T16:20:41+00:00"
         },
         {
             "name": "sonata-project/form-extensions",
@@ -6111,16 +6111,16 @@
         },
         {
             "name": "sylius/ui-bundle",
-            "version": "v1.12.13",
+            "version": "v1.12.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusUiBundle.git",
-                "reference": "8ebca3887240e69c00ec4b945c6209c80bc0ba13"
+                "reference": "c9a03462cf82e67374f51b8ed30836ba708ac59c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/8ebca3887240e69c00ec4b945c6209c80bc0ba13",
-                "reference": "8ebca3887240e69c00ec4b945c6209c80bc0ba13",
+                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/c9a03462cf82e67374f51b8ed30836ba708ac59c",
+                "reference": "c9a03462cf82e67374f51b8ed30836ba708ac59c",
                 "shasum": ""
             },
             "require": {
@@ -6154,7 +6154,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-main": "1.12-dev"
                 }
             },
             "autoload": {
@@ -6192,9 +6192,9 @@
                 "webshop"
             ],
             "support": {
-                "source": "https://github.com/Sylius/SyliusUiBundle/tree/v1.12.13"
+                "source": "https://github.com/Sylius/SyliusUiBundle/tree/v1.12.14"
             },
-            "time": "2023-12-04T10:10:34+00:00"
+            "time": "2024-03-08T12:23:41+00:00"
         },
         {
             "name": "sylius/user",
@@ -10046,16 +10046,16 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v6.3.11",
+            "version": "v6.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "a185fa0c6b633402cbffb35682eaac7fac656e54"
+                "reference": "60eeacf3bbcbc830919824fbacaf6a9c0ecd0244"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/a185fa0c6b633402cbffb35682eaac7fac656e54",
-                "reference": "a185fa0c6b633402cbffb35682eaac7fac656e54",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/60eeacf3bbcbc830919824fbacaf6a9c0ecd0244",
+                "reference": "60eeacf3bbcbc830919824fbacaf6a9c0ecd0244",
                 "shasum": ""
             },
             "require": {
@@ -10137,7 +10137,7 @@
             "description": "Provides a tight integration of the Security component into the Symfony full-stack framework",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/security-bundle/tree/v6.3.11"
+                "source": "https://github.com/symfony/security-bundle/tree/v6.3.12"
             },
             "funding": [
                 {
@@ -10153,7 +10153,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-23T07:52:56+00:00"
+            "time": "2024-01-23T14:42:18+00:00"
         },
         {
             "name": "symfony/security-core",
@@ -10311,16 +10311,16 @@
         },
         {
             "name": "symfony/security-http",
-            "version": "v6.4.0",
+            "version": "v6.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-http.git",
-                "reference": "1b49ad8e9f2c3ceec011d67ac09e774e4107416b"
+                "reference": "bf7548976c19ce751c95a3d012d0dcd27409e506"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-http/zipball/1b49ad8e9f2c3ceec011d67ac09e774e4107416b",
-                "reference": "1b49ad8e9f2c3ceec011d67ac09e774e4107416b",
+                "url": "https://api.github.com/repos/symfony/security-http/zipball/bf7548976c19ce751c95a3d012d0dcd27409e506",
+                "reference": "bf7548976c19ce751c95a3d012d0dcd27409e506",
                 "shasum": ""
             },
             "require": {
@@ -10379,7 +10379,7 @@
             "description": "Symfony Security Component - HTTP Integration",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/security-http/tree/v6.4.0"
+                "source": "https://github.com/symfony/security-http/tree/v6.4.4"
             },
             "funding": [
                 {
@@ -10395,7 +10395,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-24T21:18:21+00:00"
+            "time": "2024-02-26T07:52:26+00:00"
         },
         {
             "name": "symfony/serializer",
