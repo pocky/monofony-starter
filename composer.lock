@@ -2928,26 +2928,26 @@
         },
         {
             "name": "knplabs/knp-menu-bundle",
-            "version": "v3.3.0",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "02a2c68a2d6247a21c1d5ed185e2e3e3d9e7dfb5"
+                "reference": "925dd71fc9d7c31dd852a0537757be60c25e3afe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/02a2c68a2d6247a21c1d5ed185e2e3e3d9e7dfb5",
-                "reference": "02a2c68a2d6247a21c1d5ed185e2e3e3d9e7dfb5",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/925dd71fc9d7c31dd852a0537757be60c25e3afe",
+                "reference": "925dd71fc9d7c31dd852a0537757be60c25e3afe",
                 "shasum": ""
             },
             "require": {
                 "knplabs/knp-menu": "^3.3",
-                "php": "^8.0",
+                "php": "^8.1",
                 "symfony/deprecation-contracts": "^2.5 | ^3.3",
                 "symfony/framework-bundle": "^5.4 | ^6.0 | ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.6 | ^10.1",
+                "phpunit/phpunit": "^10.5 | ^11.0.3",
                 "symfony/expression-language": "^5.4 | ^6.0 | ^7.0",
                 "symfony/phpunit-bridge": "^6.0 | ^7.0",
                 "symfony/templating": "^5.4 | ^6.0 | ^7.0"
@@ -2987,9 +2987,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/KnpMenuBundle/issues",
-                "source": "https://github.com/KnpLabs/KnpMenuBundle/tree/v3.3.0"
+                "source": "https://github.com/KnpLabs/KnpMenuBundle/tree/v3.4.1"
             },
-            "time": "2023-11-01T09:25:40+00:00"
+            "time": "2024-04-15T13:35:09+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -6151,16 +6151,16 @@
         },
         {
             "name": "sylius/ui-bundle",
-            "version": "v1.12.14",
+            "version": "v1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusUiBundle.git",
-                "reference": "c9a03462cf82e67374f51b8ed30836ba708ac59c"
+                "reference": "a20653af4feee2f5d235113617102ddacc2e8f94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/c9a03462cf82e67374f51b8ed30836ba708ac59c",
-                "reference": "c9a03462cf82e67374f51b8ed30836ba708ac59c",
+                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/a20653af4feee2f5d235113617102ddacc2e8f94",
+                "reference": "a20653af4feee2f5d235113617102ddacc2e8f94",
                 "shasum": ""
             },
             "require": {
@@ -6168,33 +6168,33 @@
                 "knplabs/knp-menu": "^3.1",
                 "knplabs/knp-menu-bundle": "^3.0",
                 "laminas/laminas-stdlib": "^3.3.1",
-                "php": "^8.0",
-                "sonata-project/block-bundle": "^4.2",
+                "php": "^8.1",
+                "sonata-project/block-bundle": "^4.2 || ^5.0",
                 "sylius-labs/polyfill-symfony-event-dispatcher": "^1.0.1",
                 "sylius/grid-bundle": "^1.11",
-                "symfony/config": "^5.4 || ^6.0",
-                "symfony/framework-bundle": "^5.4 || ^6.0",
-                "symfony/security-bundle": "^5.4 || ^6.0",
-                "symfony/security-core": "^5.4 || ^6.0",
-                "symfony/templating": "^5.4 || ^6.0",
+                "symfony/config": "^5.4.21 || ^6.4",
+                "symfony/framework-bundle": "^5.4.21 || ^6.4",
+                "symfony/security-bundle": "^5.4.21 || ^6.4",
+                "symfony/security-core": "^5.4.21 || ^6.4",
+                "symfony/templating": "^5.4.21 || ^6.4",
                 "symfony/webpack-encore-bundle": "^1.15"
             },
             "conflict": {
-                "twig/twig": "^1.0"
+                "twig/twig": "^1.0 || 3.9.0"
             },
             "require-dev": {
                 "matthiasnoback/symfony-config-test": "^4.2",
                 "matthiasnoback/symfony-dependency-injection-test": "^4.2",
                 "phpspec/phpspec": "^7.2",
-                "phpunit/phpunit": "^8.5",
-                "symfony/dependency-injection": "^5.4 || ^6.0",
-                "symfony/form": "^5.4 || ^6.0",
+                "phpunit/phpunit": "^9.5",
+                "symfony/dependency-injection": "^5.4.21 || ^6.4",
+                "symfony/form": "^5.4.21 || ^6.4",
                 "twig/twig": "^2.12 || ^3.3"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.12-dev"
+                    "dev-main": "1.13-dev"
                 }
             },
             "autoload": {
@@ -6232,9 +6232,9 @@
                 "webshop"
             ],
             "support": {
-                "source": "https://github.com/Sylius/SyliusUiBundle/tree/v1.12.14"
+                "source": "https://github.com/Sylius/SyliusUiBundle/tree/v1.13.0"
             },
-            "time": "2024-03-08T12:23:41+00:00"
+            "time": "2024-04-22T06:39:34+00:00"
         },
         {
             "name": "sylius/user",
