@@ -65,7 +65,7 @@
         "twig/twig": "^2.7",
         "vich/uploader-bundle": "^1.8",
         "webmozart/assert": "^1.9",
-        "zenstruck/foundry": "^1.14"
+        "zenstruck/foundry": "^2.0"
     },
     "require-dev": {
         "behat/behat": "^3.2",
