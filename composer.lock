@@ -6236,16 +6236,16 @@
         },
         {
             "name": "sylius/user-bundle",
-            "version": "v1.13.2",
+            "version": "v1.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusUserBundle.git",
-                "reference": "9c454890f70e66ae8c4c15ab9f825e5e083feec9"
+                "reference": "201dcdf6e2c6485bc3a36ef388651c3b469ce9a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusUserBundle/zipball/9c454890f70e66ae8c4c15ab9f825e5e083feec9",
-                "reference": "9c454890f70e66ae8c4c15ab9f825e5e083feec9",
+                "url": "https://api.github.com/repos/Sylius/SyliusUserBundle/zipball/201dcdf6e2c6485bc3a36ef388651c3b469ce9a3",
+                "reference": "201dcdf6e2c6485bc3a36ef388651c3b469ce9a3",
                 "shasum": ""
             },
             "require": {
@@ -6330,9 +6330,9 @@
                 "user"
             ],
             "support": {
-                "source": "https://github.com/Sylius/SyliusUserBundle/tree/v1.13.2"
+                "source": "https://github.com/Sylius/SyliusUserBundle/tree/v1.13.3"
             },
-            "time": "2024-06-03T04:59:11+00:00"
+            "time": "2024-06-18T08:14:11+00:00"
         },
         {
             "name": "symfony/asset",
