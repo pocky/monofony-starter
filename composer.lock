@@ -2933,16 +2933,16 @@
         },
         {
             "name": "knplabs/knp-menu-bundle",
-            "version": "v3.4.1",
+            "version": "v3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "925dd71fc9d7c31dd852a0537757be60c25e3afe"
+                "reference": "6a1e3e1f4131f9a5a967e36717a1fe680c183637"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/925dd71fc9d7c31dd852a0537757be60c25e3afe",
-                "reference": "925dd71fc9d7c31dd852a0537757be60c25e3afe",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/6a1e3e1f4131f9a5a967e36717a1fe680c183637",
+                "reference": "6a1e3e1f4131f9a5a967e36717a1fe680c183637",
                 "shasum": ""
             },
             "require": {
@@ -2992,9 +2992,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/KnpMenuBundle/issues",
-                "source": "https://github.com/KnpLabs/KnpMenuBundle/tree/v3.4.1"
+                "source": "https://github.com/KnpLabs/KnpMenuBundle/tree/v3.4.2"
             },
-            "time": "2024-04-15T13:35:09+00:00"
+            "time": "2024-06-03T08:48:36+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -6071,16 +6071,16 @@
         },
         {
             "name": "sylius/ui-bundle",
-            "version": "v1.13.1",
+            "version": "v1.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusUiBundle.git",
-                "reference": "7ba54619ea21f8684290f5ac489dc4928aefdc4c"
+                "reference": "595e1c68737a48b74c916e744135ebe49197cb1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/7ba54619ea21f8684290f5ac489dc4928aefdc4c",
-                "reference": "7ba54619ea21f8684290f5ac489dc4928aefdc4c",
+                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/595e1c68737a48b74c916e744135ebe49197cb1d",
+                "reference": "595e1c68737a48b74c916e744135ebe49197cb1d",
                 "shasum": ""
             },
             "require": {
@@ -6152,9 +6152,9 @@
                 "webshop"
             ],
             "support": {
-                "source": "https://github.com/Sylius/SyliusUiBundle/tree/v1.13.1"
+                "source": "https://github.com/Sylius/SyliusUiBundle/tree/v1.13.3"
             },
-            "time": "2024-05-10T08:28:17+00:00"
+            "time": "2024-05-13T06:48:55+00:00"
         },
         {
             "name": "sylius/user",
