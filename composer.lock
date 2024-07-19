@@ -6158,7 +6158,7 @@
         },
         {
             "name": "sylius/user",
-            "version": "v1.13.3",
+            "version": "v1.13.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/User.git",
@@ -6230,13 +6230,13 @@
                 "user"
             ],
             "support": {
-                "source": "https://github.com/Sylius/User/tree/v1.13.3"
+                "source": "https://github.com/Sylius/User/tree/v1.13.4"
             },
             "time": "2024-04-22T06:39:34+00:00"
         },
         {
             "name": "sylius/user-bundle",
-            "version": "v1.13.3",
+            "version": "v1.13.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusUserBundle.git",
@@ -6330,7 +6330,7 @@
                 "user"
             ],
             "support": {
-                "source": "https://github.com/Sylius/SyliusUserBundle/tree/v1.13.3"
+                "source": "https://github.com/Sylius/SyliusUserBundle/tree/v1.13.4"
             },
             "time": "2024-06-18T08:14:11+00:00"
         },
