@@ -18619,16 +18619,16 @@
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "12.3.4",
+            "version": "12.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/easy-coding-standard/easy-coding-standard.git",
-                "reference": "03cd792d7fa6d9dc59b6e12a5ca73d9873ee9c0e"
+                "reference": "0d7c2cfee3debdf11c12135e90d69d1d9f4eef03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/03cd792d7fa6d9dc59b6e12a5ca73d9873ee9c0e",
-                "reference": "03cd792d7fa6d9dc59b6e12a5ca73d9873ee9c0e",
+                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/0d7c2cfee3debdf11c12135e90d69d1d9f4eef03",
+                "reference": "0d7c2cfee3debdf11c12135e90d69d1d9f4eef03",
                 "shasum": ""
             },
             "require": {
@@ -18664,7 +18664,7 @@
             ],
             "support": {
                 "issues": "https://github.com/easy-coding-standard/easy-coding-standard/issues",
-                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.3.4"
+                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.3.5"
             },
             "funding": [
                 {
@@ -18676,7 +18676,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-01T07:55:09+00:00"
+            "time": "2024-08-08T08:43:50+00:00"
         },
         {
             "name": "theofidry/alice-data-fixtures",
